@@ -1,0 +1,13 @@
+node_modules
+.next
+out
+.env*.local
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+
+# Local-only working files — never published
+CLAUDE.md
+PORTFOLIO-AUDIT.md
+.claude
