@@ -1,4 +1,4 @@
-import { homePath, casePath } from "@/data/resume";
+import { homePath, casePath, cvPath } from "@/data/resume";
 import type { Locale, ResumeData } from "@/lib/types";
 
 export function Nav({
@@ -29,6 +29,7 @@ export function Nav({
           <a href={`${home}#work`}>{data.nav.work}</a>
           <a href={`${home}#background`}>{data.nav.about}</a>
           <a href={slug ? "#contact" : `${home}#contact`}>{data.nav.contact}</a>
+          <a href={cvPath(locale)}>{data.nav.cv}</a>
         </div>
         <a
           className="language-switch"

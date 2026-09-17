@@ -12,6 +12,7 @@ export const resumes: Record<Locale, ResumeData> = {
       work: "Work",
       about: "About",
       contact: "Contact",
+      cv: "PDF",
       label: "Main navigation",
       language: "Switch to Hebrew",
       skip: "Skip to content",
@@ -129,6 +130,7 @@ export const resumes: Record<Locale, ResumeData> = {
       email: "genisilay@gmail.com",
       copy: "Copy address",
       copied: "Copied",
+      cv: "CV (PDF)",
       links: [
         {
           label: "LinkedIn",
@@ -156,6 +158,19 @@ export const resumes: Record<Locale, ResumeData> = {
       contactTitle: "Working on\nsomething like this?",
       contactIntro:
         "If your team is working on problems like these, I’d be glad to talk, and to hear how you approach them.",
+    },
+    cv: {
+      title: "CV",
+      download: "Download PDF",
+      back: "Back to the site",
+      labels: {
+        experience: "Experience",
+        work: "Selected work",
+        background: "Background",
+        tools: "Worked with",
+        contact: "Contact",
+        site: "Portfolio",
+      },
     },
     footer:
       "AI solutions. A visual background. A growing engineering practice.",
@@ -442,6 +457,7 @@ export const resumes: Record<Locale, ResumeData> = {
       work: "עבודות",
       about: "קצת עליי",
       contact: "יצירת קשר",
+      cv: "PDF",
       label: "ניווט ראשי",
       language: "Switch to English",
       skip: "דילוג לתוכן",
@@ -559,6 +575,7 @@ export const resumes: Record<Locale, ResumeData> = {
       email: "genisilay@gmail.com",
       copy: "העתקת הכתובת",
       copied: "הועתק",
+      cv: "קורות חיים (PDF)",
       links: [
         {
           label: "LinkedIn",
@@ -586,6 +603,19 @@ export const resumes: Record<Locale, ResumeData> = {
       contactTitle: "עובדים על\nמשהו דומה?",
       contactIntro:
         "אם הצוות שלכם מתמודד עם בעיות כאלה, אשמח לדבר, וגם לשמוע איך אתם ניגשים אליהן.",
+    },
+    cv: {
+      title: "קורות חיים",
+      download: "הורדת PDF",
+      back: "חזרה לאתר",
+      labels: {
+        experience: "ניסיון",
+        work: "עבודות נבחרות",
+        background: "הרקע שלי",
+        tools: "עבדתי עם",
+        contact: "יצירת קשר",
+        site: "האתר",
+      },
     },
     footer: "פתרונות AI. רקע חזותי. התפתחות הנדסית.",
     projects: [
@@ -870,3 +900,8 @@ export const resume = resumes.en;
 export const homePath = (locale: Locale) => (locale === "he" ? "/he/" : "/");
 export const casePath = (locale: Locale, slug: string) =>
   `${locale === "he" ? "/he" : ""}/work/${slug}/`;
+export const cvPath = (locale: Locale) =>
+  `${locale === "he" ? "/he" : ""}/cv/`;
+// The PDFs are written by scripts/build-cv.mjs after `next build`; both
+// languages sit in out/cv/ so the file name, not the folder, says the language.
+export const cvFile = (locale: Locale) => `/cv/ilay-genis-cv-${locale}.pdf`;

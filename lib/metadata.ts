@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { resumes, homePath, casePath } from "@/data/resume";
+import { resumes, homePath, casePath, cvPath } from "@/data/resume";
 import type { Locale, CaseStudy } from "@/lib/types";
 
 export const siteOrigin = "https://ilaygenis.github.io";
@@ -49,6 +49,34 @@ export function portfolioMetadata(
       title,
       description,
       images: ["/opengraph-image.png"],
+    },
+  };
+}
+
+export function cvMetadata(locale: Locale): Metadata {
+  const data = resumes[locale];
+  const title = `${data.name} — ${data.cv.title}`;
+  return {
+    metadataBase: new URL(siteOrigin),
+    title,
+    description: data.summary,
+    icons: { icon: "/icon.png" },
+    alternates: {
+      canonical: cvPath(locale),
+      languages: {
+        en: cvPath("en"),
+        he: cvPath("he"),
+        "x-default": cvPath("en"),
+      },
+    },
+    openGraph: {
+      title,
+      description: data.summary,
+      url: cvPath(locale),
+      siteName: data.name,
+      locale: locale === "he" ? "he_IL" : "en_US",
+      type: "profile",
+      images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
   };
 }

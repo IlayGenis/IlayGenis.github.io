@@ -22,6 +22,7 @@ export interface ResumeData {
     work: string;
     about: string;
     contact: string;
+    cv: string;
     label: string;
     language: string;
     skip: string;
@@ -76,6 +77,7 @@ export interface ResumeData {
     email: string;
     copy: string;
     copied: string;
+    cv: string;
     links: { label: string; href: string }[];
   };
   case: {
@@ -91,6 +93,20 @@ export interface ResumeData {
     contactLabel: string;
     contactTitle: string;
     contactIntro: string;
+  };
+  // One-page printable CV at /cv/, built from the same strings as the site.
+  cv: {
+    title: string;
+    download: string;
+    back: string;
+    labels: {
+      experience: string;
+      work: string;
+      background: string;
+      tools: string;
+      contact: string;
+      site: string;
+    };
   };
   footer: string;
   projects: CaseStudy[];

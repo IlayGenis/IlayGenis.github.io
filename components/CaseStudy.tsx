@@ -110,6 +110,7 @@ export function CaseStudy({
         </div>
       </main>
       <Contact
+        locale={locale}
         data={data}
         label={data.case.contactLabel}
         title={data.case.contactTitle}

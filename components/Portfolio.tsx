@@ -197,7 +197,7 @@ export function Portfolio({ locale }: { locale: Locale }) {
             </div>
           </div>
         </section>
-        <Contact data={data} />
+        <Contact locale={locale} data={data} />
       </main>
       <Footer data={data} />
     </>

@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/build-cv.mjs",
+    "cv": "node scripts/build-cv.mjs",
     "lint": "eslint ."
   },
   "dependencies": {
