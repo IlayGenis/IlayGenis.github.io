@@ -22,12 +22,7 @@ export function ProcessDiagram({
           </li>
         ))}
       </ol>
-      <figcaption>
-        <span className="diagram-mark" aria-hidden="true">
-          +
-        </span>
-        {project.diagram.caption}
-      </figcaption>
+      <figcaption>{project.diagram.caption}</figcaption>
     </figure>
   );
 }

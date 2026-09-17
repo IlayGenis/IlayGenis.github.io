@@ -1,20 +1,43 @@
 import type { ResumeData } from "@/lib/types";
 import { Arrow } from "@/components/ui/Arrow";
+import { CopyEmail } from "@/components/ui/CopyEmail";
 
-export function Contact({ data }: { data: ResumeData }) {
+export function Contact({
+  data,
+  label,
+  title,
+  intro,
+}: {
+  data: ResumeData;
+  label?: string;
+  title?: string;
+  intro?: string;
+}) {
   return (
     <section id="contact" className="contact-section">
       <div className="container contact-grid">
         <div>
-          <p className="eyebrow">{data.contact.label}</p>
-          <h2>{data.contact.title}</h2>
+          <p className="eyebrow">{label ?? data.contact.label}</p>
+          <h2>{title ?? data.contact.title}</h2>
         </div>
         <div className="contact-details">
-          <p>{data.contact.intro}</p>
-          <a className="email-link" href={`mailto:${data.contact.email}`}>
-            <bdi>{data.contact.email}</bdi>
-            <Arrow diagonal />
-          </a>
+          <p>{intro ?? data.contact.intro}</p>
+          <div className="email-row">
+            <a
+              className="email-link"
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${data.contact.email}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <bdi>{data.contact.email}</bdi>
+              <Arrow diagonal />
+            </a>
+            <CopyEmail
+              email={data.contact.email}
+              label={data.contact.copy}
+              done={data.contact.copied}
+            />
+          </div>
           <div className="social-links">
             {data.contact.links.map((link) => (
               <a
@@ -23,7 +46,7 @@ export function Contact({ data }: { data: ResumeData }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {link.label}
+                <bdi>{link.label}</bdi>
                 <Arrow diagonal />
               </a>
             ))}

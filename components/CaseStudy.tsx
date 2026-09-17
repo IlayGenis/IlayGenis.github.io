@@ -4,6 +4,8 @@ import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { Arrow } from "@/components/ui/Arrow";
 import { ProcessDiagram } from "@/components/ui/ProcessDiagram";
+import { CaseToc } from "@/components/ui/CaseToc";
+import { Contact } from "@/components/sections/Contact";
 
 export function CaseStudy({
   locale,
@@ -56,6 +58,13 @@ export function CaseStudy({
           </div>
           <ProcessDiagram project={project} />
           <div className="case-body">
+            <CaseToc
+              label={data.case.contents}
+              items={project.sections.map((section, index) => ({
+                title: section.title,
+                href: `#section-${index + 1}`,
+              }))}
+            />
             <nav className="case-toc" aria-label={data.case.contents}>
               <p className="eyebrow">{data.case.contents}</p>
               <ol>
@@ -100,6 +109,12 @@ export function CaseStudy({
           </div>
         </div>
       </main>
+      <Contact
+        data={data}
+        label={data.case.contactLabel}
+        title={data.case.contactTitle}
+        intro={data.case.contactIntro}
+      />
       <Footer data={data} />
     </>
   );

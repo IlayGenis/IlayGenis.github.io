@@ -28,7 +28,7 @@ export function Nav({
         <div className="nav-links">
           <a href={`${home}#work`}>{data.nav.work}</a>
           <a href={`${home}#background`}>{data.nav.about}</a>
-          <a href={`${home}#contact`}>{data.nav.contact}</a>
+          <a href={slug ? "#contact" : `${home}#contact`}>{data.nav.contact}</a>
         </div>
         <a
           className="language-switch"

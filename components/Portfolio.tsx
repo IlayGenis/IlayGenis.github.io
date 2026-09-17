@@ -14,24 +14,39 @@ export function Portfolio({ locale }: { locale: Locale }) {
       <Nav locale={locale} data={data} />
       <main id="main" tabIndex={-1}>
         <section id="top" className="hero container">
-          <div className="hero-top">
-            <p className="eyebrow" dir="ltr">
-              {data.hero.eyebrow}
-            </p>
-            <span className="availability">
-              <span aria-hidden="true" />
-              {data.hero.availability}
-            </span>
-          </div>
           <div className="hero-grid">
-            <h1>
-              {data.hero.lines.map((line, index) => (
-                <span key={line} className={index === 1 ? "hero-accent" : ""}>
-                  {line}
-                </span>
-              ))}
-            </h1>
+            <div className="hero-main">
+              <p className="eyebrow" dir="ltr">
+                {data.hero.eyebrow}
+              </p>
+              <h1>
+                {data.hero.lines.map((line, index) => (
+                  <span
+                    key={line}
+                    className={index === 1 ? "hero-accent" : ""}
+                  >
+                    {line}
+                  </span>
+                ))}
+              </h1>
+            </div>
             <div className="hero-intro">
+              <div className="hero-side-top">
+                <figure className="portrait">
+                  {/* Static export: no next/image, a plain img is intended. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/portrait.jpg"
+                    alt={data.name}
+                    width="720"
+                    height="734"
+                  />
+                </figure>
+                <span className="availability">
+                  <span aria-hidden="true" />
+                  {data.hero.availability}
+                </span>
+              </div>
               <p>{data.hero.intro}</p>
               <div className="hero-actions">
                 <a className="button" href="#work">
@@ -95,10 +110,13 @@ export function Portfolio({ locale }: { locale: Locale }) {
                       </li>
                     ))}
                   </ul>
-                  <span className="read-case" aria-hidden="true">
+                  <a
+                    className="read-case"
+                    href={casePath(locale, project.slug)}
+                  >
                     {data.work.read}
                     <Arrow />
-                  </span>
+                  </a>
                 </div>
                 <ProcessDiagram project={project} compact />
               </article>
@@ -128,6 +146,15 @@ export function Portfolio({ locale }: { locale: Locale }) {
                   {data.title}
                 </p>
                 <p>{data.experience.intro}</p>
+                <aside className="ownership">
+                  <div className="ownership-symbol" aria-hidden="true">
+                    ↳
+                  </div>
+                  <div>
+                    <h3>{data.experience.ownershipTitle}</h3>
+                    <p>{data.experience.ownership}</p>
+                  </div>
+                </aside>
               </div>
               <div className="responsibilities">
                 {data.experience.items.map((item, i) => (
@@ -143,44 +170,6 @@ export function Portfolio({ locale }: { locale: Locale }) {
                 ))}
               </div>
             </div>
-            <aside className="ownership">
-              <div className="ownership-symbol" aria-hidden="true">
-                ↳
-              </div>
-              <div>
-                <h3>{data.experience.ownershipTitle}</h3>
-                <p>{data.experience.ownership}</p>
-              </div>
-            </aside>
-          </div>
-        </section>
-
-        <section id="skills" className="section container">
-          <SectionHeading
-            label={data.capabilities.label}
-            title={data.capabilities.title}
-          />
-          <div className="capabilities-grid">
-            {data.capabilities.groups.map((group, i) => (
-              <article key={group.title}>
-                <span className="capability-index" aria-hidden="true">
-                  0{i + 1}
-                </span>
-                <h3>{group.title}</h3>
-                <p>{group.text}</p>
-                <ul className="skill-list">
-                  {group.items.map((item) => (
-                    <li key={item}>
-                      <bdi>{item}</bdi>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-          <div className="learning">
-            <h3>{data.capabilities.learningTitle}</h3>
-            <p>{data.capabilities.learning}</p>
           </div>
         </section>
 

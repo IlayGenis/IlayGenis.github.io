@@ -57,9 +57,9 @@ export interface ResumeData {
   capabilities: {
     label: string;
     title: string;
-    groups: { title: string; text: string; items: string[] }[];
-    learningTitle: string;
-    learning: string;
+    groups: { title: string; text?: string; items: string[] }[];
+    learningTitle?: string;
+    learning?: string;
   };
   background: {
     label: string;
@@ -74,6 +74,8 @@ export interface ResumeData {
     title: string;
     intro: string;
     email: string;
+    copy: string;
+    copied: string;
     links: { label: string; href: string }[];
   };
   case: {
@@ -86,6 +88,9 @@ export interface ResumeData {
     all: string;
     confidentiality: string;
     contents: string;
+    contactLabel: string;
+    contactTitle: string;
+    contactIntro: string;
   };
   footer: string;
   projects: CaseStudy[];
