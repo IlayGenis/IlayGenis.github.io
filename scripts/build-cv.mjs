@@ -156,12 +156,20 @@ const chrome = spawn(
   { stdio: "ignore" },
 );
 let exitCode = 0;
-function cleanup() {
+function removeProfile() {
+  // Chrome may still be flushing its profile; retry, and never fail the
+  // build over a temp directory.
+  try {
+    rmSync(profile, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 });
+  } catch {
+    // leave it to the OS temp cleanup
+  }
+}
+process.on("exit", () => {
   chrome.kill();
   server.close();
-  rmSync(profile, { recursive: true, force: true });
-}
-process.on("exit", cleanup);
+  removeProfile();
+});
 
 async function devtoolsPort() {
   // With --remote-debugging-port=0 Chrome writes the chosen port here.
@@ -280,5 +288,11 @@ try {
 } catch (error) {
   console.error(`build-cv: ${error instanceof Error ? error.message : error}`);
   exitCode = 1;
+}
+// Let Chrome exit before its profile is removed.
+if (chrome.exitCode === null) {
+  const gone = new Promise((r) => chrome.once("exit", r));
+  chrome.kill();
+  await Promise.race([gone, sleep(3000)]);
 }
 process.exit(exitCode);
