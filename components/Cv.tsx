@@ -43,7 +43,7 @@ export function Cv({ locale }: { locale: Locale }) {
               <p className="cv-role">
                 <bdi>{data.title}</bdi>
               </p>
-              <p className="cv-note">{data.hero.note}</p>
+              <p className="cv-note">{data.hero.about.text}</p>
             </div>
           </div>
           <ul className="cv-links">
@@ -76,11 +76,13 @@ export function Cv({ locale }: { locale: Locale }) {
             <section className="cv-section">
               <h2>{data.cv.labels.experience}</h2>
               <div className="cv-job">
-                <h3>{data.experience.company}</h3>
+                <h3>
+                  <bdi>{data.title}</bdi>
+                </h3>
                 <span className="cv-period">{data.experience.period}</span>
               </div>
               <p className="cv-job-title">
-                <bdi>{data.title}</bdi>
+                <bdi>{data.experience.company}</bdi>, {data.experience.tagline}
               </p>
               <p>{data.experience.intro}</p>
               <ul className="cv-items">
@@ -125,6 +127,15 @@ export function Cv({ locale }: { locale: Locale }) {
               <h2>{data.hero.focusLabel}</h2>
               <ul className="cv-tags">
                 {data.hero.focus.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="cv-section">
+              <h2>{data.hero.traits.label}</h2>
+              <ul className="cv-tags">
+                {data.hero.traits.items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>

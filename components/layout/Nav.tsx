@@ -19,15 +19,12 @@ export function Nav({
         {data.nav.skip}
       </a>
       <nav className="container navigation" aria-label={data.nav.label}>
-        <a className="wordmark" href={home} aria-label={data.name}>
-          <span className="monogram" aria-hidden="true">
-            ig<span>.</span>
-          </span>
-          <span>{data.name}</span>
+        <a className="wordmark" href={home}>
+          {data.name}
         </a>
         <div className="nav-links">
           <a href={`${home}#work`}>{data.nav.work}</a>
-          <a href={`${home}#background`}>{data.nav.about}</a>
+          <a href={`${home}#experience`}>{data.nav.about}</a>
           <a href={slug ? "#contact" : `${home}#contact`}>{data.nav.contact}</a>
           <a href={cvPath(locale)}>{data.nav.cv}</a>
         </div>

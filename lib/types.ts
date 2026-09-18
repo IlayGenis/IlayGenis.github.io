@@ -34,7 +34,10 @@ export interface ResumeData {
     availability: string;
     work: string;
     contact: string;
-    note: string;
+    // Personal facts strip: three labelled blocks under the hero on desktop,
+    // repeated between the intro and the buttons on mobile.
+    about: { label: string; text: string };
+    traits: { label: string; items: string[] };
     focusLabel: string;
     focus: string[];
   };
@@ -49,6 +52,8 @@ export interface ResumeData {
     label: string;
     title: string;
     company: string;
+    // One-line description of the company, shown after its name.
+    tagline: string;
     period: string;
     intro: string;
     items: { title: string; text: string }[];

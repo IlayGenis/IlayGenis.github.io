@@ -1,11 +1,39 @@
 import { resumes, casePath } from "@/data/resume";
-import type { Locale } from "@/lib/types";
+import type { Locale, ResumeData } from "@/lib/types";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProcessDiagram } from "@/components/ui/ProcessDiagram";
 import { Arrow } from "@/components/ui/Arrow";
 import { Contact } from "@/components/sections/Contact";
+import { CallexMark } from "@/components/ui/CallexMark";
+
+function HeroFacts({ data }: { data: ResumeData }) {
+  return (
+    <>
+      <div className="fact">
+        <span className="eyebrow">{data.hero.about.label}</span>
+        <p>{data.hero.about.text}</p>
+      </div>
+      <div className="fact">
+        <span className="eyebrow">{data.hero.traits.label}</span>
+        <ul>
+          {data.hero.traits.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div className="fact">
+        <span className="eyebrow">{data.hero.focusLabel}</span>
+        <ul>
+          {data.hero.focus.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
+}
 
 export function Portfolio({ locale }: { locale: Locale }) {
   const data = resumes[locale];
@@ -48,6 +76,10 @@ export function Portfolio({ locale }: { locale: Locale }) {
                 </span>
               </div>
               <p>{data.hero.intro}</p>
+              {/* Mobile only: the same facts, before the buttons, so nothing is skipped. */}
+              <div className="hero-facts-inline">
+                <HeroFacts data={data} />
+              </div>
               <div className="hero-actions">
                 <a className="button" href="#work">
                   {data.hero.work}
@@ -60,15 +92,7 @@ export function Portfolio({ locale }: { locale: Locale }) {
             </div>
           </div>
           <div className="hero-foot">
-            <p>{data.hero.note}</p>
-            <div className="focus">
-              <span className="eyebrow">{data.hero.focusLabel}</span>
-              <ul>
-                {data.hero.focus.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+            <HeroFacts data={data} />
           </div>
         </section>
 
@@ -133,18 +157,20 @@ export function Portfolio({ locale }: { locale: Locale }) {
             />
             <div className="experience-grid">
               <div className="role-summary">
+                <h3 className="role-title">
+                  <bdi>{data.title}</bdi>
+                </h3>
                 <div className="role-company">
                   <span className="company-symbol" aria-hidden="true">
-                    C
+                    <CallexMark />
                   </span>
                   <div>
-                    <h3>{data.experience.company}</h3>
+                    <p className="company-name">
+                      <bdi>{data.experience.company}</bdi>, {data.experience.tagline}
+                    </p>
                     <p>{data.experience.period}</p>
                   </div>
                 </div>
-                <p className="role-title" dir="ltr">
-                  {data.title}
-                </p>
                 <p>{data.experience.intro}</p>
                 <aside className="ownership">
                   <div className="ownership-symbol" aria-hidden="true">

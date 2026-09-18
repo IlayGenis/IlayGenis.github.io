@@ -116,16 +116,6 @@ svg {
   font-weight: 600;
   white-space: nowrap;
 }
-.monogram {
-  font-size: 33px;
-  letter-spacing: -0.11em;
-  line-height: 1;
-  font-weight: 600;
-  direction: ltr;
-}
-.monogram span {
-  color: #597d39;
-}
 .nav-links {
   margin-inline-start: auto;
   display: flex;
@@ -195,7 +185,15 @@ svg {
   grid-template-columns: 1.6fr 1fr;
   align-items: stretch;
   gap: 65px;
-  margin-block: 0 40px;
+  margin-block: 0 22px;
+}
+/* Both languages get the same hero height on desktop: the shorter Hebrew
+   intro would otherwise end the first screen early. .hero-side-top pushes
+   the paragraph and buttons to the bottom, level with the headline. */
+@media (min-width: 1101px) {
+  .hero-grid {
+    min-height: 536px;
+  }
 }
 .hero-main {
   display: flex;
@@ -208,7 +206,6 @@ svg {
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-  margin-bottom: auto;
   padding-bottom: 24px;
 }
 .hero h1 {
@@ -226,7 +223,10 @@ svg {
   font-weight: 400;
   letter-spacing: -0.065em;
 }
+/* Hebrew runs ~10% wider than the English headline, so it is scaled down at
+   every breakpoint to keep each line on one line. */
 [dir="rtl"] .hero h1 {
+  font-size: clamp(54px, 6.2vw, 89px);
   letter-spacing: -0.045em;
   line-height: 1.16;
 }
@@ -252,7 +252,7 @@ svg {
 }
 .hero-intro > p {
   font-size: 18px;
-  line-height: 1.8;
+  line-height: 1.65;
   color: var(--muted);
 }
 .hero-actions {
@@ -260,7 +260,10 @@ svg {
   align-items: center;
   flex-wrap: wrap;
   gap: 25px;
-  margin-top: 28px;
+  /* auto: any spare column height (the shorter Hebrew intro on desktop)
+     opens between the paragraph and the buttons, not under the portrait. */
+  margin-top: auto;
+  padding-top: 28px;
 }
 .button {
   background: var(--ink);
@@ -290,34 +293,37 @@ svg {
   padding-block: 10px;
 }
 .hero-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  align-items: start;
+  gap: 40px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  padding-block: 22px;
+  padding-block: 14px;
 }
-.hero-foot > p {
-  max-width: none;
+.fact {
+  display: grid;
+  align-content: start;
+  gap: 5px;
+}
+.fact > .eyebrow {
   color: var(--muted);
-  font-size: 14px;
-}
-.focus {
-  display: flex;
-  align-items: center;
-  gap: 23px;
-}
-.focus > .eyebrow {
-  color: var(--muted);
-  white-space: nowrap;
   font-size: 11px;
 }
-.focus ul {
+.fact p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.fact ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 20px;
-  font-size: 13px;
+  gap: 4px 18px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.hero-facts-inline {
+  display: none;
 }
 .section {
   padding-block: 100px;
@@ -611,7 +617,7 @@ svg {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-block: 10px 30px;
+  margin-block: 0 26px;
 }
 .company-symbol {
   display: grid;
@@ -622,22 +628,22 @@ svg {
   color: white;
   font-size: 29px;
 }
-.role-company h3 {
-  font-size: 25px;
+.company-symbol svg {
+  width: 34px;
+  height: 34px;
 }
-.role-company p {
-  font-size: 13px;
-  color: var(--muted);
-  margin-top: 5px;
-}
-.role-title {
-  text-align: start;
-  font-size: 17px;
-  margin-bottom: 12px;
+.company-name {
+  font-size: 16px;
   font-weight: 500;
 }
-[dir="rtl"] .role-title {
-  text-align: right;
+.role-company p:not(.company-name) {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.role-title {
+  font-size: 25px;
+  margin-block: 10px 18px;
 }
 .role-summary > p:not(.role-title) {
   color: var(--muted);
@@ -1015,7 +1021,7 @@ svg {
     padding-top: 52px;
   }
   .hero-grid {
-    margin-block: 0 52px;
+    margin-block: 0 28px;
   }
 }
 @media (max-width: 1100px) {
@@ -1060,20 +1066,21 @@ svg {
   .hero h1 {
     font-size: 72px;
   }
+  [dir="rtl"] .hero h1 {
+    font-size: 65px;
+  }
   .hero-intro > p {
     font-size: 16px;
   }
   .hero-actions {
     gap: 15px;
   }
-  .focus {
-    gap: 14px;
+  .hero-foot {
+    gap: 28px;
   }
-  .focus ul {
-    gap: 8px 12px;
-  }
-  .focus > .eyebrow {
-    display: none;
+  .fact ul {
+    gap: 6px 12px;
+    font-size: 13px;
   }
   .section-heading {
     gap: 45px;
@@ -1132,18 +1139,22 @@ svg {
   .hero h1 {
     font-size: clamp(58px, 10vw, 83px);
   }
+  [dir="rtl"] .hero h1 {
+    font-size: clamp(50px, 9vw, 75px);
+  }
   .hero-intro {
     max-width: 590px;
   }
   .hero-foot {
-    align-items: flex-start;
+    display: none;
   }
-  .hero-foot > p {
-    max-width: 260px;
-  }
-  .focus ul {
-    flex-direction: column;
-    font-size: 12px;
+  .hero-facts-inline {
+    display: grid;
+    gap: 16px;
+    margin-block: 24px 4px;
+    padding-block: 20px 22px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
   .section {
     padding-block: 70px;
@@ -1224,9 +1235,6 @@ svg {
   .wordmark {
     font-size: 15px;
   }
-  .monogram {
-    font-size: 30px;
-  }
   .language-switch {
     border: 0;
     padding: 0;
@@ -1266,6 +1274,9 @@ svg {
     font-size: clamp(48px, 12.4vw, 72px);
     letter-spacing: -0.065em;
   }
+  [dir="rtl"] .hero h1 {
+    font-size: clamp(41px, 11.2vw, 65px);
+  }
   .hero-intro > p {
     font-size: 16px;
   }
@@ -1277,27 +1288,13 @@ svg {
     font-size: 13px;
     padding-inline: 16px;
   }
-  .hero-foot {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 12px;
-    padding-block: 19px;
+  .hero-facts-inline {
+    gap: 14px;
+    margin-block: 20px 2px;
   }
-  .hero-foot > p {
-    font-size: 12px;
-    max-width: none;
-  }
-  .focus {
-    max-width: none;
-    justify-content: center;
-  }
-  .focus ul {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-size: 11px;
-    gap: 6px 14px;
+  .fact p,
+  .fact ul {
+    font-size: 13px;
   }
   .section {
     padding-block: 58px;
@@ -1705,7 +1702,7 @@ svg {
   max-width: calc(100% - 32px);
   min-height: 297mm;
   margin: 0 auto;
-  padding: 10mm 12mm;
+  padding: 9mm 12mm;
   background: #fff;
   color: var(--ink);
   box-shadow: 0 18px 50px rgb(32 39 32 / 14%);
@@ -1782,7 +1779,7 @@ svg {
   line-height: 1.42;
 }
 .cv-section {
-  margin-block-start: 8pt;
+  margin-block-start: 7pt;
 }
 .cv-section h2 {
   font-family: var(--font-jetbrains-mono), var(--font-heebo), monospace;
@@ -1873,7 +1870,7 @@ svg {
 .cv-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 3pt;
+  gap: 2.5pt;
 }
 .cv-tags li {
   border: 1px solid var(--cv-line);

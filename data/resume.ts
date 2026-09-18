@@ -10,7 +10,7 @@ export const resumes: Record<Locale, ResumeData> = {
       "AI Solutions Engineer with production experience in Hebrew voice agents, integrations and AI-assisted software delivery.",
     nav: {
       work: "Work",
-      about: "About",
+      about: "Experience",
       contact: "Contact",
       cv: "PDF",
       label: "Main navigation",
@@ -21,30 +21,40 @@ export const resumes: Record<Locale, ResumeData> = {
       eyebrow: "AI SOLUTIONS / SOFTWARE",
       lines: ["Real problems.", "Practical AI."],
       intro:
-        "I’m Ilay, an AI Solutions Engineer at Callex, a Hebrew voice-AI startup. I turn business requirements into Hebrew voice agents, integrations and working software, then test what actually happens on the call. Now looking for my next team, one with experienced engineers to learn from.",
+        "I’m Ilay, an AI Solutions Engineer. I turn business requirements into Hebrew voice agents, integrations and working software, then test what actually happens on the call. Now looking for my next team, to keep growing professionally and take on new challenges.",
       availability: "Open to AI solutions & software roles",
       work: "Explore my work",
       contact: "Get in touch",
-      note: "Tel Aviv–Bangkok, working remotely. Age 27. Hebrew native, fluent English.",
+      about: {
+        label: "ABOUT ME",
+        text: "Tel Aviv–Bangkok, working remotely. Age 27. Hebrew native, fluent English.",
+      },
+      // Provisional English, pending Ilay's approval after the Hebrew round.
+      traits: {
+        label: "HOW I WORK",
+        items: ["Hard-working", "Invested in the work", "Fast learner", "Good in a team"],
+      },
       focusLabel: "WHAT I WORK ON",
       focus: ["Hebrew voice AI", "Integrations", "AI-assisted development"],
     },
     work: {
       label: "01 / SELECTED WORK",
-      title: "What I built,\nand how I checked it.",
+      title: "What I built, and how\nI checked its quality.",
       intro:
-        "Four closer looks at work from my first production role: the problem, what I did, how I checked it, and what I learned.",
+        "Four examples from my first production role: what was needed, what I did, and how it works.",
       read: "Read case study",
       confidentiality:
         "Cases A–C are work at Callex, anonymized. Diagrams are general illustrations, not internal architecture.",
     },
     experience: {
       label: "02 / EXPERIENCE",
-      title: "Learning through\nproduction work.",
+      // Provisional English, pending Ilay's approval after the Hebrew round.
+      title: "Hands-on experience,\nwith real clients.",
       company: "Callex",
+      tagline: "a Hebrew voice-AI startup",
       period: "May 2026 – present",
       intro:
-        "A small, early-stage team, where the working method had to be built alongside the work.",
+        "A new company and a small team, building the processes and methods alongside the work.",
       items: [
         {
           title: "Business needs → technical requirements",
@@ -63,13 +73,13 @@ export const resumes: Record<Locale, ResumeData> = {
           text: "Reviewing outbound campaign results with a person on the verdict, and campaign data recovered in SQL with a rollback path.",
         },
         {
-          title: "Software beyond the voice agents",
-          text: "A WhatsApp operations system for a delivery company, delivered to production. The company’s marketing website, built in Next.js, and a bilingual client dashboard for the voice-agent platform that stayed an internal prototype.",
+          title: "Full-stack development",
+          text: "A WhatsApp agent for a delivery company, delivered to production. The company’s website in Next.js, and the design and build of a bilingual client dashboard for the voice-agent platform.",
         },
       ],
       ownershipTitle: "How I work with coding agents",
       ownership:
-        "Claude Code and Codex write much of the code I ship. My part is the requirements, the behavior, the testing, and the call on whether the result actually meets the need. A few habits keep that honest: one document per project that says what the system should do, checks that have to pass before anything counts as done, a simulator before anything live, and database changes reviewed before they run. Some of the fundamentals behind these habits I’m still learning, which is part of why I want a team with experienced engineers around me.",
+        "Claude Code and Codex write much of the code I ship. My part is the requirements, the behavior, the testing, and the call on whether the result actually meets the need. Working habits I built: one document per project that says what the system should do, a checklist of checks and a simulator before anything goes live, and database changes tested on a copy before they reach the real database.",
     },
     capabilities: {
       label: "WORKED WITH",
@@ -94,39 +104,42 @@ export const resumes: Record<Locale, ResumeData> = {
     },
     background: {
       label: "03 / BACKGROUND",
+      // Provisional English, pending Ilay's approval after the Hebrew round.
       title: "A different route\ninto software.",
       intro:
-        "My background is in film and cinematography. What drew me to software is the same kind of problem: understand what the result should be, work inside the constraints, and find a practical way to get there.",
+        "My background is in film and cinematography. What drew me to software is the same kind of challenge: understand the required result, work inside the constraints, and find a practical way to get there.",
+      // Newest first, as on a CV.
       items: [
         {
           title: "Applied AI training",
           detail: "AI Game Changer program at Brain · 2026",
-          text: "Practical training in AI implementation and automation, completed while already working at Callex.",
+          text: "Practical training in AI implementation and automation, completed while working at Callex.",
+        },
+        {
+          title: "Film, cinematography & video",
+          detail: "2022–2025",
+          text: "BA in Film and Television at Tel Aviv University, with a focus on cinematography, alongside freelance work: director of photography on short films, shooting and editing social video for public and cultural institutions. Set work is planning around constraints, in a crew, with no spare time and no budget for mistakes.",
+        },
+        {
+          title: "Cyber, systems & networks training",
+          detail: "See Security International College · 2021–2022",
+          text: "A ten-month cyber-security preparation program: systems, networks and information-security fundamentals, covering MCSA, CCNA, CCSA, Linux and Python, plus a Cyber SOC Analyst course in incident response and SOC operations.",
         },
         {
           title: "Technical support",
           detail: "Bezeq International · 2021",
           text: "Customer-facing technical service at an internet provider. Early practice in diagnosing a problem from a description and explaining the fix clearly.",
         },
-        {
-          title: "Film & cinematography",
-          detail: "Tel Aviv University · 2022–2025",
-          text: "BA in Film and Television, with a focus on cinematography. Set work is planning around constraints, in a crew, with no second take on the budget.",
-        },
-        {
-          title: "Freelance cinematography & video",
-          detail: "2022–2025",
-          text: "Director of photography on short films, and freelance shooting and editing of social video for public and cultural institutions.",
-        },
       ],
-      nextTitle: "What I’m looking for next",
-      next: "An entry-level role in AI implementation or backend development, in a team with experienced engineers and real code review. I learned the job in production; now I want to learn the craft properly.",
+      nextTitle: "The next role I’m looking for",
+      next: "An entry-level role in AI implementation or backend development. I want to take the work I learned in production, with real clients, to the next stage: deeper professional knowledge and stronger capabilities.",
     },
     contact: {
       label: "04 / CONTACT",
-      title: "If this sounds\nlike your team.",
+      // Provisional English, pending Ilay's approval after the Hebrew round.
+      title: "If this sounds\nright for your team.",
       intro:
-        "If you’re building AI solutions and have room for someone who learned the job in production and wants to learn the craft, I’d be glad to talk.",
+        "If you’re building AI solutions and need a hard-working professional who learned the job in production, with real clients, and works well in a team, I’d be glad to hear from you.",
       email: "genisilay@gmail.com",
       copy: "Copy address",
       copied: "Copied",
@@ -179,7 +192,7 @@ export const resumes: Record<Locale, ResumeData> = {
         slug: "hebrew-voice-agents",
         number: "A",
         category: "HEBREW VOICE AI",
-        title: "Agents that survive the real call.",
+        title: "Agents that hold up on the real call.",
         summary:
           "Building, testing and debugging Hebrew voice agents: from the client conversation to a brief, a prompt and its tools, until it works on a real call.",
         status: "Callex, in production",
@@ -190,9 +203,9 @@ export const resumes: Record<Locale, ResumeData> = {
           "CRM API",
         ],
         diagram: {
-          label: "FROM CONVERSATION TO WORKING AGENT",
+          label: "FROM CLIENT TO WORKING AGENT",
           steps: ["Client call", "Brief", "Prompt + tools", "Tested live"],
-          caption: "From the client conversation to an agent tested on a real call",
+          caption: "From the brief to an agent tested on a real call",
         },
         role: "Inbound service agents and outbound campaign agents: the brief, the prompt, the JavaScript tools, the test calls, and the investigation when the failure is not in the prompt. Some agents I built from the brief; others I took over, tools included.",
         sections: [
@@ -268,7 +281,7 @@ export const resumes: Record<Locale, ResumeData> = {
         diagram: {
           label: "THE PATH OF A DELIVERY",
           steps: ["Customer", "Order", "Coordination", "Courier"],
-          caption: "From the customer to the courier, in broad strokes",
+          caption: "Every message becomes a record: customer, order, courier, status",
         },
         role: "Requirements, product behavior, the flows and the testing, on my own from start to finish. Coding agents wrote most of the code; I decided what it should do and checked whether it did, first in a simulator and then on the company’s real number.",
         sections: [
@@ -326,13 +339,13 @@ export const resumes: Record<Locale, ResumeData> = {
         slug: "campaign-review",
         number: "C",
         category: "OUTBOUND CAMPAIGNS",
-        title: "Code extracts. A person judges.",
+        title: "Campaign oversight with code and AI.",
         summary:
-          "Running outbound campaigns and reading their results: a review workflow that keeps a person on the verdict, the diagnosis of a morning with zero recorded results, and a recovery of campaign data in SQL.",
+          "Running outbound campaigns and reading their results: a review workflow that keeps a person on the verdict, the diagnosis of a failure in recording results, and a recovery of campaign data in SQL.",
         status: "Used across outbound campaigns",
         technologies: ["Scripts", "SQL", "LLM", "Human review"],
         diagram: {
-          label: "FROM RESULTS TO DECISION",
+          label: "FROM DATA TO DECISION",
           steps: ["Extract", "Structure", "Review", "Verify"],
           caption: "How to read a campaign without reading every transcript",
         },
@@ -392,16 +405,16 @@ export const resumes: Record<Locale, ResumeData> = {
       {
         slug: "voice-agent-playbook",
         number: "D",
-        category: "HOW I LEARN",
-        title: "Every lesson, and the measurement behind it.",
+        category: "MY WORKING METHOD",
+        title: "Measurements that lead to insights.",
         summary:
-          "A private knowledge base of what I learn from testing Hebrew voice agents: 14 topic classes and 200+ dated lessons, each tagged as measured or hypothesis, never deleted, only superseded.",
+          "A private knowledge base of what I learn from testing Hebrew voice agents: 14 topic classes and 200+ dated insights, each tagged as measured or hypothesis, never deleted, only superseded.",
         status: "Personal, private, in daily use",
         technologies: ["Markdown", "Git", "Claude Code", "Evals"],
         diagram: {
-          label: "THE LIFE OF A LESSON",
+          label: "THE LIFE OF AN INSIGHT",
           steps: ["Observe", "Record", "Tag", "Supersede"],
-          caption: "How a lesson enters, and how it leaves",
+          caption: "From an observation on a call to a tagged insight, with the measurement behind it",
         },
         role: "Author and maintainer.",
         sections: [
@@ -455,7 +468,7 @@ export const resumes: Record<Locale, ResumeData> = {
       "AI Solutions Engineer עם ניסיון ייצור בסוכני־קול בעברית, באינטגרציות ובפיתוח תוכנה בעזרת סוכני קוד.",
     nav: {
       work: "עבודות",
-      about: "קצת עליי",
+      about: "ניסיון",
       contact: "יצירת קשר",
       cv: "PDF",
       label: "ניווט ראשי",
@@ -464,32 +477,40 @@ export const resumes: Record<Locale, ResumeData> = {
     },
     hero: {
       eyebrow: "AI SOLUTIONS / SOFTWARE",
-      lines: ["בעיות אמיתיות.", "AI שעובד."],
+      lines: ["בעיות אמיתיות.", "פתרונות AI שעובדים."],
       intro:
-        "אני עילי, AI Solutions Engineer ב־Callex, סטארט־אפ של סוכני קול בעברית. אני מתרגם צרכים עסקיים לסוכני־קול בעברית, אינטגרציות ותוכנה שעובדת, ובודק מה באמת קורה בשיחה. אני מחפש את הצוות הבא שלי, כזה עם מהנדסים מנוסים ללמוד מהם.",
+        "אני עילי, AI Solutions Engineer. אני מתרגם צרכים עסקיים לסוכני־קול בעברית, אינטגרציות ותוכנה שעובדת, ובודק מה באמת קורה בשיחה. אני מחפש את הצוות הבא שלי, כדי להמשיך להתפתח מקצועית ולהתמודד עם אתגרים חדשים.",
       availability: "פתוח לתפקידי AI Solutions ופיתוח תוכנה",
       work: "לעבודות",
       contact: "דברו איתי",
-      note: "תל אביב–בנגקוק, עבודה מרחוק. בן 27. עברית שפת־אם, אנגלית שוטפת.",
+      about: {
+        label: "עליי",
+        text: "תל אביב–בנגקוק, עבודה מרחוק. בן 27. עברית שפת־אם, אנגלית שוטפת.",
+      },
+      traits: {
+        label: "איך אני בעבודה",
+        items: ["חרוץ", "משקיע בעבודה", "לומד מהר", "עובד טוב בצוות"],
+      },
       focusLabel: "במה אני עוסק",
       focus: ["סוכני־קול בעברית", "אינטגרציות", "פיתוח בעזרת AI"],
     },
     work: {
       label: "01 / עבודות נבחרות",
-      title: "מה בניתי,\nואיך בדקתי.",
+      title: "מה בניתי,\nואיך בדקתי איכות.",
       intro:
-        "ארבע עבודות מהתפקיד הראשון שלי בפרודקשן: מה הייתה הבעיה, מה עשיתי, איך בדקתי ומה למדתי.",
+        "ארבע דוגמאות מהעבודה שלי בתפקיד הראשון בפרודקשן: מה היה הצורך, מה עשיתי ואיך זה עובד.",
       read: "לפרויקט המלא",
       confidentiality:
         "פרויקטים א–ג הם עבודה ב־Callex, בלי פרטים מזהים. התרשימים הם המחשה כללית ולא ארכיטקטורה פנימית.",
     },
     experience: {
       label: "02 / ניסיון",
-      title: "לומד מתוך\nעבודה בשטח.",
+      title: "ניסיון מהשטח,\nמול לקוחות אמיתיים.",
       company: "Callex",
+      tagline: "סטארט־אפ של סוכני קול בעברית",
       period: "מאי 2026–היום",
       intro:
-        "צוות קטן בחברה חדשה, שבה את שיטת העבודה בונים תוך כדי.",
+        "עבודה בחברה חדשה בצוות קטן, בניית תהליכים ושיטות תוך כדי העבודה.",
       items: [
         {
           title: "מצורך עסקי לדרישה טכנית",
@@ -508,13 +529,13 @@ export const resumes: Record<Locale, ResumeData> = {
           text: "סקירת תוצאות של קמפיינים יוצאים, כשההחלטה נשארת אצל אדם, ושחזור נתוני קמפיין ב־SQL עם rollback מוכן מראש.",
         },
         {
-          title: "תוכנה מעבר לסוכני הקול",
-          text: "מערכת תפעול ב־WhatsApp לחברת משלוחים, שעלתה לאוויר. אתר השיווק של החברה, שנבנה ב־Next.js, ודשבורד לקוחות דו־לשוני לפלטפורמת סוכני הקול שנשאר אב־טיפוס פנימי.",
+          title: "פיתוח פול־סטאק",
+          text: "סוכן WhatsApp לחברת משלוחים, שעלה לאוויר. בניית אתר החברה ב־Next.js, ותכנון והקמה של דשבורד לקוחות דו־לשוני לפלטפורמת סוכני הקול.",
         },
       ],
       ownershipTitle: "איך אני עובד עם סוכני קוד",
       ownership:
-        "Claude Code ו־Codex כותבים חלק גדול מהקוד שלי. אני אחראי על הדרישות, על ההתנהגות, על הבדיקות ועל ההחלטה אם התוצאה באמת עונה על הצורך. כמה הרגלים שומרים על זה ישר: מסמך אחד לכל פרויקט שמגדיר מה המערכת אמורה לעשות, בדיקות שחייבות לעבור לפני שמשהו נחשב גמור, סימולטור לפני כל דבר חי, ושינויי מסד נתונים שעוברים ביקורת לפני שהם רצים. חלק מהיסודות שמאחורי ההרגלים האלה אני עדיין לומד, וזו אחת הסיבות שאני מחפש צוות עם מהנדסים מנוסים.",
+        "Claude Code ו־Codex כותבים חלק גדול מהקוד שלי. אני אחראי על הדרישות, על ההתנהגות, על הבדיקות ועל ההחלטה אם התוצאה באמת עונה על הצורך. הרגלי עבודה שפיתחתי: מסמך אחד לכל פרויקט שמגדיר מה המערכת אמורה לעשות, צ׳קליסט של בדיקות וסימולטור לפני כל עלייה לאוויר, ובדיקת שינויים במסד נתונים דמה לפני הטמעתם במסד האמיתי.",
     },
     capabilities: {
       label: "03 / כלים",
@@ -539,39 +560,40 @@ export const resumes: Record<Locale, ResumeData> = {
     },
     background: {
       label: "03 / הרקע שלי",
-      title: "דרך אחרת\nאל התוכנה.",
+      title: "דרך אחרת\nאל עולם הפיתוח.",
       intro:
-        "הגעתי מעולם הקולנוע והצילום. מה שמשך אותי לתוכנה הוא אותו סוג של בעיה: להבין מה התוצאה צריכה להיות, לעבוד בתוך האילוצים, ולמצוא דרך מעשית להגיע לשם.",
+        "הגעתי מעולם הקולנוע והצילום. מה שמשך אותי לפיתוח הוא אותו סוג של אתגר: להבין מה התוצאה הנדרשת, לעבוד בתוך האילוצים, ולמצוא דרך מעשית להגיע לשם.",
+      // מהחדש לישן, כמו בקורות חיים.
       items: [
         {
           title: "הכשרה ב־AI יישומי",
           detail: "תוכנית AI Game Changer בחברת Brain · 2026",
-          text: "הכשרה מעשית בהטמעת פתרונות AI ובאוטומציה, שהושלמה כשכבר עבדתי ב־Callex.",
+          text: "הכשרה מעשית בהטמעת פתרונות AI ובאוטומציה, שהושלמה תוך כדי עבודתי ב־Callex.",
+        },
+        {
+          title: "קולנוע, צילום ווידאו",
+          detail: "2022–2025",
+          text: "תואר ראשון בקולנוע וטלוויזיה באוניברסיטת תל אביב, בדגש על צילום קולנועי, ובמקביל עבודה כפרילנסר: צלם ראשי בסרטים קצרים, צילום ועריכה של תוכן וידאו לרשתות החברתיות עבור מוסדות ציבור ותרבות. עבודה על סט היא תכנון סביב אילוצים, בתוך צוות, כשאין עודף זמן ואין תקציב לטעויות.",
+        },
+        {
+          title: "הכשרה בסייבר, מערכות ורשתות",
+          detail: "See Security International College · 2021–2022",
+          text: "תוכנית הכנה לסייבר של עשרה חודשים: יסודות מערכות, רשתות ואבטחת מידע, בתכנים של MCSA, CCNA, CCSA, Linux ו־Python, וקורס Cyber SOC Analyst בתגובה לאירועי סייבר ובתפעול SOC.",
         },
         {
           title: "תמיכה טכנית",
           detail: "בזק בינלאומי · 2021",
           text: "שירות טכני ללקוחות בספקית אינטרנט. שם למדתי לאבחן בעיה מתוך תיאור של הלקוח, ולהסביר את הפתרון בצורה ברורה.",
         },
-        {
-          title: "קולנוע וצילום",
-          detail: "אוניברסיטת תל אביב · 2022–2025",
-          text: "תואר ראשון בקולנוע וטלוויזיה, בדגש על צילום קולנועי. עבודה על סט היא תכנון סביב אילוצים, בתוך צוות, כשאין זמן ואין תקציב לטעויות.",
-        },
-        {
-          title: "צילום ווידאו כפרילנסר",
-          detail: "2022–2025",
-          text: "צלם ראשי בסרטים קצרים, וצילום ועריכה של תוכן וידאו לרשתות החברתיות עבור מוסדות ציבור ותרבות.",
-        },
       ],
-      nextTitle: "מה אני מחפש בשלב הבא",
-      next: "תפקיד התחלתי בהטמעת AI או בפיתוח בקאנד, בצוות עם מהנדסים מנוסים וביקורת קוד אמיתית. את העבודה למדתי בפרודקשן; עכשיו אני רוצה ללמוד אותה לעומק, ממי שעושה את זה שנים.",
+      nextTitle: "התפקיד הבא שאני מחפש",
+      next: "תפקיד התחלתי בהטמעת AI או בפיתוח בקאנד. אני רוצה לקחת קדימה את העבודה שלמדתי בפרודקשן, מול לקוחות אמיתיים, לשלב הבא: העמקת הידע המקצועי ופיתוח יכולות גבוהות יותר.",
     },
     contact: {
       label: "04 / יצירת קשר",
-      title: "אם זה נשמע\nכמו הצוות שלכם.",
+      title: "אם זה נשמע\nמתאים לצוות שלכם.",
       intro:
-        "אם אתם בונים פתרונות AI ויש אצלכם מקום למישהו שלמד את העבודה בפרודקשן ורוצה להעמיק בה, אשמח לדבר.",
+        "אם אתם בונים פתרונות AI ויש לכם צורך באיש מקצוע חרוץ, שלמד את העבודה בפרודקשן מול לקוחות אמיתיים ועובד טוב בצוות, אשמח שתיצרו קשר.",
       email: "genisilay@gmail.com",
       copy: "העתקת הכתובת",
       copied: "הועתק",
@@ -623,7 +645,7 @@ export const resumes: Record<Locale, ResumeData> = {
         slug: "hebrew-voice-agents",
         number: "א",
         category: "סוכני־קול בעברית",
-        title: "סוכנים ששורדים שיחה אמיתית.",
+        title: "סוכנים שעומדים במבחן השיחה האמיתית.",
         summary:
           "בנייה, בדיקה ותחקור של סוכני קול בעברית: מהשיחה עם הלקוח, דרך האפיון, הפרומפט והכלים, ועד שזה עובד בשיחה אמיתית.",
         status: "באוויר ב־Callex",
@@ -634,9 +656,9 @@ export const resumes: Record<Locale, ResumeData> = {
           "CRM API",
         ],
         diagram: {
-          label: "משיחה לסוכן שעובד",
+          label: "מהלקוח לסוכן שעובד",
           steps: ["שיחה עם הלקוח", "אפיון", "פרומפט וכלים", "בדיקה בשיחה"],
-          caption: "משיחה עם הלקוח ועד סוכן שנבדק בשיחה אמיתית",
+          caption: "מאפיון הצורך ועד סוכן שנבדק בשיחה אמיתית",
         },
         role: "סוכני שירות נכנסים וסוכני קמפיינים יוצאים: האפיון, הפרומפט, כלי ה־JavaScript, שיחות הבדיקה, והתחקור כשהתקלה לא בפרומפט. חלק מהסוכנים בניתי מאפס לפי האפיון, וחלק ירשתי קיימים, כולל הכלים שלהם.",
         sections: [
@@ -712,7 +734,7 @@ export const resumes: Record<Locale, ResumeData> = {
         diagram: {
           label: "המסלול של משלוח",
           steps: ["לקוח", "הזמנה", "תיאום", "שליח"],
-          caption: "מהלקוח ועד השליח, בקווים כלליים",
+          caption: "כל הודעה הופכת לרשומה: לקוח, הזמנה, שליח, סטטוס",
         },
         role: "הדרישות, התנהגות המוצר, התהליכים והבדיקות, לבד מההתחלה עד הסוף. את רוב הקוד כתבו סוכני קוד; אני החלטתי מה המערכת צריכה לעשות ובדקתי אם היא עושה את זה, קודם בסימולטור ואז על המספר האמיתי של החברה.",
         sections: [
@@ -770,13 +792,13 @@ export const resumes: Record<Locale, ResumeData> = {
         slug: "campaign-review",
         number: "ג",
         category: "קמפיינים יוצאים",
-        title: "הקוד מחלץ. אדם מחליט.",
+        title: "בקרת קמפיינים בעזרת קוד ו־AI.",
         summary:
-          "ניהול קמפיינים יוצאים וניתוח התוצאות: תהליך סקירה שבו ההכרעה נשארת אצל אדם, אבחון של בוקר שבו לא נרשמה אף תוצאה, ושחזור נתוני קמפיין ב־SQL.",
+          "ניהול קמפיינים יוצאים וניתוח התוצאות: תהליך סקירה שבו ההכרעה נשארת אצל אדם, אבחון של כשל ברישום תוצאות, ושחזור נתוני קמפיין ב־SQL.",
         status: "בשימוש בקמפיינים היוצאים",
         technologies: ["סקריפטים", "SQL", "LLM", "בדיקה אנושית"],
         diagram: {
-          label: "מהתוצאות להחלטה",
+          label: "מהנתונים להחלטה",
           steps: ["חילוץ", "מבנה", "סקירה", "אימות"],
           caption: "איך קוראים קמפיין בלי לקרוא כל תמליל",
         },
@@ -836,16 +858,16 @@ export const resumes: Record<Locale, ResumeData> = {
       {
         slug: "voice-agent-playbook",
         number: "ד",
-        category: "איך אני לומד",
-        title: "כל לקח, והמדידה שמאחוריו.",
+        category: "שיטת העבודה שלי",
+        title: "מדידות שמובילות לתובנות.",
         summary:
-          "מאגר ידע פרטי של מה שלמדתי מבדיקות של סוכני קול בעברית: 14 נושאים ויותר מ־200 לקחים מתוארכים, כל אחד מסומן כמדוד או כהשערה. לקח לא נמחק, רק מוחלף בחדש.",
+          "מאגר ידע פרטי של מה שלמדתי מבדיקות של סוכני קול בעברית: 14 נושאים ויותר מ־200 תובנות מתוארכות, כל אחת מסומנת כמדודה או כהשערה. תובנה לא נמחקת, רק מוחלפת בחדשה.",
         status: "אישי, פרטי, בשימוש יומי",
         technologies: ["Markdown", "Git", "Claude Code", "Evals"],
         diagram: {
-          label: "חייו של לקח",
+          label: "חייה של תובנה",
           steps: ["תצפית", "רישום", "תיוג", "החלפה"],
-          caption: "איך לקח נכנס, ואיך הוא יוצא",
+          caption: "מתצפית בשיחה ועד תובנה מתויגת, עם המדידה שמאחוריה",
         },
         role: "מחבר ומתחזק.",
         sections: [
