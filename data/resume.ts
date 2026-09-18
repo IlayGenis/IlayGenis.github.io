@@ -21,7 +21,7 @@ export const resumes: Record<Locale, ResumeData> = {
       eyebrow: "AI SOLUTIONS / SOFTWARE",
       lines: ["Real problems.", "Practical AI."],
       intro:
-        "I’m Ilay, an AI Solutions Engineer. I turn business requirements into Hebrew voice agents, integrations and working software, then test what actually happens on the call. Now looking for my next team, to keep growing professionally and take on new challenges.",
+        "I’m Ilay, an AI Solutions Engineer. I turn business requirements into Hebrew voice agents, integrations and software. Now looking for my next role, to keep growing professionally and take on new challenges.",
       availability: "Open to AI solutions & software roles",
       work: "Explore my work",
       contact: "Get in touch",
@@ -479,7 +479,7 @@ export const resumes: Record<Locale, ResumeData> = {
       eyebrow: "AI SOLUTIONS / SOFTWARE",
       lines: ["בעיות אמיתיות.", "פתרונות AI שעובדים."],
       intro:
-        "אני עילי, AI Solutions Engineer. אני מתרגם צרכים עסקיים לסוכני־קול בעברית, אינטגרציות ותוכנה שעובדת, ובודק מה באמת קורה בשיחה. אני מחפש את הצוות הבא שלי, כדי להמשיך להתפתח מקצועית ולהתמודד עם אתגרים חדשים.",
+        "אני עילי, AI Solutions Engineer. אני מתרגם צרכים עסקיים לסוכני־קול בעברית, אינטגרציות ותוכנה. אני מחפש את התפקיד הבא שלי, כדי להמשיך להתפתח מקצועית ולהתמודד עם אתגרים חדשים.",
       availability: "פתוח לתפקידי AI Solutions ופיתוח תוכנה",
       work: "לעבודות",
       contact: "דברו איתי",
