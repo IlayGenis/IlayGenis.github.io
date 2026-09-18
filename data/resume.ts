@@ -147,7 +147,7 @@ export const resumes: Record<Locale, ResumeData> = {
       links: [
         {
           label: "LinkedIn",
-          href: "https://www.linkedin.com/in/ilay-genis-b240a4352",
+          href: "https://www.linkedin.com/in/ilaygenis/",
         },
         { label: "GitHub", href: "https://github.com/IlayGenis" },
         {
@@ -601,7 +601,7 @@ export const resumes: Record<Locale, ResumeData> = {
       links: [
         {
           label: "LinkedIn",
-          href: "https://www.linkedin.com/in/ilay-genis-b240a4352",
+          href: "https://www.linkedin.com/in/ilaygenis/",
         },
         { label: "GitHub", href: "https://github.com/IlayGenis" },
         {
