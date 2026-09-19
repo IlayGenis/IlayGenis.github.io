@@ -230,6 +230,7 @@ export const resumes: Record<Locale, ResumeData> = {
               "Knowledge went the same way. I rebuilt the gym’s manual and PDFs as query-shaped sources for the engine’s knowledge base: titles in the words customers use, a separate source for what the gym does not offer, and a dated list of approved policy changes. A retrieval test in SQL runs the expected questions and checks that each one brings back the right source, so a wrong answer is caught before it is said on a call. What that knowledge base did later, on a real call, is in section 06.",
               "The tools themselves were written with coding agents. The design work was deciding, for each one, which side of the line every behavior sits on. The prompt owns what the agent says before it calls and how it explains a failure. Code owns how many requests a single turn may spend, which business object makes a repeat call a duplicate, and the rule shared with the outbound lead tools built on webhooks and Apps Script: the lead is sent the moment the caller agrees, and if a callback time is added later the same record is updated by call ID instead of a second lead being created. An action counts as done only when the target system confirms it, and a failed attempt stays retryable instead of being blocked as a duplicate. The gym’s outbound campaign agent was cloned from the inbound one, with private tools of its own: lead delivery, a follow-up task in the CRM, and a removal that marks the lead as lost.",
               "The line moved after two cases. The first was small: a prompt rule to offer only the next few days of the schedule had not held, and the cap moved to code. The second showed the risk. In a test round the model invented a class identifier, three digits where real ones have eight. It happened in the platform’s test environment, with no real membership behind the call, so nothing was written, and the CRM would not have accepted such an identifier anyway. But the engine’s confirmation step, which is meant to stop a write like that, never fired in the test channel at all, and the model had proved it could invent an identifier. After that I built the guards in code: a class identifier is accepted only if the schedule tool returned it in that same call, a customer identifier only if the lookup returned it, and profile fields are written only when empty. The prompt kept the language. The guarantees went to code.",
+              "A third case came with a move to another company’s model. It sounded more human and responded faster, but its accuracy with tools was much worse: it recorded leads and removals when it should not have, and it also failed to record a lead or a removal after saying itself that it was doing so. I proposed a two-model setup: one runs the conversation, and a second, more accurate with tools, follows the context and decides whether this is the moment to fire a tool or to cancel. What went in eventually is an option to run such a model inside the tool itself, as a gate that blocks fake leads and removals.",
             ],
           },
           {
@@ -354,38 +355,39 @@ export const resumes: Record<Locale, ResumeData> = {
         role: "For a period, the outbound campaign clients were my day-to-day: reading each campaign’s results, investigating agent and tool failures that kept coming back, applying the fixes that were on my side, and reporting to the client.",
         sections: [
           {
-            title: "The problem",
+            title: "What was needed",
             paragraphs: [
-              "An outbound campaign produces many transcripts in a few hours, and the client is waiting for a verdict. Reading everything through an LLM is expensive, and worse, it invites conclusions the data cannot support: a report can point at an agent problem or a tool problem, but a flagged pattern is still not a finding.",
+              "An outbound campaign produces many transcripts in a few hours, and the client is waiting for a verdict. Reading everything through an LLM is expensive, and worse, it invites conclusions the data cannot support: a report can point at an agent problem or a tool problem, but a pattern a script flagged is still not a finding.",
               "The verdict decides real things: whether the agent’s opening changes, whether a tool gets fixed, whether the campaign keeps dialing. So the question is how to read a campaign without reading every transcript, and without letting a script or a model decide what happened to a person on a call.",
             ],
           },
           {
             title: "Running a campaign",
             paragraphs: [
-              "Before the first call there is a list and a process. The dial list is built from the client’s files, with removals applied from every source that has them and invalid numbers set aside in their own file, and one of those passes turned up an engine bug: a removal request said aloud on a call that was never recorded. The lists themselves go through a quality pass with coding agents: every record checked against its source, first names corrected, and the rejected records reviewed in both directions before anyone is dialed. The process I wrote for new outbound clients runs from the discovery call to the client operating on their own, with three gates before any pilot campaign: a check by the account owner after a batch of control calls, the client’s approval, and an end-to-end test of every integration. The pilot then grows in batches.",
+              "Before the first call there is a list and a process. The dial list is built from the client’s files: everyone who asked to be removed comes off it, from every source that has removals, and invalid numbers go to a separate file. On one of those passes I found an engine bug: a removal request said aloud on a call that was never recorded. The lists themselves go through a quality pass with coding agents: every record checked against its source, first names corrected, and the rejected records reviewed in both directions before anyone is dialed.",
+              "The process I wrote for new outbound clients runs from the discovery call to the client operating on their own, with three gates before any pilot campaign: a check by whoever is responsible for the client after a batch of control calls, the client’s approval, and an end-to-end test of every integration. The pilot then grows in batches, with fixes between batches and under my supervision, until the agent has been through enough pilots and passes to the client’s control.",
               "When a client wanted to know which script works, four variants of the same agent ran side by side into one intake sheet, routed by agent and by outcome type, with a quarantine tab for anything the routing could not identify, so that nothing was guessed. The variants got a private copy of the removal tool, so the experiment never touched a tool shared with a live agent.",
             ],
           },
           {
             title: "What code may count",
             paragraphs: [
-              "The line is not code versus eyes. It is what the code is allowed to run on. What the agent says is a near-closed set: the same script lines, call after call, so counting on agent speech and metadata is legitimate. Customer speech is open-ended and corrupted by recognition errors, so it is never measured mechanically. A practical test: if a script’s output is a list of findings, stop.",
+              "The question is not what to check in code and what to check by eye, but what code is allowed to run on at all. What the agent says is a near-closed set: the same script lines, call after call, so counting on agent speech and metadata is legitimate. Customer speech is open-ended and corrupted by recognition errors, so it is never measured mechanically. A practical test: if a script produces a list of findings instead of counts, it has crossed the line.",
               "The limits are declared up front. The stored data has no turn timing, no interruption record and no hang-up cause, so a conclusion can say that the opening is weak, and never say why. And the platform’s own no-answer counter reads zero by design, because an unanswered lead goes back to the queue, so no-answer is measured from another source.",
             ],
           },
           {
             title: "Extract, structure, review, verify",
             paragraphs: [
-              "Code does the extraction. Repeated agent speech gets an identifier and a legend, so a line the agent says on every call appears once, with a count; customer utterances and agent deviations are kept verbatim. Then the reading goes in layers. A structural pass over every call, by script, counts how far each conversation got: opening, pitch, closing question, which tool fired and on which turn. A person then reads every call that ended in an outcome, and every call where the closing question was asked and answered without one, because those are the moments where a wrong judgment costs a lead. And a list of every distinct thing customers said, with how often, shows what the counts cannot: what people actually asked, and what the agent never handled.",
-              "Only then does targeted LLM analysis run, on the cases that justify it, and a person validates what it says. Metrics are grouped by who has to fix them, and a finding has to pass three gates before it counts: a verbatim quote, a cross-check against the call’s recorded outcome, and a mark of whether it was measured or assumed, because the absence of a tool event is not proof the tool did not fire.",
+              "Code does the extraction. Repeated agent speech gets an identifier and a legend, so a line the agent says on every call appears once, with a count; customer utterances and agent deviations are kept verbatim. Then the reading goes in layers. A structural pass over every call, by a script, counts how far each conversation got: opening, pitch, closing question, which tool fired and on which turn. I then read every call that ended in an outcome, and every call where the closing question was asked but the call still ended without one, because those are the moments where a wrong judgment costs a lead. And a list of every distinct thing customers said, with how often, shows what the counts cannot: what people actually asked, and what the agent never handled.",
+              "Only then does targeted LLM analysis run, on the cases that justify it, and I validate what it says. Metrics are grouped by who has to fix them, and a finding has to pass three gates before it counts: a verbatim quote, a cross-check against the call’s recorded outcome, and a mark of whether it was measured or assumed, because the absence of a tool event is not proof the tool did not fire.",
             ],
           },
           {
             title: "A morning with zero results",
             paragraphs: [
-              "One morning a large campaign ran for hours, and the platform recorded zero results while the client’s sheet kept filling up. Everything looked broken at once: the agent, the tools, the engine. The way to narrow it was a control group: another campaign on the same day, on the same engine, whose agent used the built-in tools. Its results were recorded. So the failure lived in the path of the custom tools. Someone else was responsible for that tool, so by the end of the day it reached them as a short list of bugs ordered by severity, each with the call identifiers to reproduce it.",
-              "The same day showed why a flag is not a finding. Many rows were marked as callback requests; read against the customer’s actual words, most were not. And every removal request had been marked correctly, which is the first thing to check, because a missed removal is the one mistake a campaign cannot afford.",
+              "One morning a large campaign ran for hours, and the platform recorded zero results while the client’s sheet kept filling up. Everything looked broken at once: the agent, the tools, the engine. I narrowed it with a control group: another campaign on the same day, on the same engine, whose agent used the engine’s built-in tools. Its results were recorded. So the failure lived in the path of the custom tools. Someone else was responsible for that tool, so by the end of the day I sent them a short list of bugs ordered by severity, each with the call identifiers to reproduce it.",
+              "The same day showed why a flag is not a finding. Many rows were marked as callback requests; when I read them against the customer’s actual words, most were not. And every removal request had been marked correctly, which is the first thing I checked, because a missed removal is the one mistake a campaign cannot afford. That day is where the version of campaign review described here came from.",
             ],
           },
           {
@@ -397,7 +399,7 @@ export const resumes: Record<Locale, ResumeData> = {
           {
             title: "Outcome",
             paragraphs: [
-              "The workflow ran for as long as the outbound clients were my day-to-day: lightweight extraction first, deep analysis only where it was justified, and a person on every finding before it reached the client. When the period ended, every client went to the next person with a handoff document: where things stood, what was blocking, and the next step.",
+              "The workflow ran for as long as the outbound clients were my day-to-day: lightweight extraction first, deep analysis only where it was justified, and my own review of every finding before it reached the client. When the period ended, every client went to the next person with a handoff document: where things stood, what was blocking, and the next step.",
             ],
           },
         ],
@@ -685,6 +687,7 @@ export const resumes: Record<Locale, ResumeData> = {
               "הידע הלך באותה דרך. את ספר הידע של המכון ואת קובצי ה־PDF בניתי מחדש כמקורות ידע ממוקדי שאילתה למאגר הידע של המנוע: כותרות במילים שהלקוחות משתמשים בהן, מקור נפרד למה שהמכון לא מציע, ורשימה מתוארכת של עדכוני מדיניות שאושרו. בדיקת אחזור ב־SQL מריצה את השאלות הצפויות ובודקת שכל אחת מחזירה את המקור הנכון, כדי שתשובה שגויה תיתפס לפני שהיא נאמרת בשיחה. מה שמאגר הידע הזה עשה אחר כך בשיחה אמיתית, בסעיף 06.",
               "את הכלים עצמם כתבתי בעזרת סוכני קוד. עבודת התכנון הייתה להחליט, לכל כלי, באיזה צד של הקו יושבת כל התנהגות. הפרומפט אחראי על מה שהסוכנת אומרת לפני שהיא קוראת לכלי, ואיך היא מסבירה כישלון. הקוד אחראי על כמה קריאות מותר לתור אחד להוציא, איזה אובייקט עסקי הופך קריאה חוזרת לכפילות, ועל הכלל שמשותף גם לכלי הלידים של הקמפיינים היוצאים, שבנויים על Webhooks ו־Apps Script: הליד נשלח ברגע ההסכמה, ואם אחר כך נוסף מועד לחזרה, אותה רשומה מתעדכנת לפי מזהה השיחה במקום שייווצר ליד כפול. פעולה נחשבת גמורה רק כשמערכת היעד מאשרת אותה, וניסיון שנכשל נשאר פתוח לניסיון חוזר במקום להיחסם ככפילות. הסוכנת היוצאת של אותו מכון שוכפלה מהנכנסת, עם כלים פרטיים משלה: מסירת ליד ומשימת מעקב ב־CRM, והסרה שמסומנת כליד אבוד.",
               "הקו זז בעקבות שני מקרים. הראשון קטן: כלל בפרומפט להציע רק את הימים הקרובים בלוח השיעורים לא החזיק, והתקרה עברה לקוד. השני הראה מה הסיכון. בסבב בדיקות המודל המציא מזהה של שיעור, שלוש ספרות כשלאמיתיים יש שמונה. זה קרה בסביבת הבדיקות של הפלטפורמה, בלי מנוי אמיתי מאחורי השיחה, אז שום דבר לא נכתב, וה־CRM ממילא לא היה מקבל מזהה כזה. אבל שלב האישור של המנוע, שאמור לעצור כתיבה כזאת, לא נדלק בערוץ הבדיקה בכלל, והמודל הוכיח שהוא מסוגל להמציא מזהה. אחרי זה בניתי את ההגנות בקוד: מזהה שיעור מתקבל רק אם כלי הלוח החזיר אותו באותה שיחה, מזהה לקוח רק אם החיפוש החזיר אותו, ושדות פרופיל נכתבים רק כשהם ריקים. הפרומפט שמר על השפה. מה שחייב להתקיים עבר לקוד.",
+              "מקרה שלישי הגיע עם מעבר למודל של חברה אחרת. הוא נשמע יותר אנושי והגיב מהר יותר, אבל הדיוק שלו מול כלים היה הרבה פחות טוב: הוא רשם לידים והסרות כשלא היה צריך, וגם לא רשם ליד או הסרה אחרי שאמר בעצמו שהוא מבצע את זה. הצעתי מבנה של שני מודלים: אחד מנהל את השיחה, ושני, מדויק יותר מול כלים, עוקב אחרי ההקשר ומחליט אם זה הרגע לירות כלי או לבטל. מה שנכנס בסוף הוא אפשרות להפעיל מודל כזה בתוך הכלי עצמו, כשער שחוסם לידים והסרות מזויפים.",
             ],
           },
           {
@@ -799,7 +802,7 @@ export const resumes: Record<Locale, ResumeData> = {
         title: "בקרת קמפיינים בעזרת קוד ו־AI.",
         summary:
           "ניהול קמפיינים יוצאים וניתוח התוצאות: תהליך סקירה שבו ההכרעה נשארת אצל אדם, אבחון של כשל ברישום תוצאות, ושחזור נתוני קמפיין ב־SQL.",
-        status: "בשימוש בקמפיינים היוצאים",
+        status: "שימש בקמפיינים היוצאים",
         technologies: ["סקריפטים", "SQL", "LLM", "בדיקה אנושית"],
         diagram: {
           label: "מהנתונים להחלטה",
@@ -809,38 +812,39 @@ export const resumes: Record<Locale, ResumeData> = {
         role: "במשך תקופה לקוחות הקמפיינים היוצאים היו היום־יום שלי: לקרוא את התוצאות של כל קמפיין, לתחקר כשלים בסוכנים ובכלים שחזרו על עצמם, לתקן את מה שהיה בצד שלי, ולדווח ללקוח.",
         sections: [
           {
-            title: "הבעיה",
+            title: "הצורך",
             paragraphs: [
-              "קמפיין יוצא מייצר הרבה תמלילים בכמה שעות, והלקוח מחכה להכרעה. לקרוא את הכול דרך LLM זה יקר, וגרוע מזה, זה מזמין מסקנות שהדאטה לא יכולה לתמוך בהן: דוח יכול להצביע על בעיה בסוכן או על בעיה בכלי, אבל דפוס שסומן עדיין לא ממצא.",
-              "ההכרעה הזאת קובעת דברים אמיתיים: אם הפתיח של הסוכן משתנה, אם כלי מתוקן, אם הקמפיין ממשיך לחייג. אז השאלה היא איך קוראים קמפיין בלי לקרוא כל תמליל, ובלי לתת לסקריפט או למודל להחליט מה קרה לבן אדם בשיחה.",
+              "קמפיין יוצא מייצר הרבה תמלילים בכמה שעות, והלקוח מחכה להכרעה. לקרוא את הכול דרך LLM זה יקר, וגרוע מזה, זה מזמין מסקנות שהדאטה לא יכולה לתמוך בהן: דוח יכול להצביע על בעיה בסוכן או על בעיה בכלי, אבל דפוס שסקריפט סימן הוא עדיין לא ממצא.",
+              "ההכרעה הזאת קובעת דברים אמיתיים: האם הפתיח של הסוכן משתנה, האם כלי מתוקן, האם הקמפיין ממשיך לחייג. אז השאלה היא איך קוראים קמפיין בלי לקרוא כל תמליל, ובלי לתת לסקריפט או למודל להחליט מה קרה לבן אדם בשיחה.",
             ],
           },
           {
             title: "להריץ קמפיין",
             paragraphs: [
-              "לפני השיחה הראשונה יש רשימה ותהליך. רשימת החיוג נבנית מהקבצים של הלקוח, עם הסרות מכל מקור שיש בו הסרות ומספרים לא תקינים בקובץ נפרד, ובאחד המעברים האלה צץ באג מנוע: בקשת הסרה שנאמרה בקול בשיחה ולא נרשמה. הרשימות עצמן עוברות בקרת איכות בעזרת סוכני קוד: כל רשומה נבדקת מול המקור, שמות פרטיים מתוקנים, והרשומות שנפסלו נסקרות לשני הכיוונים לפני שמחייגים למישהו. התהליך שכתבתי ללקוחות חדשים של שיחות יוצאות הולך משיחת האפיון ועד שהלקוח מפעיל לבד, עם שלושה שערים לפני כל קמפיין פיילוט: בדיקה של בעל התיק אחרי סבב שיחות בקרה, אישור הלקוח, ובדיקה מקצה לקצה של כל החיבורים. אחר כך הפיילוט גדל בסבבים.",
+              "לפני השיחה הראשונה יש רשימה ותהליך. רשימת החיוג נבנית מהקבצים של הלקוח: יורד ממנה כל מי שביקש הסרה, מכל מקור שיש בו הסרות, ומספרים לא תקינים יוצאים לקובץ נפרד. באחד המעברים האלה מצאתי באג מנוע: בקשת הסרה שנאמרה בקול בשיחה ולא נרשמה. הרשימות עצמן עוברות בקרת איכות בעזרת סוכני קוד: כל רשומה נבדקת מול המקור, שמות פרטיים מתוקנים, והרשומות שנפסלו נסקרות לשני הכיוונים לפני שמחייגים למישהו.",
+              "התהליך שכתבתי ללקוחות חדשים של שיחות יוצאות הולך משיחת האפיון ועד שהלקוח מפעיל לבד, עם שלושה שערים לפני כל קמפיין פיילוט: בדיקה של מי שאחראי על הלקוח אחרי סבב שיחות בקרה, אישור הלקוח, ובדיקה מקצה לקצה של כל החיבורים. אחר כך הפיילוט גדל בסבבים, עם תיקונים בין סבב לסבב ובהשגחה שלי, עד שהסוכן עבר מספיק פיילוטים ועובר לשליטת הלקוח.",
               "כשלקוח רצה לדעת איזה תסריט עובד, ארבעה וריאנטים של אותו סוכן רצו זה לצד זה לתוך גיליון קליטה אחד, מנותבים לפי סוכן ולפי סוג תוצאה, עם טאב הסגר לכל מה שהניתוב לא זיהה, כדי ששום דבר לא ינוחש. הווריאנטים קיבלו עותק פרטי של כלי ההסרה, כדי שהניסוי לא ייגע בכלי שמשותף עם סוכן חי.",
             ],
           },
           {
             title: "מה סופרים בקוד, ומה לא",
             paragraphs: [
-              "הקו הוא לא קוד מול עיניים. הקו הוא על מה מותר לקוד לרוץ. מה שהסוכן אומר הוא קבוצה כמעט סגורה: אותן שורות תסריט, שיחה אחרי שיחה, ולכן ספירה על דיבור הסוכן ועל מטא־דאטה היא לגיטימית. דיבור הלקוח פתוח ומשובש בשגיאות זיהוי, ולכן הוא אף פעם לא נמדד מכנית. מבחן מעשי: אם הפלט של הסקריפט הוא רשימת ממצאים, עוצרים.",
+              "השאלה היא לא מה בודקים בקוד ומה בודקים בעיניים, אלא על מה מותר לקוד לרוץ בכלל. מה שהסוכן אומר הוא קבוצה כמעט סגורה: אותן שורות תסריט, שיחה אחרי שיחה, ולכן ספירה על דיבור הסוכן ועל מטא־דאטה היא לגיטימית. דיבור הלקוח פתוח ומשובש בשגיאות זיהוי, ולכן הוא אף פעם לא נמדד מכנית. מבחן מעשי: אם סקריפט מוציא רשימת ממצאים במקום ספירות, הוא עבר את הקו.",
               "המגבלות מוצהרות מראש. בדאטה השמורה אין תזמון תורים, אין רישום קטיעות ואין סיבת ניתוק, ולכן מסקנה יכולה לומר שהפתיח חלש, ולעולם לא למה. ומונה ה״לא נענו״ של הפלטפורמה מציג אפס בכוונה, כי ליד שלא נענה חוזר לתור, אז אי־מענה נמדד ממקור אחר.",
             ],
           },
           {
             title: "חילוץ, מבנה, סקירה, אימות",
             paragraphs: [
-              "הקוד עושה את החילוץ. דיבור סוכן שחוזר על עצמו מקבל מזהה ומקרא, כך ששורה שהסוכן אומר בכל שיחה מופיעה פעם אחת, עם ספירה; אמירות של לקוחות וחריגות של הסוכן נשמרות מילה במילה. ואז הקריאה הולכת בשכבות. מעבר מבני על כל שיחה, בסקריפט, סופר עד לאן כל שיחה הגיעה: פתיח, פיץ׳, שאלת הסגירה, איזה כלי נורה ובאיזה תור. אחר כך אדם קורא כל שיחה שנגמרה בתוצאה, וכל שיחה שבה שאלת הסגירה נשאלה ונענתה בלי תוצאה, כי אלה הרגעים שבהם שיפוט שגוי עולה ליד. ורשימה של כל אמירה ייחודית של לקוחות, עם כמה פעמים נאמרה, מראה מה שהספירות לא יכולות: מה אנשים באמת שאלו, ומה הסוכן אף פעם לא טיפל בו.",
-              "רק אז רץ ניתוח LLM ממוקד, על המקרים שמצדיקים אותו, ואדם מאמת מה שהוא אומר. המדדים מקובצים לפי מי שצריך לתקן אותם, וממצא חייב לעבור שלושה שערים לפני שהוא נספר: ציטוט מילה במילה, הצלבה מול התוצאה שנרשמה לשיחה, וסימון אם הוא נמדד או הונח, כי היעדר אירוע של כלי הוא לא הוכחה שהכלי לא נורה.",
+              "הקוד עושה את החילוץ. דיבור סוכן שחוזר על עצמו מקבל מזהה ומקרא, כך ששורה שהסוכן אומר בכל שיחה מופיעה פעם אחת, עם ספירה; אמירות של לקוחות וחריגות של הסוכן נשמרות מילה במילה. ואז הקריאה הולכת בשכבות. מעבר מבני על כל שיחה, בסקריפט, סופר עד לאן כל שיחה הגיעה: פתיח, פיץ׳, שאלת הסגירה, איזה כלי נורה ובאיזה תור. אחר כך אני קורא כל שיחה שנגמרה בתוצאה, וכל שיחה שבה שאלת הסגירה נשאלה ובכל זאת השיחה נגמרה בלי תוצאה, כי אלה הרגעים שבהם שיפוט שגוי עולה בליד. ורשימה של כל אמירה ייחודית של לקוחות, עם כמה פעמים נאמרה, מראה מה שהספירות לא יכולות: מה אנשים באמת שאלו, ומה הסוכן אף פעם לא טיפל בו.",
+              "רק אז רץ ניתוח LLM ממוקד, על המקרים שמצדיקים אותו, ואני מאמת מה שהוא אומר. המדדים מקובצים לפי מי שצריך לתקן אותם, וממצא חייב לעבור שלושה שערים לפני שהוא נספר: ציטוט מילה במילה, הצלבה מול התוצאה שנרשמה לשיחה, וסימון אם הוא נמדד או הונח, כי היעדר אירוע של כלי הוא לא הוכחה שהכלי לא נורה.",
             ],
           },
           {
             title: "בוקר עם אפס תוצאות",
             paragraphs: [
-              "בוקר אחד קמפיין גדול רץ במשך שעות, והפלטפורמה רשמה אפס תוצאות בזמן שהגיליון של הלקוח המשיך להתמלא. הכול נראה שבור בבת אחת: הסוכן, הכלים, המנוע. הדרך לצמצם הייתה קבוצת ביקורת: קמפיין אחר מאותו יום, על אותו מנוע, שהסוכן שלו השתמש בכלים המובנים. התוצאות שלו נרשמו. אז התקלה גרה במסלול של הכלים המותאמים. על הכלי הזה היה אחראי מישהו אחר, אז עד סוף היום זה הגיע אליו כרשימה קצרה של באגים לפי חומרה, כל אחד עם מזהי השיחה כדי לשחזר אותו.",
-              "אותו יום הראה גם למה דגל הוא לא ממצא. הרבה שורות סומנו כבקשות לחזור; כשקוראים אותן מול המילים של הלקוח עצמו, רוב הבקשות לא היו כאלה. וכל בקשות ההסרה סומנו נכון, וזה הדבר הראשון שבודקים, כי הסרה שפוספסה היא הטעות האחת שקמפיין לא יכול להרשות לעצמו.",
+              "בוקר אחד קמפיין גדול רץ במשך שעות, והפלטפורמה רשמה אפס תוצאות בזמן שהגיליון של הלקוח המשיך להתמלא. הכול נראה שבור בבת אחת: הסוכן, הכלים, המנוע. צמצמתי את זה עם קבוצת ביקורת: קמפיין אחר מאותו יום, על אותו מנוע, שהסוכן שלו השתמש בכלים המובנים של המנוע. התוצאות שלו נרשמו. אז התקלה גרה במסלול של הכלים המותאמים. על הכלי הזה היה אחראי מישהו אחר, אז עד סוף היום העברתי לו רשימה קצרה של באגים לפי חומרה, כל אחד עם מזהי השיחה כדי לשחזר אותו.",
+              "אותו יום הראה גם למה דגל הוא לא ממצא. הרבה שורות סומנו כבקשות לחזור; כשקראתי אותן מול המילים של הלקוח עצמו, רוב הבקשות לא היו כאלה. וכל בקשות ההסרה סומנו נכון, וזה הדבר הראשון שבדקתי, כי הסרה שפוספסה היא הטעות האחת שקמפיין לא יכול להרשות לעצמו. מהיום הזה יצאה הגרסה של סקירת הקמפיין שמתוארת כאן.",
             ],
           },
           {
@@ -852,7 +856,7 @@ export const resumes: Record<Locale, ResumeData> = {
           {
             title: "התוצאה",
             paragraphs: [
-              "התהליך רץ כל עוד לקוחות הקמפיינים היוצאים היו היום־יום שלי: קודם חילוץ קל, ניתוח מעמיק רק איפה שהיה מוצדק, ואדם על כל ממצא לפני שהגיע ללקוח. כשהתקופה נגמרה, כל לקוח עבר למי שבא אחריי עם מסמך מסירה: איפה הדברים עומדים, מה חוסם, ומה הצעד הבא.",
+              "התהליך רץ כל עוד לקוחות הקמפיינים היוצאים היו היום־יום שלי: קודם חילוץ קל, ניתוח מעמיק רק איפה שהיה מוצדק, ואני על כל ממצא לפני שהגיע ללקוח. כשהתקופה נגמרה, כל לקוח עבר למי שבא אחריי עם מסמך מסירה: איפה הדברים עומדים, מה חוסם, ומה הצעד הבא.",
             ],
           },
         ],
