@@ -32,7 +32,6 @@ export interface ResumeData {
     lines: string[];
     intro: string;
     availability: string;
-    work: string;
     contact: string;
     // Personal facts strip: three labelled blocks under the hero on desktop,
     // repeated between the intro and the buttons on mobile.

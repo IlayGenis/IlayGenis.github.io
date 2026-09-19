@@ -23,7 +23,6 @@ export const resumes: Record<Locale, ResumeData> = {
       intro:
         "I’m Ilay, an AI Solutions Engineer. I turn business requirements into Hebrew voice agents, integrations and software. Now looking for my next role, to keep growing professionally and take on new challenges.",
       availability: "Open to AI solutions & software roles",
-      work: "Explore my work",
       contact: "Get in touch",
       about: {
         label: "ABOUT ME",
@@ -486,7 +485,6 @@ export const resumes: Record<Locale, ResumeData> = {
       intro:
         "אני עילי, AI Solutions Engineer. אני מתרגם צרכים עסקיים לסוכני־קול בעברית, אינטגרציות ותוכנה. אני מחפש את התפקיד הבא שלי, כדי להמשיך להתפתח מקצועית ולהתמודד עם אתגרים חדשים.",
       availability: "פתוח לתפקידי AI Solutions ופיתוח תוכנה",
-      work: "לעבודות",
       contact: "דברו איתי",
       about: {
         label: "עליי",

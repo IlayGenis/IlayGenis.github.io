@@ -80,13 +80,12 @@ export function Portfolio({ locale }: { locale: Locale }) {
               <div className="hero-facts-inline">
                 <HeroFacts data={data} />
               </div>
+              {/* One action. The work section starts right below the hero, so a
+                  "see my work" button only scrolled to what was already visible. */}
               <div className="hero-actions">
-                <a className="button" href="#work">
-                  {data.hero.work}
-                  <Arrow />
-                </a>
-                <a className="text-link" href="#contact">
+                <a className="button" href="#contact">
                   {data.hero.contact}
+                  <Arrow />
                 </a>
               </div>
             </div>
