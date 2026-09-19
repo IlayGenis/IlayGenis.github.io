@@ -287,7 +287,7 @@ export const resumes: Record<Locale, ResumeData> = {
         role: "Requirements, product behavior, the flows and the testing, on my own from start to finish. Coding agents wrote most of the code; I decided what it should do and checked whether it did, first in a simulator and then on the company’s real number.",
         sections: [
           {
-            title: "The problem",
+            title: "What was needed",
             paragraphs: [
               "A nationwide delivery company needed its customer intake and its courier operations in one connected system. The whole operation already ran on WhatsApp, customers and couriers alike, so the system had to fit into a live business rather than replace it.",
               "The scope was wider than a chat bot: new customer registration, order intake, courier registration on top of an existing courier database, and an operational dashboard. The hard part is not the chat. It is that every message has to become a record the operation can act on: a customer, an order, a courier, a status.",
@@ -296,40 +296,41 @@ export const resumes: Record<Locale, ResumeData> = {
           {
             title: "One delivery, end to end",
             paragraphs: [
-              "A customer writes on WhatsApp what to send and where. If the number is known, the bot takes the order; if not, it registers the customer first. The order goes out to the couriers’ WhatsApp groups, couriers answer in private, and the system has five minutes to pick the best registered one: time to the pickup, vehicle type, and a rating built from what customers said about their earlier deliveries. A courier the system does not know is asked for details, the vehicle, and a photo of an ID before getting anything. The chosen courier gets the details in private, and the customer gets a message at every status change the courier reports. Customers who prefer a person are left alone by the bot: their orders are entered by the owner in the dashboard, and still go out to the groups the same way.",
+              "A customer writes on WhatsApp what to send and where. If the number is known, the bot takes the order; if not, it registers the customer first. The order goes out to the couriers’ WhatsApp groups, couriers answer in private, and the system has five minutes to pick the best registered one: time to the pickup, vehicle type, and a rating built from what customers said about their earlier deliveries.",
+              "A courier the system does not know is asked for details, the vehicle, and a photo of an ID before getting anything. The chosen courier gets the details in private, and the customer gets a message at every status change the courier reports. Customers who prefer a person are not answered by the bot at all: the owner enters their orders in the dashboard, and they go out to the groups the same way.",
             ],
           },
           {
             title: "Flows before code",
             paragraphs: [
-              "The flows and the expected behavior were written down before any code, so that there was something to judge the implementation against. They were worked out with the business owner, from their experience of how the operation ran before the system, and they had to match how it actually works, down to details like matching the size of a shipment to the type of vehicle that can carry it.",
+              "I wrote the flows and the expected behavior before any code, so that there was something to judge the implementation against. I worked them out with the business owner, from their experience of how the operation ran before the system, and they had to match how it actually works, down to details like matching the size of a shipment to the type of vehicle that can carry it.",
               "The data layer was Supabase. I worked on the schemas, tables and indexes, choosing the indexes around the queries the application actually ran, and every schema change shipped as a numbered, forward-only migration: once a change had shipped, it was never edited, only followed by the next one. Application logic was Python and TypeScript.",
             ],
           },
           {
             title: "Building with coding agents",
             paragraphs: [
-              "Coding agents wrote most of the system. The loop for each feature was the same: define what it should do in the flow document, let the agent implement it, then read the result and run it, not to admire the code but to find where it does something the flow did not say. What the agent could not know, the operation’s rules and the technical decisions between options, stayed with me.",
+              "Coding agents wrote most of the system. Each feature went through the same loop: define what it should do in the flow document, let the agent implement it, then read the result and run it, not to admire the code but to find where it does something the flow did not say. What the agent could not know, the operation’s rules and the technical decisions between options, stayed with me.",
               "The operational dashboard was part of the same product and went through the same loop. It gives the business owner full control over the operation: switch the bot on and off, silence its replies for one number, blacklist a courier, enter a delivery by hand, work out what each customer owes for the month, and change the numbers the flows run on, such as pricing per kilometer and per vehicle type.",
             ],
           },
           {
             title: "What the model promises, code checks",
             paragraphs: [
-              "The biggest lesson of the project was that a model can promise something and not do it. It tells the customer the order is in, and the record behind it is simply not there. So nothing that matters rests on the model’s word. Every promise it makes has a gate in code that checks whether the thing actually happened, and corrects it when it did not.",
-              "The other thing WhatsApp allows, and a voice call does not, is a complete deterministic path for every situation. Every flow has a version that runs without the model at all, step by step, so if the model’s API fails, the conversation continues on rails instead of stopping. Voice does not give you that option: a spoken conversation cannot be put on rails without turning into a menu.",
+              "What this project showed most clearly: a model can promise something and not do it. It tells the customer the order is in, and the record behind it is simply not there. So nothing that matters rests on the model’s word. For every promise it makes I built a gate in code that checks whether the thing actually happened, and corrects it when it did not.",
+              "Something WhatsApp allows and a voice call does not: a path fixed in advance for every situation. Every flow has a version that runs without the model at all, step by step, so if the model’s API fails, the conversation continues on rails instead of stopping. Voice does not give you that option: a spoken conversation cannot be put on rails without turning into a menu.",
             ],
           },
           {
             title: "Simulator first, then a real number",
             paragraphs: [
-              "Testing started in a simulator, where every flow could be run end to end without a phone, a customer or a courier involved, and stayed there until the behavior matched the flow document. Only then did it move to a real company number, with the same flows run again as real WhatsApp conversations. Anything that broke was judged against the document, not against what the code happened to do.",
+              "Testing started in a simulator I built, where every flow could be run end to end without a phone, a customer or a courier involved, and stayed there until the behavior matched the flow document. Only then did it move to a real company number, with the same flows run again as real WhatsApp conversations. Anything that broke was judged against the document, not against what the code happened to do.",
             ],
           },
           {
             title: "Outcome",
             paragraphs: [
-              "The system went into production and brought customer onboarding, order intake and courier coordination into one product, on WhatsApp, with every message ending up as a record the operation could act on. It was delivered whole: the data layer, the application logic, the conversations and the dashboard. By then the owner was no longer running every order by phone: the bot handled the orders, and the owner supervised from the dashboard.",
+              "The system went into production and brought customer onboarding, order intake and courier coordination into one product, on WhatsApp, with every message ending up as a record the operation could act on. It was delivered whole: the data layer, the application logic, the conversations and the dashboard. From that point the owner was no longer running every order by phone: the bot handled the orders, and the owner supervised from the dashboard.",
             ],
           },
         ],
@@ -741,49 +742,50 @@ export const resumes: Record<Locale, ResumeData> = {
         role: "הדרישות, התנהגות המוצר, התהליכים והבדיקות, לבד מההתחלה עד הסוף. את רוב הקוד כתבו סוכני קוד; אני החלטתי מה המערכת צריכה לעשות ובדקתי אם היא עושה את זה, קודם בסימולטור ואז על המספר האמיתי של החברה.",
         sections: [
           {
-            title: "הבעיה",
+            title: "הצורך",
             paragraphs: [
-              "חברת משלוחים ארצית הייתה צריכה את קליטת הלקוחות ואת תפעול השליחים שלה במערכת אחת מחוברת. כל המערך של העסק כבר רץ על וואטסאפ, הלקוחות והשליחים כאחד, אז המערכת הייתה צריכה להתלבש על עסק פעיל, לא להחליף אותו.",
+              "חברת משלוחים ארצית הייתה צריכה את קליטת הלקוחות ואת תפעול השליחים שלה במערכת אחת מחוברת. כל המערך של העסק כבר רץ על WhatsApp, הלקוחות והשליחים כאחד, אז המערכת הייתה צריכה להתלבש על עסק פעיל, לא להחליף אותו.",
               "ההיקף היה רחב יותר מבוט צ׳אט: רישום לקוחות חדשים, קליטת הזמנות, רישום שליחים על גבי מאגר שליחים קיים, ודשבורד תפעולי. החלק הקשה הוא לא הצ׳אט. הוא שכל הודעה צריכה להפוך לרשומה שהתפעול יכול לפעול לפיה: לקוח, הזמנה, שליח, סטטוס.",
             ],
           },
           {
             title: "משלוח אחד, מההתחלה עד הסוף",
             paragraphs: [
-              "לקוח כותב בוואטסאפ מה לשלוח ולאן. אם המספר מוכר, הבוט לוקח את ההזמנה; אם לא, הוא רושם קודם את הלקוח. ההזמנה מופצת בקבוצות הוואטסאפ של השליחים, השליחים פונים בפרטי, ולמערכת יש חמש דקות לבחור את השליח הרשום המתאים ביותר: זמן ההגעה לאיסוף, סוג הרכב, ודירוג שנבנה ממה שלקוחות אמרו על המסירות הקודמות שלו. שליח שהמערכת לא מכירה מתבקש לפרטים, לפרטי הרכב ולצילום תעודת זהות לפני שהוא מקבל משהו. השליח שנבחר מקבל את הפרטים בפרטי, והלקוח מקבל הודעה בכל עדכון סטטוס שהשליח מדווח. לקוחות שמעדיפים בן אדם, הבוט לא עונה להם: את ההזמנות שלהם בעל העסק מזין בדשבורד, והן יוצאות לקבוצות באותה דרך.",
+              "לקוח כותב ב־WhatsApp מה לשלוח ולאן. אם המספר מוכר, הבוט לוקח את ההזמנה; אם לא, הוא רושם קודם את הלקוח. ההזמנה מופצת בקבוצות ה־WhatsApp של השליחים, השליחים פונים בפרטי, ולמערכת יש חמש דקות לבחור את השליח הרשום המתאים ביותר: זמן ההגעה לאיסוף, סוג הרכב, ודירוג שנבנה ממה שלקוחות אמרו על המסירות הקודמות שלו.",
+              "שליח שהמערכת לא מכירה מתבקש לפרטים, לפרטי הרכב ולצילום תעודת זהות לפני שהוא מקבל משהו. השליח שנבחר מקבל את הפרטים בפרטי, והלקוח מקבל הודעה בכל עדכון סטטוס שהשליח מדווח. ללקוחות שמעדיפים בן אדם הבוט לא עונה בכלל: בעל העסק מזין את ההזמנות שלהם בדשבורד, והן יוצאות לקבוצות באותה דרך.",
             ],
           },
           {
             title: "תהליכים לפני קוד",
             paragraphs: [
-              "התהליכים וההתנהגות הרצויה נכתבו לפני שורת קוד אחת, כדי שיהיה מול מה לשפוט את המימוש. הם נקבעו יחד עם בעל העסק, מתוך הניסיון שלו באיך שהפעילות התנהלה לפני המערכת, ולכן הם היו צריכים להתאים לאיך שהתפעול באמת עובד, עד לפרטים כמו התאמת גודל המשלוח לסוג הרכב שיכול לשאת אותו.",
+              "את התהליכים ואת ההתנהגות הרצויה כתבתי לפני שורת קוד אחת, כדי שיהיה מול מה לשפוט את המימוש. קבעתי אותם יחד עם בעל העסק, מתוך הניסיון שלו באיך שהפעילות התנהלה לפני המערכת, והם היו צריכים להתאים לאיך שהתפעול באמת עובד, עד לפרטים כמו התאמת גודל המשלוח לסוג הרכב שיכול לשאת אותו.",
               "שכבת הנתונים הייתה Supabase. עבדתי על הסכמות, הטבלאות והאינדקסים, בחרתי את האינדקסים לפי השאילתות שהמערכת באמת מריצה, וכל שינוי סכמה יצא כמיגרציה ממוספרת, קדימה בלבד: שינוי שכבר יצא לא נערך אף פעם, רק מגיע אחריו הבא. הלוגיקה עצמה נכתבה ב־Python וב־TypeScript.",
             ],
           },
           {
             title: "בנייה עם סוכני קוד",
             paragraphs: [
-              "את רוב המערכת כתבו סוכני קוד. הלולאה לכל פיצ׳ר הייתה אותה לולאה: להגדיר במסמך התהליכים מה הוא צריך לעשות, לתת לסוכן לממש, ואז לקרוא את התוצאה ולהריץ אותה, לא כדי להתפעל מהקוד אלא כדי למצוא איפה הוא עושה משהו שהתהליך לא אמר. מה שהסוכן לא יכול לדעת, הכללים של התפעול וההחלטות הטכניות בין אפשרויות, נשאר אצלי.",
+              "את רוב המערכת כתבו סוכני קוד. לכל פיצ׳ר אותה לולאה: להגדיר במסמך התהליכים מה הוא צריך לעשות, לתת לסוכן לממש, ואז לקרוא את התוצאה ולהריץ אותה, לא כדי להתפעל מהקוד אלא כדי למצוא איפה הוא עושה משהו שהתהליך לא אמר. מה שהסוכן לא יכול לדעת, הכללים של התפעול וההחלטות הטכניות בין אפשרויות, נשאר אצלי.",
               "הדשבורד התפעולי היה חלק מאותו מוצר ועבר את אותה לולאה. דרכו יש לבעל העסק שליטה מלאה על התפעול: להפעיל ולכבות את הבוט, לבטל את המענה שלו למספר מסוים, לחסום שליח ברשימה שחורה, להזין משלוח בעצמו, לחשב את החובות החודשיים של הלקוחות שלו אליו, ולשנות נתונים שהתהליכים נשענים עליהם, כמו תמחור לפי קילומטר וסוג רכב.",
             ],
           },
           {
             title: "מה שהמודל מבטיח, הקוד בודק",
             paragraphs: [
-              "הלקח הכי גדול מהפרויקט היה שמודל יכול להבטיח משהו ולא לבצע אותו. הוא אומר ללקוח שההזמנה נקלטה, והרשומה מאחוריה פשוט לא קיימת. לכן שום דבר שחשוב לא נשען על המילה של המודל. לכל הבטחה שהוא נותן יש שער בקוד שבודק אם הדבר באמת קרה, ומתקן אם לא.",
-              "הדבר השני ש־WhatsApp מאפשר, ושיחת קול לא, הוא מסלול דטרמיניסטי מלא לכל סיטואציה. לכל תהליך יש גרסה שרצה בלי המודל בכלל, צעד אחרי צעד, כך שאם ה־API של המודל נופל, השיחה ממשיכה על מסילה במקום להיעצר. בקול אין את האפשרות הזאת: שיחה מדוברת אי אפשר לשים על מסילה בלי שהיא תהפוך לתפריט.",
+              "מה שהפרויקט הזה הראה הכי ברור: מודל יכול להבטיח משהו ולא לבצע אותו. הוא אומר ללקוח שההזמנה נקלטה, והרשומה מאחוריה פשוט לא קיימת. לכן שום דבר שחשוב לא נשען על המילה של המודל. לכל הבטחה שהוא נותן בניתי שער בקוד שבודק אם הדבר באמת קרה, ומתקן אם לא.",
+              "דבר שאפשר ב־WhatsApp ולא בשיחת קול: מסלול קבוע מראש לכל סיטואציה. לכל תהליך יש גרסה שרצה בלי המודל בכלל, צעד אחרי צעד, כך שאם ה־API של המודל נופל, השיחה ממשיכה על מסילה במקום להיעצר. בקול אין את האפשרות הזאת: שיחה מדוברת אי אפשר לשים על מסילה בלי שהיא תהפוך לתפריט.",
             ],
           },
           {
             title: "קודם סימולטור, אחר כך מספר אמיתי",
             paragraphs: [
-              "הבדיקות התחילו בסימולטור, שבו אפשר להריץ כל תהליך מקצה לקצה בלי טלפון, בלי לקוח ובלי שליח, ונשארו שם עד שההתנהגות התאימה למסמך התהליכים. רק אז הן עברו למספר אמיתי של החברה, ואותם תהליכים רצו שוב כשיחות WhatsApp אמיתיות. כל מה שנשבר נשפט מול המסמך, לא מול מה שהקוד במקרה עשה.",
+              "הבדיקות התחילו בסימולטור שבניתי, שבו אפשר להריץ כל תהליך מקצה לקצה בלי טלפון, בלי לקוח ובלי שליח, ונשארו שם עד שההתנהגות התאימה למסמך התהליכים. רק אז הן עברו למספר אמיתי של החברה, ואותם תהליכים רצו שוב כשיחות WhatsApp אמיתיות. כל מה שנשבר נשפט מול המסמך, לא מול מה שהקוד במקרה עשה.",
             ],
           },
           {
             title: "התוצאה",
             paragraphs: [
-              "המערכת עלתה לאוויר ואיחדה קליטת לקוחות, קליטת הזמנות ותיאום שליחים למוצר אחד, על WhatsApp, שבו כל הודעה הופכת לרשומה שהתפעול יכול לפעול לפיה. היא נמסרה שלמה: שכבת הנתונים, הלוגיקה, השיחות והדשבורד. עד אז בעל העסק כבר לא ניהל כל הזמנה בעצמו מהטלפון: הבוט טיפל בהזמנות, והוא רק השגיח מהדשבורד.",
+              "המערכת עלתה לאוויר ואיחדה קליטת לקוחות, קליטת הזמנות ותיאום שליחים למוצר אחד, על WhatsApp, שבו כל הודעה הופכת לרשומה שהתפעול יכול לפעול לפיה. היא נמסרה שלמה: שכבת הנתונים, הלוגיקה, השיחות והדשבורד. מאותו שלב בעל העסק כבר לא ניהל כל הזמנה בעצמו מהטלפון: הבוט טיפל בהזמנות, והוא רק השגיח מהדשבורד.",
             ],
           },
         ],
