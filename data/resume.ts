@@ -7,7 +7,7 @@ export const resumes: Record<Locale, ResumeData> = {
     name: "Ilay Genis",
     title: "AI Solutions Engineer",
     summary:
-      "AI Solutions Engineer with production experience in Hebrew voice agents, integrations and AI-assisted software delivery.",
+      "AI Solutions Engineer with production experience in voice agents, integrations and AI-assisted software delivery.",
     nav: {
       work: "Work",
       about: "Experience",
@@ -21,7 +21,7 @@ export const resumes: Record<Locale, ResumeData> = {
       eyebrow: "AI SOLUTIONS / SOFTWARE",
       lines: ["Real problems.", "Practical AI."],
       intro:
-        "I’m Ilay, an AI Solutions Engineer. I turn business requirements into Hebrew voice agents, integrations and software. Now looking for my next role, to keep growing professionally and take on new challenges.",
+        "I’m Ilay, an AI Solutions Engineer. I turn business requirements into voice agents, integrations and software. Now looking for my next role, to keep growing professionally and take on new challenges.",
       availability: "Open to AI solutions & software roles",
       contact: "Get in touch",
       about: {
@@ -51,7 +51,7 @@ export const resumes: Record<Locale, ResumeData> = {
       title: "Hands-on experience,\nwith real clients.",
       company: "Callex",
       tagline: "a Hebrew voice-AI startup",
-      period: "May 2026 – present",
+      period: "2026 – present",
       intro:
         "A new company and a small team, building the processes and methods alongside the work.",
       items: [
@@ -469,7 +469,7 @@ export const resumes: Record<Locale, ResumeData> = {
     name: "עילי גניס",
     title: "AI Solutions Engineer",
     summary:
-      "AI Solutions Engineer עם ניסיון ייצור בסוכני־קול בעברית, באינטגרציות ובפיתוח תוכנה בעזרת סוכני קוד.",
+      "AI Solutions Engineer עם ניסיון ייצור בסוכני־קול בעברית ובאנגלית, באינטגרציות ובפיתוח תוכנה בעזרת סוכני קוד.",
     nav: {
       work: "עבודות",
       about: "ניסיון",
@@ -483,7 +483,7 @@ export const resumes: Record<Locale, ResumeData> = {
       eyebrow: "AI SOLUTIONS / SOFTWARE",
       lines: ["בעיות אמיתיות.", "פתרונות AI שעובדים."],
       intro:
-        "אני עילי, AI Solutions Engineer. אני מתרגם צרכים עסקיים לסוכני־קול בעברית, אינטגרציות ותוכנה. אני מחפש את התפקיד הבא שלי, כדי להמשיך להתפתח מקצועית ולהתמודד עם אתגרים חדשים.",
+        "אני עילי, AI Solutions Engineer. אני מתרגם צרכים עסקיים לסוכני־קול בעברית ובאנגלית, אינטגרציות ותוכנה. אני מחפש את התפקיד הבא שלי, כדי להמשיך להתפתח מקצועית ולהתמודד עם אתגרים חדשים.",
       availability: "פתוח לתפקידי AI Solutions ופיתוח תוכנה",
       contact: "דברו איתי",
       about: {
@@ -511,7 +511,7 @@ export const resumes: Record<Locale, ResumeData> = {
       title: "ניסיון מהשטח,\nמול לקוחות אמיתיים.",
       company: "Callex",
       tagline: "סטארט־אפ של סוכני קול בעברית",
-      period: "מאי 2026–היום",
+      period: "2026–היום",
       intro:
         "עבודה בחברה חדשה בצוות קטן, בניית תהליכים ושיטות תוך כדי העבודה.",
       items: [

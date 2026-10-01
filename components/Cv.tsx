@@ -24,27 +24,21 @@ export function Cv({ locale }: { locale: Locale }) {
           href={cvPath(other)}
           hrefLang={other}
           lang={other}
-          dir={other === "he" ? "rtl" : "ltr"}
           aria-label={data.nav.language}
         >
-          {locale === "en" ? "עברית" : "English"}
+          <span dir={other === "he" ? "rtl" : "ltr"}>
+            {locale === "en" ? "עברית" : "English"}
+          </span>
         </a>
       </nav>
       <main id="main" className="cv-sheet" tabIndex={-1}>
         <header className="cv-head">
-          <div className="cv-who">
-            <figure className="cv-portrait">
-              {/* Static export: no next/image, a plain img is intended. */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/portrait.jpg" alt="" width="720" height="734" />
-            </figure>
-            <div className="cv-identity">
-              <h1>{data.name}</h1>
-              <p className="cv-role">
-                <bdi>{data.title}</bdi>
-              </p>
-              <p className="cv-note">{data.hero.about.text}</p>
-            </div>
+          <div className="cv-identity">
+            <h1>{data.name}</h1>
+            <p className="cv-role">
+              <bdi>{data.title}</bdi>
+            </p>
+            <p className="cv-note">{data.hero.about.text}</p>
           </div>
           <ul className="cv-links">
             <li>

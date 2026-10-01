@@ -112,7 +112,7 @@ svg {
   display: flex;
   align-items: center;
   gap: 15px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -1233,7 +1233,7 @@ svg {
     padding-block: 12px 5px;
   }
   .wordmark {
-    font-size: 15px;
+    font-size: 17px;
   }
   .language-switch {
     border: 0;
@@ -1723,24 +1723,6 @@ svg {
   gap: 24px;
   padding-block-end: 8pt;
   border-bottom: 1px solid var(--ink);
-}
-.cv-who {
-  display: flex;
-  align-items: center;
-  gap: 10pt;
-}
-.cv-portrait {
-  width: 64px;
-  height: 64px;
-  flex-shrink: 0;
-  overflow: hidden;
-  border-radius: 4px;
-}
-.cv-portrait img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 .cv-head h1 {
   font-size: 22pt;

@@ -33,7 +33,6 @@ export function Nav({
           href={otherPath}
           hrefLang={other}
           lang={other}
-          dir={other === "he" ? "rtl" : "ltr"}
           aria-label={data.nav.language}
         >
           <svg
@@ -47,7 +46,11 @@ export function Nav({
             <ellipse cx="12" cy="12" rx="4" ry="9" />
             <path d="M3 12h18" />
           </svg>
-          {locale === "en" ? "עברית" : "English"}
+          {/* dir on the label, not the link: the link keeps the page direction,
+              so its inline-start divider faces the nav links. */}
+          <span dir={other === "he" ? "rtl" : "ltr"}>
+            {locale === "en" ? "עברית" : "English"}
+          </span>
         </a>
       </nav>
     </header>
