@@ -36,7 +36,8 @@ export interface ResumeData {
     // Personal facts strip: three labelled blocks under the hero on desktop,
     // repeated between the intro and the buttons on mobile.
     about: { label: string; text: string };
-    traits: { label: string; items: string[] };
+    // How I work: one sentence that shows the traits instead of listing them.
+    traits: { label: string; text: string };
     focusLabel: string;
     focus: string[];
   };

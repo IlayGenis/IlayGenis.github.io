@@ -17,11 +17,7 @@ function HeroFacts({ data }: { data: ResumeData }) {
       </div>
       <div className="fact">
         <span className="eyebrow">{data.hero.traits.label}</span>
-        <ul>
-          {data.hero.traits.items.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <p>{data.hero.traits.text}</p>
       </div>
       <div className="fact">
         <span className="eyebrow">{data.hero.focusLabel}</span>

@@ -7,34 +7,33 @@ export const resumes: Record<Locale, ResumeData> = {
     name: "Ilay Genis",
     title: "AI Solutions Engineer",
     summary:
-      "AI Solutions Engineer with production experience in voice agents, integrations and AI-assisted software delivery.",
+      "AI Solutions Engineer with production experience in voice agents, integrations and complete AI solutions built with coding agents.",
     nav: {
       work: "Work",
       about: "Experience",
       contact: "Contact",
-      cv: "PDF",
+      cv: "CV",
       label: "Main navigation",
       language: "Switch to Hebrew",
       skip: "Skip to content",
     },
     hero: {
-      eyebrow: "AI SOLUTIONS / SOFTWARE",
+      eyebrow: "AI SOLUTIONS / FORWARD DEPLOYED ENGINEER",
       lines: ["Real problems.", "Practical AI."],
       intro:
-        "I’m Ilay, an AI Solutions Engineer. I turn business requirements into voice agents, integrations and software. Now looking for my next role, to keep growing professionally and take on new challenges.",
-      availability: "Open to AI solutions & software roles",
+        "I’m Ilay, an AI Solutions Engineer. I turn business requirements into voice agents, integrations and AI solutions. A few weeks after I started in production, I was already working with clients fully on my own, from discovery to deployment.",
+      availability: "Open to AI solutions & FDE roles",
       contact: "Get in touch",
       about: {
         label: "ABOUT ME",
         text: "Tel Aviv–Bangkok, working remotely. Age 27. Hebrew native, fluent English.",
       },
-      // Provisional English, pending Ilay's approval after the Hebrew round.
       traits: {
         label: "HOW I WORK",
-        items: ["Hard-working", "Invested in the work", "Fast learner", "Good in a team"],
+        text: "When something new comes in, I go deep fast and stay on it until it works, and my team gets what it needs from me, on time.",
       },
       focusLabel: "WHAT I WORK ON",
-      focus: ["Hebrew voice AI", "Integrations", "AI-assisted development"],
+      focus: ["Voice AI", "Integrations", "Testing & evaluation"],
     },
     work: {
       label: "01 / SELECTED WORK",
@@ -47,10 +46,9 @@ export const resumes: Record<Locale, ResumeData> = {
     },
     experience: {
       label: "02 / EXPERIENCE",
-      // Provisional English, pending Ilay's approval after the Hebrew round.
       title: "Hands-on experience,\nwith real clients.",
       company: "Callex",
-      tagline: "a Hebrew voice-AI startup",
+      tagline: "a voice-AI startup",
       period: "2026 – present",
       intro:
         "A new company and a small team, building the processes and methods alongside the work.",
@@ -61,7 +59,7 @@ export const resumes: Record<Locale, ResumeData> = {
         },
         {
           title: "Build, test, investigate",
-          text: "Hebrew voice agents for inbound service and outbound campaigns, evaluated scenario by scenario before any live call. Each failure logged with the call, the turn and the root cause. Issues in the engine, the platform that runs the calls, reproduced and reported to the team that builds it.",
+          text: "Voice agents for inbound service and outbound campaigns, evaluated scenario by scenario before any live call. Each failure logged with the call, the turn and the root cause. Issues in the engine, the platform that runs the calls, reproduced and reported to the team that builds it.",
         },
         {
           title: "Tools and integrations",
@@ -72,7 +70,7 @@ export const resumes: Record<Locale, ResumeData> = {
           text: "Reviewing outbound campaign results with a person on the verdict, and campaign data recovered in SQL with a rollback path.",
         },
         {
-          title: "Full-stack development",
+          title: "Complete systems with coding agents",
           text: "A WhatsApp agent for a delivery company, delivered to production. The company’s website in Next.js, and the design and build of a bilingual client dashboard for the voice-agent platform.",
         },
       ],
@@ -92,7 +90,7 @@ export const resumes: Record<Locale, ResumeData> = {
             "SQL",
             "Next.js",
             "Supabase",
-            "Google Apps Script / Sheets",
+            "Apps Script / Sheets",
             "Webhooks",
             "Git",
             "Claude Code",
@@ -103,16 +101,15 @@ export const resumes: Record<Locale, ResumeData> = {
     },
     background: {
       label: "03 / BACKGROUND",
-      // Provisional English, pending Ilay's approval after the Hebrew round.
-      title: "A different route\ninto software.",
+      title: "A different route\ninto AI.",
       intro:
-        "My background is in film and cinematography. What drew me to software is the same kind of challenge: understand the required result, work inside the constraints, and find a practical way to get there.",
+        "My background is in film and cinematography. What drew me to AI solutions is the same kind of challenge: understand the required result, work inside the constraints, and find a practical way to get there.",
       // Newest first, as on a CV.
       items: [
         {
-          title: "Applied AI training",
+          title: "AI implementation training",
           detail: "AI Game Changer program at Brain · 2026",
-          text: "Practical training in AI implementation and automation, completed while working at Callex.",
+          text: "A three-month hands-on program: automation in Make, building with Claude Code and Supabase, and reading business problems. Completed while working at Callex; the foundation for my voice-agent work and client discovery.",
         },
         {
           title: "Film, cinematography & video",
@@ -130,15 +127,14 @@ export const resumes: Record<Locale, ResumeData> = {
           text: "Customer-facing technical service at an internet provider. Early practice in diagnosing a problem from a description and explaining the fix clearly.",
         },
       ],
-      nextTitle: "The next role I’m looking for",
-      next: "An entry-level role in AI implementation or backend development. I want to take the work I learned in production, with real clients, to the next stage: deeper professional knowledge and stronger capabilities.",
+      nextTitle: "What I bring to the team",
+      next: "AI solutions that work for the client, not just in a demo: a brief the team can build from, testing before anything goes live, and documentation others can pick up.",
     },
     contact: {
       label: "04 / CONTACT",
-      // Provisional English, pending Ilay's approval after the Hebrew round.
       title: "If this sounds\nright for your team.",
       intro:
-        "If you’re building AI solutions and need a hard-working professional who learned the job in production, with real clients, and works well in a team, I’d be glad to hear from you.",
+        "If you’re building AI solutions, I’d be glad to talk and show you how I work.",
       email: "genisilay@gmail.com",
       copy: "Copy address",
       copied: "Copied",
@@ -185,15 +181,15 @@ export const resumes: Record<Locale, ResumeData> = {
       },
     },
     footer:
-      "AI solutions. A visual background. A growing engineering practice.",
+      "AI solutions. A visual background. Real clients.",
     projects: [
       {
         slug: "hebrew-voice-agents",
         number: "A",
-        category: "HEBREW VOICE AI",
+        category: "VOICE AI",
         title: "Agents that hold up on the real call.",
         summary:
-          "Building, testing and debugging Hebrew voice agents: from the client conversation to a brief, a prompt and its tools, until it works on a real call.",
+          "Building, testing and debugging voice agents: from the client conversation to a brief, a prompt and its tools, until it works on a real call.",
         status: "Callex, in production",
         technologies: [
           "JavaScript",
@@ -211,7 +207,7 @@ export const resumes: Record<Locale, ResumeData> = {
           {
             title: "What was needed",
             paragraphs: [
-              "A voice agent has to hold a real conversation in Hebrew and then do something useful with it: qualify a lead, book a slot, take an order, hand off to a person. A prompt that reads well proves none of that. The agent is judged on the call. Behind every agent is an engine, the platform that runs the calls. Another team builds it. The work described here is what runs on it: the brief, the prompt, the tools and the knowledge.",
+              "A voice agent has to hold a real conversation and then do something useful with it: qualify a lead, book a slot, take an order, hand off to a person. A prompt that reads well proves none of that. The agent is judged on the call. Behind every agent is an engine, the platform that runs the calls. Another team builds it. The work described here is what runs on it: the brief, the prompt, the tools and the knowledge.",
               "The businesses vary widely: insurance, finance and tax refunds, telecom and TV retention and sales, fitness, hearing care, real estate, automotive, business consulting, restaurants and ordering, healthcare, travel and retail. Each agent has its own success condition, its own stopping points and its own tools, and on a small, young team there was no ready method for getting an agent from the brief to a call that holds up. What follows is the method that came out of that, one agent at a time.",
             ],
           },
@@ -273,7 +269,7 @@ export const resumes: Record<Locale, ResumeData> = {
       {
         slug: "delivery-operations",
         number: "B",
-        category: "AI-ASSISTED SOFTWARE DELIVERY",
+        category: "WHATSAPP AGENT",
         title: "Delivery operations, connected.",
         summary:
           "A WhatsApp operations system for a nationwide delivery company: customer onboarding, order intake and courier coordination, built with coding agents and delivered to production.",
@@ -411,7 +407,7 @@ export const resumes: Record<Locale, ResumeData> = {
         category: "MY WORKING METHOD",
         title: "Measurements that lead to insights.",
         summary:
-          "A private knowledge base of what I learn from testing Hebrew voice agents: 14 topic classes and 200+ dated insights, each tagged as measured or hypothesis, never deleted, only superseded.",
+          "A private knowledge base of what I learn from testing voice agents: 14 topic classes and 200+ dated insights, each tagged as measured or hypothesis, never deleted, only superseded.",
         status: "Personal, private, in daily use",
         technologies: ["Markdown", "Git", "Claude Code", "Evals"],
         diagram: {
@@ -469,22 +465,22 @@ export const resumes: Record<Locale, ResumeData> = {
     name: "עילי גניס",
     title: "AI Solutions Engineer",
     summary:
-      "AI Solutions Engineer עם ניסיון ייצור בסוכני־קול בעברית ובאנגלית, באינטגרציות ובפיתוח תוכנה בעזרת סוכני קוד.",
+      "AI Solutions Engineer עם ניסיון בפרודקשן בסוכני־קול בעברית ובאנגלית, באינטגרציות ובבניית פתרונות AI שלמים בעזרת סוכני קוד.",
     nav: {
       work: "עבודות",
       about: "ניסיון",
       contact: "יצירת קשר",
-      cv: "PDF",
+      cv: "קורות חיים",
       label: "ניווט ראשי",
       language: "Switch to English",
       skip: "דילוג לתוכן",
     },
     hero: {
-      eyebrow: "AI SOLUTIONS / SOFTWARE",
+      eyebrow: "AI SOLUTIONS / FORWARD DEPLOYED ENGINEER",
       lines: ["בעיות אמיתיות.", "פתרונות AI שעובדים."],
       intro:
-        "אני עילי, AI Solutions Engineer. אני מתרגם צרכים עסקיים לסוכני־קול בעברית ובאנגלית, אינטגרציות ותוכנה. אני מחפש את התפקיד הבא שלי, כדי להמשיך להתפתח מקצועית ולהתמודד עם אתגרים חדשים.",
-      availability: "פתוח לתפקידי AI Solutions ופיתוח תוכנה",
+        "אני עילי, AI Solutions Engineer. אני מתרגם צרכים עסקיים לסוכני־קול בעברית ובאנגלית, אינטגרציות ופתרונות AI. שבועות ספורים אחרי שנכנסתי לפרודקשן כבר עבדתי מול לקוחות באופן מלא ועצמאי, מהאפיון ועד עלייה לאוויר.",
+      availability: "פתוח לתפקידי AI Solutions ו־FDE",
       contact: "דברו איתי",
       about: {
         label: "עליי",
@@ -492,10 +488,10 @@ export const resumes: Record<Locale, ResumeData> = {
       },
       traits: {
         label: "איך אני בעבודה",
-        items: ["חרוץ", "משקיע בעבודה", "לומד מהר", "עובד טוב בצוות"],
+        text: "כשמשהו חדש מגיע אליי, אני נכנס לעומק שלו מהר, נשאר עליו עד שהוא באמת עובד, ודואג שמי שעובד איתי יקבל ממני את מה שהוא צריך, בזמן.",
       },
       focusLabel: "במה אני עוסק",
-      focus: ["סוכני־קול בעברית", "אינטגרציות", "פיתוח בעזרת AI"],
+      focus: ["סוכני־קול בעברית", "אינטגרציות", "בדיקות איכות"],
     },
     work: {
       label: "01 / עבודות נבחרות",
@@ -532,7 +528,7 @@ export const resumes: Record<Locale, ResumeData> = {
           text: "סקירת תוצאות של קמפיינים יוצאים, כשההחלטה נשארת אצל אדם, ושחזור נתוני קמפיין ב־SQL עם rollback מוכן מראש.",
         },
         {
-          title: "פיתוח פול־סטאק",
+          title: "מערכות שלמות בעזרת סוכני קוד",
           text: "סוכן WhatsApp לחברת משלוחים, שעלה לאוויר. בניית אתר החברה ב־Next.js, ותכנון והקמה של דשבורד לקוחות דו־לשוני לפלטפורמת סוכני הקול.",
         },
       ],
@@ -552,7 +548,7 @@ export const resumes: Record<Locale, ResumeData> = {
             "SQL",
             "Next.js",
             "Supabase",
-            "Google Apps Script / Sheets",
+            "Apps Script / Sheets",
             "Webhooks",
             "Git",
             "Claude Code",
@@ -563,15 +559,15 @@ export const resumes: Record<Locale, ResumeData> = {
     },
     background: {
       label: "03 / הרקע שלי",
-      title: "דרך אחרת\nאל עולם הפיתוח.",
+      title: "דרך אחרת\nאל עולם ה־AI.",
       intro:
-        "הגעתי מעולם הקולנוע והצילום. מה שמשך אותי לפיתוח הוא אותו סוג של אתגר: להבין מה התוצאה הנדרשת, לעבוד בתוך האילוצים, ולמצוא דרך מעשית להגיע לשם.",
+        "הגעתי מעולם הקולנוע והצילום. מה שמשך אותי לפתרונות AI הוא אותו סוג של אתגר: להבין מה התוצאה הנדרשת, לעבוד בתוך האילוצים, ולמצוא דרך מעשית להגיע לשם.",
       // מהחדש לישן, כמו בקורות חיים.
       items: [
         {
-          title: "הכשרה ב־AI יישומי",
+          title: "הכשרה בהטמעת פתרונות AI",
           detail: "תוכנית AI Game Changer בחברת Brain\u200F · 2026",
-          text: "הכשרה מעשית בהטמעת פתרונות AI ובאוטומציה, שהושלמה תוך כדי עבודתי ב־Callex.",
+          text: "תוכנית מעשית של שלושה חודשים: אוטומציות ב־Make, בנייה עם Claude Code ו־Supabase, והבנה של בעיות עסקיות. הושלמה תוך כדי עבודתי ב־Callex, והייתה הבסיס לעבודה עם סוכני קול ולאפיון מול לקוחות.",
         },
         {
           title: "קולנוע, צילום ווידאו",
@@ -589,14 +585,14 @@ export const resumes: Record<Locale, ResumeData> = {
           text: "שירות טכני ללקוחות בספקית אינטרנט. שם למדתי לאבחן בעיה מתוך תיאור של הלקוח, ולהסביר את הפתרון בצורה ברורה.",
         },
       ],
-      nextTitle: "התפקיד הבא שאני מחפש",
-      next: "תפקיד התחלתי בהטמעת AI או בפיתוח בקאנד. אני רוצה לקחת קדימה את העבודה שלמדתי בפרודקשן, מול לקוחות אמיתיים, לשלב הבא: העמקת הידע המקצועי ופיתוח יכולות גבוהות יותר.",
+      nextTitle: "מה אני מביא לצוות",
+      next: "פתרונות AI שעובדים אצל הלקוח, לא רק בהדגמה: אפיון שאפשר לבנות ממנו, בדיקות לפני כל עלייה לאוויר, ותיעוד שהצוות יכול להמשיך ממנו.",
     },
     contact: {
       label: "04 / יצירת קשר",
       title: "אם זה נשמע\nמתאים לצוות שלכם.",
       intro:
-        "אם אתם בונים פתרונות AI ויש לכם צורך באיש מקצוע חרוץ, שלמד את העבודה בפרודקשן מול לקוחות אמיתיים ועובד טוב בצוות, אשמח שתיצרו קשר.",
+        "אם אתם בונים פתרונות AI, אשמח לדבר ולהראות איך אני עובד.",
       email: "genisilay@gmail.com",
       copy: "העתקת הכתובת",
       copied: "הועתק",
@@ -642,7 +638,7 @@ export const resumes: Record<Locale, ResumeData> = {
         site: "האתר",
       },
     },
-    footer: "פתרונות AI. רקע חזותי. התפתחות הנדסית.",
+    footer: "פתרונות AI. רקע חזותי. לקוחות אמיתיים.",
     projects: [
       {
         slug: "hebrew-voice-agents",
@@ -730,7 +726,7 @@ export const resumes: Record<Locale, ResumeData> = {
       {
         slug: "delivery-operations",
         number: "ב",
-        category: "פיתוח תוכנה בעזרת AI",
+        category: "סוכן WhatsApp",
         title: "תפעול משלוחים במקום אחד.",
         summary:
           "מערכת תפעול ב־WhatsApp לחברת משלוחים ארצית: קליטת לקוחות, הזמנות ותיאום שליחים. נבנתה בעזרת סוכני קוד ועלתה לאוויר.",

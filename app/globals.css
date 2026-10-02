@@ -294,7 +294,9 @@ svg {
 }
 .hero-foot {
   display: grid;
-  grid-template-columns: 1.25fr 1fr 1fr;
+  /* The middle block is a sentence: give it the width to stay at two lines,
+     so the strip's bottom line stays in the first desktop screen. */
+  grid-template-columns: 1fr 1.6fr 0.9fr;
   align-items: start;
   gap: 40px;
   border-top: 1px solid var(--line);
@@ -315,12 +317,28 @@ svg {
   font-size: 14px;
   line-height: 1.5;
 }
+/* Tags with a middle dot between them: a plain gap made the first two tags
+   read as one phrase with a hole in it. Same clipping as the
+   CV tags: the dot that would start a line is cut off by .fact. */
+.fact {
+  overflow: hidden;
+}
 .fact ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 18px;
+  margin-inline-start: -18px;
   font-size: 14px;
   line-height: 1.5;
+}
+.fact li {
+  white-space: nowrap;
+}
+.fact li::before {
+  content: "·";
+  display: inline-block;
+  inline-size: 18px;
+  text-align: center;
+  color: var(--muted);
 }
 .hero-facts-inline {
   display: none;
@@ -1079,7 +1097,6 @@ svg {
     gap: 28px;
   }
   .fact ul {
-    gap: 6px 12px;
     font-size: 13px;
   }
   .section-heading {
@@ -1849,17 +1866,27 @@ svg {
   font-size: 7pt;
   text-align: start;
 }
+/* Tags as running text with a middle dot, as on the site: bordered chips
+   wrapped early and cost a line each. Each tag carries its dot in front;
+   the list is pulled back by one dot's width inside a clipping wrapper, so
+   the dot that starts a line is cut off and no line ends with a dot. */
+.cv-tags-clip {
+  overflow: hidden;
+}
 .cv-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 2.5pt;
+  margin-inline-start: -12pt;
 }
 .cv-tags li {
-  border: 1px solid var(--cv-line);
-  border-radius: 999px;
-  padding: 0.5pt 6pt;
-  font-size: 8pt;
   white-space: nowrap;
+}
+.cv-tags li::before {
+  content: "·";
+  display: inline-block;
+  inline-size: 12pt;
+  text-align: center;
+  color: var(--cv-muted);
 }
 .cv-next p {
   padding: 6pt 8pt;

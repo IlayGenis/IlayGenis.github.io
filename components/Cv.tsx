@@ -119,33 +119,33 @@ export function Cv({ locale }: { locale: Locale }) {
           <div className="cv-side">
             <section className="cv-section">
               <h2>{data.hero.focusLabel}</h2>
-              <ul className="cv-tags">
-                {data.hero.focus.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+              <div className="cv-tags-clip">
+                <ul className="cv-tags">
+                  {data.hero.focus.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             </section>
 
             <section className="cv-section">
               <h2>{data.hero.traits.label}</h2>
-              <ul className="cv-tags">
-                {data.hero.traits.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+              <p>{data.hero.traits.text}</p>
             </section>
 
             <section className="cv-section">
               <h2>{data.cv.labels.tools}</h2>
-              <ul className="cv-tags">
-                {data.capabilities.groups.flatMap((group) =>
-                  group.items.map((item) => (
-                    <li key={item}>
-                      <bdi>{item}</bdi>
-                    </li>
-                  )),
-                )}
-              </ul>
+              <div className="cv-tags-clip">
+                <ul className="cv-tags">
+                  {data.capabilities.groups.flatMap((group) =>
+                    group.items.map((item) => (
+                      <li key={item}>
+                        <bdi>{item}</bdi>
+                      </li>
+                    )),
+                  )}
+                </ul>
+              </div>
             </section>
 
             <section className="cv-section">
