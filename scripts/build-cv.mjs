@@ -153,8 +153,25 @@ const chrome = spawn(
     ...(process.env.CI ? ["--no-sandbox"] : []),
     "about:blank",
   ],
-  { stdio: "ignore" },
+  { stdio: ["ignore", "ignore", "pipe"] },
 );
+// Keep the tail of Chrome's stderr, so a launch failure in CI says why.
+let chromeLog = "";
+let chromeExit = null;
+chrome.stderr.setEncoding("utf8");
+chrome.stderr.on("data", (chunk) => {
+  chromeLog = (chromeLog + chunk).slice(-4000);
+});
+chrome.on("error", (error) => {
+  chromeExit = error.message;
+});
+chrome.on("exit", (code, signal) => {
+  chromeExit ??= `exited with ${signal ?? `code ${code}`}`;
+});
+function chromeReport() {
+  const log = chromeLog.trim();
+  return log ? `\nChrome stderr (tail):\n${log}` : "\nChrome wrote nothing to stderr";
+}
 let exitCode = 0;
 function removeProfile() {
   // Chrome may still be flushing its profile; retry, and never fail the
@@ -175,6 +192,9 @@ async function devtoolsPort() {
   // With --remote-debugging-port=0 Chrome writes the chosen port here.
   const marker = path.join(profile, "DevToolsActivePort");
   for (let i = 0; i < 80; i++) {
+    if (chromeExit) {
+      throw new Error(`Chrome ${chromeExit} before devtools came up${chromeReport()}`);
+    }
     if (existsSync(marker)) {
       const port = Number(readFileSync(marker, "utf8").split("\n")[0]);
       try {
@@ -186,7 +206,7 @@ async function devtoolsPort() {
     }
     await sleep(250);
   }
-  throw new Error("devtools endpoint did not come up");
+  throw new Error(`devtools endpoint did not come up${chromeReport()}`);
 }
 
 async function openTarget(port) {
