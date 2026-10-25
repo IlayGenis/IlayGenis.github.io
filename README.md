@@ -2,7 +2,7 @@
 
 The source of my portfolio site: **[ilaygenis.github.io](https://ilaygenis.github.io)** · [עברית](https://ilaygenis.github.io/he/)
 
-I'm an AI Solutions Engineer. I turn business requirements into voice agents, integrations and AI solutions, working with clients from discovery to deployment.
+I'm an AI Solutions Engineer. I start from the business need, design the solution, and build AI agents, integrations and operational systems that actually work.
 
 - **CV (PDF):** [English](https://ilaygenis.github.io/cv/ilay-genis-cv-en.pdf) · [עברית](https://ilaygenis.github.io/cv/ilay-genis-cv-he.pdf)
 - **LinkedIn:** [linkedin.com/in/ilaygenis](https://www.linkedin.com/in/ilaygenis/)

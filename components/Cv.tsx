@@ -38,7 +38,10 @@ export function Cv({ locale }: { locale: Locale }) {
             <p className="cv-role">
               <bdi>{data.title}</bdi>
             </p>
-            <p className="cv-note">{data.hero.about.text}</p>
+            <p className="cv-note">
+              {data.cv.available} · {data.hero.about.location}
+            </p>
+            <p className="cv-note">{data.hero.about.personal}</p>
           </div>
           <ul className="cv-links">
             <li>
@@ -65,7 +68,7 @@ export function Cv({ locale }: { locale: Locale }) {
 
         <div className="cv-columns">
           <div className="cv-main">
-            <p className="cv-summary">{data.hero.intro}</p>
+            <p className="cv-summary">{data.cv.summary}</p>
 
             <section className="cv-section">
               <h2>{data.cv.labels.experience}</h2>

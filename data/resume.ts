@@ -7,7 +7,7 @@ export const resumes: Record<Locale, ResumeData> = {
     name: "Ilay Genis",
     title: "AI Solutions Engineer",
     summary:
-      "AI Solutions Engineer with production experience in voice agents, integrations and complete AI solutions built with coding agents.",
+      "AI Solutions Engineer with hands-on production experience delivering AI agents, integrations and operational systems for real clients.",
     nav: {
       work: "Work",
       about: "Experience",
@@ -21,19 +21,20 @@ export const resumes: Record<Locale, ResumeData> = {
       eyebrow: "AI SOLUTIONS / FORWARD DEPLOYED ENGINEER",
       lines: ["Real problems.", "Practical AI."],
       intro:
-        "I’m Ilay, an AI Solutions Engineer. I turn business requirements into voice agents, integrations and AI solutions. A few weeks after I started in production, I was already working with clients fully on my own, from discovery to deployment.",
+        "I’m Ilay, an AI Solutions Engineer. I start from the business need, design the solution, and build AI agents, integrations and operational systems that actually work. A few weeks into my first production role, I was already working with clients on my own, from requirements to delivery.",
       availability: "Open to AI solutions & FDE roles",
       contact: "Get in touch",
       about: {
         label: "ABOUT ME",
-        text: "Tel Aviv–Bangkok, working remotely. Age 27. Hebrew native, fluent English.",
+        location: "Based in Bangkok, back in Israel from January 2027.",
+        personal: "Age 27. Native Hebrew, fluent English.",
       },
       traits: {
         label: "HOW I WORK",
         text: "When something new comes in, I go deep fast and stay on it until it works, and my team gets what it needs from me, on time.",
       },
       focusLabel: "WHAT I WORK ON",
-      focus: ["Voice AI", "Integrations", "Testing & evaluation"],
+      focus: ["AI agents & systems", "Integrations", "Testing & reliability"],
     },
     work: {
       label: "01 / SELECTED WORK",
@@ -76,7 +77,7 @@ export const resumes: Record<Locale, ResumeData> = {
       ],
       ownershipTitle: "How I work with coding agents",
       ownership:
-        "Claude Code and Codex write much of the code I ship. My part is the requirements, the behavior, the testing, and the call on whether the result actually meets the need. Working habits I built: one document per project that says what the system should do, a checklist of checks and a simulator before anything goes live, and database changes tested on a copy before they reach the real database.",
+        "Claude Code and Codex write much of the code I ship. My part is the requirements and expected behavior, the integration plan, the trade-offs between technical options, and deciding which rules are enforced in code rather than left to the model. Testing, debugging and validation are on me too. Working habits I built: a brief per project that says what the system should do, a checklist and a simulator before anything goes live, and database changes tested on a copy before they reach the real database.",
     },
     capabilities: {
       label: "WORKED WITH",
@@ -171,6 +172,9 @@ export const resumes: Record<Locale, ResumeData> = {
       title: "CV",
       download: "Download PDF",
       back: "Back to the site",
+      summary:
+        "AI Solutions Engineer with hands-on production experience delivering AI agents, integrations and operational systems for real clients. Covers the full path: discovery, solution design, implementation, debugging and validation. Builds with coding agents and stays responsible for the technical decisions, the system’s behavior and the quality of what ships.",
+      available: "Available for work",
       labels: {
         experience: "Experience",
         work: "Selected work",
@@ -465,7 +469,7 @@ export const resumes: Record<Locale, ResumeData> = {
     name: "עילי גניס",
     title: "AI Solutions Engineer",
     summary:
-      "AI Solutions Engineer עם ניסיון בפרודקשן בסוכני־קול בעברית ובאנגלית, באינטגרציות ובבניית פתרונות AI שלמים בעזרת סוכני קוד.",
+      "AI Solutions Engineer עם ניסיון מעשי בפרודקשן בבניית סוכני AI, אינטגרציות ומערכות תפעוליות עבור לקוחות.",
     nav: {
       work: "עבודות",
       about: "ניסיון",
@@ -479,19 +483,20 @@ export const resumes: Record<Locale, ResumeData> = {
       eyebrow: "AI SOLUTIONS / FORWARD DEPLOYED ENGINEER",
       lines: ["בעיות אמיתיות.", "פתרונות AI שעובדים."],
       intro:
-        "אני עילי, AI Solutions Engineer. אני מתרגם צרכים עסקיים לסוכני־קול בעברית ובאנגלית, אינטגרציות ופתרונות AI. שבועות ספורים אחרי שנכנסתי לפרודקשן כבר עבדתי מול לקוחות באופן מלא ועצמאי, מהאפיון ועד עלייה לאוויר.",
+        "אני עילי, AI Solutions Engineer. אני מתחיל מהצורך העסקי, מתכנן את הפתרון ובונה סוכני AI, אינטגרציות ומערכות תפעוליות שעובדות בפועל. שבועות ספורים אחרי שנכנסתי לפרודקשן כבר עבדתי באופן עצמאי מול לקוחות, מאפיון ועד מסירה.",
       availability: "פתוח לתפקידי AI Solutions ו־FDE",
       contact: "דברו איתי",
       about: {
         label: "עליי",
-        text: "תל אביב–בנגקוק, עבודה מרחוק. בן 27. עברית שפת־אם, אנגלית שוטפת.",
+        location: "כרגע בבנגקוק, ומינואר 2027 בישראל.",
+        personal: "בן 27. עברית שפת־אם, אנגלית שוטפת.",
       },
       traits: {
         label: "איך אני בעבודה",
         text: "כשמשהו חדש מגיע אליי, אני נכנס לעומק שלו מהר, נשאר עליו עד שהוא באמת עובד, ודואג שמי שעובד איתי יקבל ממני את מה שהוא צריך, בזמן.",
       },
       focusLabel: "במה אני עוסק",
-      focus: ["סוכני־קול בעברית", "אינטגרציות", "בדיקות איכות"],
+      focus: ["סוכני AI ומערכות", "אינטגרציות", "בדיקות ואמינות"],
     },
     work: {
       label: "01 / עבודות נבחרות",
@@ -534,7 +539,7 @@ export const resumes: Record<Locale, ResumeData> = {
       ],
       ownershipTitle: "איך אני עובד עם סוכני קוד",
       ownership:
-        "Claude Code ו־Codex כותבים חלק גדול מהקוד שלי. אני אחראי על הדרישות, על ההתנהגות, על הבדיקות ועל ההחלטה אם התוצאה באמת עונה על הצורך. הרגלי עבודה שפיתחתי: מסמך אחד לכל פרויקט שמגדיר מה המערכת אמורה לעשות, צ׳קליסט של בדיקות וסימולטור לפני כל עלייה לאוויר, ובדיקת שינויים במסד נתונים דמה לפני הטמעתם במסד האמיתי.",
+        "Claude Code ו־Codex כותבים חלק גדול מהקוד שלי. אני אחראי על הדרישות וההתנהגות הרצויה, על תכנון האינטגרציות, על ההכרעה בין אפשרויות טכניות, ועל ההחלטה אילו כללים נאכפים בקוד ולא נשארים בידי המודל. גם הבדיקות, התחקור והאימות עליי. הרגלי עבודה שפיתחתי: מסמך לכל פרויקט שמגדיר מה המערכת אמורה לעשות, צ׳קליסט של בדיקות וסימולטור לפני כל עלייה לאוויר, ובדיקת שינויים במסד נתונים דמה לפני הטמעתם במסד האמיתי.",
     },
     capabilities: {
       label: "03 / כלים",
@@ -629,6 +634,9 @@ export const resumes: Record<Locale, ResumeData> = {
       title: "קורות חיים",
       download: "הורדת PDF",
       back: "חזרה לאתר",
+      summary:
+        "AI Solutions Engineer עם ניסיון מעשי בפרודקשן בבניית סוכני AI, אינטגרציות ומערכות תפעוליות עבור לקוחות. עבודה לאורך כל הדרך: אפיון, תכנון הפתרון, בנייה, בדיקות ותחקור כשלים. בנייה בעזרת סוכני קוד, עם אחריות על ההחלטות הטכניות, על התנהגות המערכת ועל איכות מה שנמסר.",
+      available: "זמין לעבודה",
       labels: {
         experience: "ניסיון",
         work: "עבודות נבחרות",

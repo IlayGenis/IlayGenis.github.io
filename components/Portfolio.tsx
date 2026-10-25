@@ -13,7 +13,9 @@ function HeroFacts({ data }: { data: ResumeData }) {
     <>
       <div className="fact">
         <span className="eyebrow">{data.hero.about.label}</span>
-        <p>{data.hero.about.text}</p>
+        <p>
+          {data.hero.about.location} {data.hero.about.personal}
+        </p>
       </div>
       <div className="fact">
         <span className="eyebrow">{data.hero.traits.label}</span>

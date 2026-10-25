@@ -35,7 +35,9 @@ export interface ResumeData {
     contact: string;
     // Personal facts strip: three labelled blocks under the hero on desktop,
     // repeated between the intro and the buttons on mobile.
-    about: { label: string; text: string };
+    // Where I am now and when I'm in Israel, then age and languages. The CV
+    // prints both after its own availability note (cv.available).
+    about: { label: string; location: string; personal: string };
     // How I work: one sentence that shows the traits instead of listing them.
     traits: { label: string; text: string };
     focusLabel: string;
@@ -104,6 +106,12 @@ export interface ResumeData {
     title: string;
     download: string;
     back: string;
+    // The CV's own professional summary; the site keeps the personal hero intro.
+    // Its first sentence is also the top-level `summary` (meta description).
+    summary: string;
+    // Leads the CV header line before hero.about.location; on the site the
+    // availability badge says it.
+    available: string;
     labels: {
       experience: string;
       work: string;
