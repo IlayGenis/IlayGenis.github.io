@@ -1,8 +1,18 @@
 import type { Metadata } from "next";
-import { resumes, homePath, casePath, cvPath } from "@/data/resume";
+import { resumes, homePath, casePath, cvPath, ogFile } from "@/data/resume";
 import type { Locale, CaseStudy } from "@/lib/types";
 
 export const siteOrigin = "https://ilaygenis.github.io";
+
+function shareImage(locale: Locale, page: string, alt: string) {
+  return {
+    url: ogFile(locale, page),
+    width: 1200,
+    height: 630,
+    type: "image/png",
+    alt,
+  };
+}
 
 export function portfolioMetadata(
   locale: Locale,
@@ -14,6 +24,7 @@ export function portfolioMetadata(
     : `${data.name} — ${data.title}`;
   const description = project?.summary ?? data.summary;
   const path = project ? casePath(locale, project.slug) : homePath(locale);
+  const image = shareImage(locale, project?.slug ?? "home", title);
   return {
     metadataBase: new URL(siteOrigin),
     title,
@@ -35,20 +46,13 @@ export function portfolioMetadata(
       locale: locale === "he" ? "he_IL" : "en_US",
       alternateLocale: locale === "he" ? "en_US" : "he_IL",
       type: "website",
-      images: [
-        {
-          url: "/opengraph-image.png",
-          width: 1200,
-          height: 630,
-          alt: `${resumes.en.name} — ${resumes.en.title}`,
-        },
-      ],
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/opengraph-image.png"],
+      images: [image],
     },
   };
 }
@@ -56,6 +60,7 @@ export function portfolioMetadata(
 export function cvMetadata(locale: Locale): Metadata {
   const data = resumes[locale];
   const title = `${data.name} — ${data.cv.title}`;
+  const image = shareImage(locale, "cv", title);
   return {
     metadataBase: new URL(siteOrigin),
     title,
@@ -75,8 +80,15 @@ export function cvMetadata(locale: Locale): Metadata {
       url: cvPath(locale),
       siteName: data.name,
       locale: locale === "he" ? "he_IL" : "en_US",
+      alternateLocale: locale === "he" ? "en_US" : "he_IL",
       type: "profile",
-      images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
+      images: [image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: data.summary,
+      images: [image],
     },
   };
 }

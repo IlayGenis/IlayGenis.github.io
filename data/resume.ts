@@ -939,3 +939,9 @@ export const cvPath = (locale: Locale) =>
 // The PDFs are written by scripts/build-cv.mjs after `next build`; both
 // languages sit in out/cv/ so the file name, not the folder, says the language.
 export const cvFile = (locale: Locale) => `/cv/ilay-genis-cv-${locale}.pdf`;
+// Share images are written by scripts/build-og.mjs after `next build`, one per
+// page and language: `page` is "home", "cv" or a project slug.
+export const ogFile = (locale: Locale, page: string) =>
+  page === "home" || page === "cv"
+    ? `/og/${locale}/${page}.png`
+    : `/og/${locale}/work/${page}.png`;
