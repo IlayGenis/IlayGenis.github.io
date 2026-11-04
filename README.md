@@ -23,6 +23,7 @@ The descriptions are public and anonymized. No client names, client data or inte
 - A static export of Next.js, deployed to GitHub Pages on every push to `main`.
 - English and Hebrew from the same content file (`data/resume.ts`), with right-to-left layout in Hebrew.
 - The CV is a page on the site, printed to PDF at build time in both languages. The build fails if either PDF runs past one page.
+- Every page has its own share image in each language, written by Chrome at build time from the same content file. The build fails if the text doesn't fit.
 - Pages render at build time and work without JavaScript.
 
 Coding agents wrote most of the code. I set the requirements and the behavior, and checked the result.
