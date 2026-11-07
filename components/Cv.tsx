@@ -2,14 +2,17 @@ import { resumes, homePath, casePath, cvPath, cvFile } from "@/data/resume";
 import { siteOrigin } from "@/lib/metadata";
 import type { Locale } from "@/lib/types";
 
-// The printable CV. Every string comes from data/resume.ts, the same source
-// as the site; scripts/build-cv.mjs prints this route to a one-page PDF.
+// The printable CV. Every string comes from data/resume.ts: shared facts from
+// the same fields as the site, CV-specific wording from `cv`.
+// scripts/build-cv.mjs prints this route to a one-page PDF.
 export function Cv({ locale }: { locale: Locale }) {
   const data = resumes[locale];
   const other: Locale = locale === "en" ? "he" : "en";
   const site = siteOrigin.replace(/^https?:\/\//, "");
   const shown = (href: string, label: string) =>
-    href.startsWith("https://wa.me") ? label : href.replace(/^https?:\/\/(www\.)?/, "");
+    href.startsWith("https://wa.me")
+      ? label
+      : href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
   return (
     <div className="cv-screen">
       <nav className="cv-toolbar" aria-label={data.nav.label}>
@@ -39,17 +42,13 @@ export function Cv({ locale }: { locale: Locale }) {
               <bdi>{data.title}</bdi>
             </p>
             <p className="cv-note">
-              {data.cv.available} · {data.hero.about.location}
+              {data.cv.available} · {data.cv.location}
             </p>
-            <p className="cv-note">{data.hero.about.personal}</p>
+            <p className="cv-note">{data.cv.personal}</p>
           </div>
           <ul className="cv-links">
             <li>
-              <a
-                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${data.contact.email}`}
-              >
-                <bdi>{data.contact.email}</bdi>
-              </a>
+              <bdi>{data.contact.email}</bdi>
             </li>
             {data.contact.links.map((link) => (
               <li key={link.href}>
@@ -81,81 +80,39 @@ export function Cv({ locale }: { locale: Locale }) {
               <p className="cv-job-title">
                 <bdi>{data.experience.company}</bdi>, {data.experience.tagline}
               </p>
-              <p>{data.experience.intro}</p>
+              <p>{data.cv.experience.intro}</p>
               <ul className="cv-items">
-                {data.experience.items.map((item) => (
+                {data.cv.experience.items.map((item) => (
                   <li key={item.title}>
                     <strong>{item.title}.</strong> {item.text}
                   </li>
                 ))}
               </ul>
               <aside className="cv-ownership">
-                <h3>{data.experience.ownershipTitle}</h3>
-                <p>{data.experience.ownership}</p>
+                <h3>{data.cv.experience.methodTitle}</h3>
+                <p>{data.cv.experience.method}</p>
               </aside>
-            </section>
-
-            <section className="cv-section">
-              <h2>{data.cv.labels.work}</h2>
-              <ul className="cv-work">
-                {data.projects.map((project) => (
-                  <li key={project.slug}>
-                    <h3>
-                      <span className="cv-number" aria-hidden="true">
-                        {project.number}
-                      </span>
-                      <a href={`${siteOrigin}${casePath(locale, project.slug)}`}>
-                        {project.title}
-                      </a>
-                    </h3>
-                    <p>{project.summary}</p>
-                    <span className="cv-url" dir="ltr">
-                      {site}
-                      {casePath(locale, project.slug)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
             </section>
           </div>
 
           <div className="cv-side">
             <section className="cv-section">
-              <h2>{data.hero.focusLabel}</h2>
+              <h2>{data.cv.labels.tools}</h2>
               <div className="cv-tags-clip">
                 <ul className="cv-tags">
-                  {data.hero.focus.map((item) => (
-                    <li key={item}>{item}</li>
+                  {data.cv.skills.map((item) => (
+                    <li key={item}>
+                      <bdi>{item}</bdi>
+                    </li>
                   ))}
                 </ul>
               </div>
             </section>
 
             <section className="cv-section">
-              <h2>{data.hero.traits.label}</h2>
-              <p>{data.hero.traits.text}</p>
-            </section>
-
-            <section className="cv-section">
-              <h2>{data.cv.labels.tools}</h2>
-              <div className="cv-tags-clip">
-                <ul className="cv-tags">
-                  {data.capabilities.groups.flatMap((group) =>
-                    group.items.map((item) => (
-                      <li key={item}>
-                        <bdi>{item}</bdi>
-                      </li>
-                    )),
-                  )}
-                </ul>
-              </div>
-            </section>
-
-            <section className="cv-section">
               <h2>{data.cv.labels.background}</h2>
-              <p>{data.background.intro}</p>
               <ul className="cv-items">
-                {data.background.items.map((item) => (
+                {data.cv.education.map((item) => (
                   <li key={item.title}>
                     <strong>{item.title}</strong>
                     <span className="cv-detail">{item.detail}</span>
@@ -164,13 +121,38 @@ export function Cv({ locale }: { locale: Locale }) {
                 ))}
               </ul>
             </section>
-
-            <section className="cv-section cv-next">
-              <h2>{data.background.nextTitle}</h2>
-              <p>{data.background.next}</p>
-            </section>
           </div>
         </div>
+
+        <section className="cv-section cv-selected">
+          <h2>{data.cv.labels.work}</h2>
+          <ul className="cv-work">
+            {data.projects.map((project) => {
+              const { title, summary } = data.cv.work[project.slug];
+              const href = `${siteOrigin}${casePath(locale, project.slug)}`;
+              return (
+                <li key={project.slug}>
+                  <h3>
+                    <span className="cv-number" aria-hidden="true">
+                      {project.number}
+                    </span>
+                    <a href={href}>{title}</a>
+                  </h3>
+                  <p>
+                    {summary}{" "}
+                    <a
+                      className="cv-more"
+                      href={href}
+                      aria-label={`${data.cv.caseLink}: ${title}`}
+                    >
+                      {data.cv.caseLink}
+                    </a>
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
       </main>
     </div>
   );

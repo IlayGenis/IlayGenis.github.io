@@ -62,13 +62,6 @@ export interface ResumeData {
     ownershipTitle: string;
     ownership: string;
   };
-  capabilities: {
-    label: string;
-    title: string;
-    groups: { title: string; text?: string; items: string[] }[];
-    learningTitle?: string;
-    learning?: string;
-  };
   background: {
     label: string;
     title: string;
@@ -101,17 +94,34 @@ export interface ResumeData {
     contactTitle: string;
     contactIntro: string;
   };
-  // One-page printable CV at /cv/, built from the same strings as the site.
+  // One-page printable CV at /cv/. Identity and employment facts come from the
+  // shared fields above; wording that differs from the site lives here.
   cv: {
     title: string;
     download: string;
     back: string;
-    // The CV's own professional summary; the site keeps the personal hero intro.
-    // Its first sentence is also the top-level `summary` (meta description).
+    // The CV's own professional summary; the site keeps the personal hero intro
+    // and the top-level `summary` (meta description).
     summary: string;
-    // Leads the CV header line before hero.about.location; on the site the
-    // availability badge says it.
+    // First header line: availability, then location. On the site the
+    // availability badge and hero.about.location say these.
     available: string;
+    location: string;
+    // Second header line.
+    personal: string;
+    // Link text after each project's description.
+    caseLink: string;
+    experience: {
+      intro: string;
+      items: { title: string; text: string }[];
+      methodTitle: string;
+      method: string;
+    };
+    // Title and one-line description per project, keyed by slug. Number, order
+    // and link come from `projects`.
+    work: Record<string, { title: string; summary: string }>;
+    skills: string[];
+    education: { title: string; detail: string; text: string }[];
     labels: {
       experience: string;
       work: string;

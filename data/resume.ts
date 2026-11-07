@@ -68,7 +68,7 @@ export const resumes: Record<Locale, ResumeData> = {
         },
         {
           title: "Campaign analysis and data",
-          text: "Reviewing outbound campaign results with a person on the verdict, and campaign data recovered in SQL with a rollback path.",
+          text: "Reviewing outbound campaign results with scripts and targeted LLM analysis, with written rules for what counts as a finding.",
         },
         {
           title: "Complete systems with coding agents",
@@ -77,28 +77,7 @@ export const resumes: Record<Locale, ResumeData> = {
       ],
       ownershipTitle: "How I work with coding agents",
       ownership:
-        "Claude Code and Codex write much of the code I ship. My part is the requirements and expected behavior, the integration plan, the trade-offs between technical options, and deciding which rules are enforced in code rather than left to the model. Testing, debugging and validation are on me too. Working habits I built: a brief per project that says what the system should do, a checklist and a simulator before anything goes live, and database changes tested on a copy before they reach the real database.",
-    },
-    capabilities: {
-      label: "WORKED WITH",
-      title: "Worked with",
-      groups: [
-        {
-          title: "Languages, frameworks and platforms",
-          items: [
-            "JavaScript / TypeScript",
-            "Python",
-            "SQL",
-            "Next.js",
-            "Supabase",
-            "Apps Script / Sheets",
-            "Webhooks",
-            "Git",
-            "Claude Code",
-            "Codex",
-          ],
-        },
-      ],
+        "Claude Code and Codex write much of the code I ship. My part is the requirements and expected behavior, the integration plan, the trade-offs between technical options, and deciding which rules are enforced in code rather than left to the model. Testing, debugging and validation are on me too. Working habits I built: a brief per project that says what the system should do, a checklist and a simulator before anything goes live, and database changes tested in a separate schema before they reach the real database.",
     },
     background: {
       label: "03 / BACKGROUND",
@@ -173,13 +152,95 @@ export const resumes: Record<Locale, ResumeData> = {
       download: "Download PDF",
       back: "Back to the site",
       summary:
-        "AI Solutions Engineer with hands-on production experience delivering AI agents, integrations and operational systems for real clients. Covers the full path: discovery, solution design, implementation, debugging and validation. Builds with coding agents and stays responsible for the technical decisions, the system’s behavior and the quality of what ships.",
-      available: "Available for work",
+        "AI Solutions Engineer with hands-on production experience delivering AI agents, integrations, and operational systems for businesses. Worked across client discovery, solution design, implementation, testing, and debugging on Hebrew voice agents and a WhatsApp delivery operations system.",
+      available: "Open to work",
+      location: "Based in Bangkok · Returning to Israel in January 2027",
+      personal: "Native Hebrew · Fluent English.",
+      caseLink: "View case study",
+      experience: {
+        intro:
+          "Within weeks of starting my first production role, I was handling client-facing AI agent projects independently, and building the briefs, test scenarios, and handoff documents I reused from one client to the next.",
+        items: [
+          {
+            title: "Solution Design",
+            text: "Translated client discovery into implementation briefs defining success criteria, agent behavior, handoffs, and integration requirements.",
+          },
+          {
+            title: "AI Agent Development & Evaluation",
+            text: "Built and improved Hebrew voice agents for inbound service and outbound campaigns; tested real-call scenarios, investigated failures across prompts, tools, knowledge retrieval, and platform behavior, and sent reproducible reports to the platform team.",
+          },
+          {
+            title: "APIs & Integrations",
+            text: "Built JavaScript tools connecting AI agents to client CRM systems through APIs and webhooks: lead and data transfer for several clients, and member, class, and subscription actions for one.",
+          },
+          {
+            title: "Outbound Campaign Operations & Troubleshooting",
+            text: "Managed outbound voice-agent campaigns, reviewed dial lists and results, investigated agent and tool failures, implemented fixes within my scope, and reported findings to clients.",
+          },
+        ],
+        methodTitle: "AI-Assisted Development",
+        method:
+          "Claude Code and Codex write much of the code. I am responsible for defining requirements and expected behavior, making integration decisions, and determining which safeguards belong in code rather than the model. I validate the results against written briefs and scenario-based checklists, debug what fails, and test database changes in a separate test schema before production.",
+      },
+      work: {
+        "hebrew-voice-agents": {
+          title: "Hebrew Voice AI Agents & API Integrations",
+          summary:
+            "Built CRM integrations for a fitness studio’s voice agent. After the model invented a class ID in testing, added code guards limiting actions to IDs returned by tools in the same call.",
+        },
+        "delivery-operations": {
+          title: "WhatsApp Delivery Operations System",
+          summary:
+            "Designed and shipped a production WhatsApp system for a nationwide delivery client, connecting onboarding, orders, and courier coordination (Python, TypeScript, Supabase), and built a simulator to test it. The system moved the owner from running every order by phone to supervising from a dashboard.",
+        },
+        "campaign-review": {
+          title: "Outbound Campaign Analysis & Failure Diagnosis",
+          summary:
+            "Developed a campaign analysis process: two code-based transcript filters (length, call stage), LLM analysis, and findings review. Also diagnosed a result-recording failure using a same-day control campaign.",
+        },
+        "voice-agent-playbook": {
+          title: "Voice Agent Evaluation Playbook",
+          summary:
+            "Built and maintain a private playbook of 200+ dated voice-agent insights, tagged as measured or hypothesis, including 18 corrections that reversed earlier conclusions; coding agents read it before touching a prompt.",
+        },
+      },
+      skills: [
+        "Prompt design",
+        "Knowledge retrieval",
+        "LLM tool calling",
+        "Agent evaluation",
+        "JavaScript / TypeScript",
+        "Python",
+        "SQL",
+        "REST APIs",
+        "Webhooks",
+        "Supabase",
+        "Claude Code",
+        "Git",
+      ],
+      // Newest first.
+      education: [
+        {
+          title: "AI Game Changer — AI Solutions Developer",
+          detail: "Brain AI School · 2026 · 12 weeks",
+          text: "Practical training in translating business needs into AI solutions using Claude Code, Make, and Supabase.",
+        },
+        {
+          title: "BA in Film and Television — Cinematography",
+          detail: "Tel Aviv University · 2022–2025",
+          text: "Freelance director of photography on short films; shot and edited social video for public and cultural institutions. Set work is planning around constraints, in a crew, with no spare time and no budget for mistakes.",
+        },
+        {
+          title: "Systems, Networks & Cybersecurity Training",
+          detail: "See Security International College\n2021–2022",
+          text: "Two courses: System and Network Practitioner & Cyber Security Preparation, and Cyber SOC Analyst. Covered networking, Linux, Python, security fundamentals, and incident response.",
+        },
+      ],
       labels: {
         experience: "Experience",
         work: "Selected work",
-        background: "Background",
-        tools: "Worked with",
+        background: "Education & Background",
+        tools: "Technical Skills",
         contact: "Contact",
         site: "Portfolio",
       },
@@ -343,21 +404,21 @@ export const resumes: Record<Locale, ResumeData> = {
         category: "OUTBOUND CAMPAIGNS",
         title: "Campaign oversight with code and AI.",
         summary:
-          "Running outbound campaigns and reading their results: a review workflow that keeps a person on the verdict, the diagnosis of a failure in recording results, and a recovery of campaign data in SQL.",
+          "Running outbound campaigns and analyzing their results: a layered workflow of scripts and LLM analysis, written rules for what counts as a finding, and the diagnosis of a failure in recording results.",
         status: "Used across outbound campaigns",
-        technologies: ["Scripts", "SQL", "LLM", "Human review"],
+        technologies: ["Scripts", "LLM", "Findings review"],
         diagram: {
           label: "FROM DATA TO DECISION",
-          steps: ["Extract", "Structure", "Review", "Verify"],
+          steps: ["Extract", "Filter", "Analyze", "Findings"],
           caption: "How to read a campaign without reading every transcript",
         },
-        role: "For a period, the outbound campaign clients were my day-to-day: reading each campaign’s results, investigating agent and tool failures that kept coming back, applying the fixes that were on my side, and reporting to the client.",
+        role: "For a period, the outbound campaign clients were my day-to-day: analyzing each campaign’s results, investigating agent and tool failures that kept coming back, applying the fixes that were on my side, and reporting to the client.",
         sections: [
           {
             title: "What was needed",
             paragraphs: [
               "An outbound campaign produces many transcripts in a few hours, and the client is waiting for a verdict. Reading everything through an LLM is expensive, and worse, it invites conclusions the data cannot support: a report can point at an agent problem or a tool problem, but a pattern a script flagged is still not a finding.",
-              "The verdict decides real things: whether the agent’s opening changes, whether a tool gets fixed, whether the campaign keeps dialing. So the question is how to read a campaign without reading every transcript, and without letting a script or a model decide what happened to a person on a call.",
+              "The verdict decides real things: whether the agent’s opening changes, whether a tool gets fixed, whether the campaign keeps dialing. So the question is how to analyze a campaign without running everything through a model, and without letting a script decide what happened to a person on a call.",
             ],
           },
           {
@@ -371,39 +432,35 @@ export const resumes: Record<Locale, ResumeData> = {
           {
             title: "What code may count",
             paragraphs: [
-              "The question is not what to check in code and what to check by eye, but what code is allowed to run on at all. What the agent says is almost always the same: the same script lines, call after call, so counting on agent speech and metadata is legitimate. Customer speech is open-ended and corrupted by recognition errors, so it is never measured mechanically. A practical test: if a script produces a list of findings instead of counts, it has crossed the line.",
+              "The real question was which data code could reliably count. What the agent says is almost always the same: the same script lines, call after call, so counting on agent speech and metadata is legitimate. Customer speech is open-ended and corrupted by recognition errors: code can organize utterances and measure how often each one appears, but keyword matching alone cannot decide what they mean. A practical test: if a script produces a list of findings instead of counts, it has crossed the line.",
               "The limits are declared up front. The stored data has no turn timing, no interruption record and no hang-up cause, so a conclusion can say that the opening is weak, and never say why. And the platform’s own no-answer counter reads zero by design, because an unanswered lead goes back to the queue, so no-answer is measured from another source.",
             ],
           },
           {
-            title: "Extract, structure, review, verify",
+            title: "From transcripts to findings",
             paragraphs: [
-              "Code does the extraction. A line the agent says on every call gets an identifier and appears once, with a count of how often it was said; customer utterances and agent deviations are kept verbatim. Then the reading goes in layers. A structural pass over every call, by a script, counts how far each conversation got: opening, pitch, closing question, which tool fired and on which turn. I then read every call that ended in an outcome, and every call where the closing question was asked but the call still ended without one, because those are the moments where a wrong judgment costs a lead. And a list of every distinct thing customers said, with how often, shows what the counts cannot: what people actually asked, and what the agent never handled.",
-              "Only then does targeted LLM analysis run, on the cases that justify it, and I validate what it says. Metrics are grouped by who has to fix them, and a finding has to pass three gates before it counts: a verbatim quote, a cross-check against the call’s recorded outcome, and a mark of whether it was measured or assumed, because the absence of a tool event is not proof the tool did not fire.",
+              "Filtering was needed for two reasons. Many calls never became a real conversation, and most of the text in a campaign was the agent repeating its own script, so sending everything to a model meant paying mostly for the same lines. Word-list shortcuts did not hold up either: matching customer speech against a list missed most removal requests.",
+              "So scripts filtered the transcripts in two layers before any model saw them. The first looked at transcript length. The second looked at how far the conversation got: the opening, the pitch, the closing question. The filtering improved as the work went on: an early cut by turn count alone was dropped once it turned out to skip calls the agent had ended itself, and the criteria were refined from there.",
+              "The transcripts that passed both filters went to an LLM, which analyzed them and presented its findings. I read those findings before reporting to the client.",
+              "The written method went further than the scripts. It directed the analysis to calls with a recorded outcome, calls where the closing question got an answer but no outcome followed, and the distinct things customers said. It called for checking that the data was complete, for writing definitions before the analysis, and for a bar on any finding: a verbatim quote, a cross-check against the recorded outcome, and a mark of whether it was measured or assumed, because the absence of a tool event is not proof the tool did not fire. I describe these as written rules, not as automated checks. Metrics are grouped by who has to fix them.",
             ],
           },
           {
             title: "A morning with zero results",
             paragraphs: [
               "One morning a large campaign ran for hours, and the platform recorded zero results while the client’s sheet kept filling up. Everything looked broken at once: the agent, the tools, the engine. I narrowed it with a control group: another campaign on the same day, on the same engine, whose agent used the engine’s built-in tools. Its results were recorded. So the failure lived in the path of the custom tools. Someone else was responsible for that tool, so by the end of the day I sent them a short list of bugs ordered by severity, each with the call identifiers to reproduce it.",
-              "The same day showed why a flag is not a finding. Many rows were marked as callback requests; when I read them against the customer’s actual words, most were not. And every removal request had been marked correctly, which is the first thing I checked, because a missed removal is the one mistake a campaign cannot afford. That day is where the version of campaign review described here came from.",
-            ],
-          },
-          {
-            title: "Rebuilding a campaign’s records",
-            paragraphs: [
-              "One campaign’s records had to be rebuilt from the sources that survived. I prepared the recovery in SQL so that it would run once, as a whole or not at all: a staging area, a single transaction, preconditions, checks before commit, a guard that prevents dialing any restored record, and a separate rollback file. What could not be recovered was documented as such, not filled in.",
+              "The same day showed why a flag is not a finding. The analysis documented that most rows marked as callback requests did not match what the customer actually said. In the data it covered, removal requests had been marked correctly. That part matters most, because a missed removal is the one mistake a campaign cannot afford. That day is where the version of campaign review described here came from.",
             ],
           },
           {
             title: "Outcome",
             paragraphs: [
-              "The workflow ran for as long as the outbound clients were my day-to-day: lightweight extraction first, deep analysis only where it was justified, and my own review of every finding before it reached the client. When the period ended, every client went to the next person with a handoff document: where things stood, what was blocking, and the next step.",
+              "The workflow ran for as long as the outbound clients were my day-to-day: filtering first, LLM analysis of what remained, and reading the findings before reporting to the client. When the period ended, every client went to the next person with a handoff document: where things stood, what was blocking, and the next step.",
             ],
           },
         ],
         takeaway:
-          "Use the simplest check that narrows the question, measure only what the data can actually answer, and keep a person on the verdict.",
+          "Use the simplest check that narrows the question, measure only what the data can actually answer, and decide up front what a finding must carry.",
       },
       {
         slug: "voice-agent-playbook",
@@ -530,7 +587,7 @@ export const resumes: Record<Locale, ResumeData> = {
         },
         {
           title: "ניתוח קמפיינים ודאטה",
-          text: "סקירת תוצאות של קמפיינים יוצאים, כשההחלטה נשארת אצל אדם, ושחזור נתוני קמפיין ב־SQL עם rollback מוכן מראש.",
+          text: "ניתוח תוצאות של קמפיינים יוצאים בעזרת סקריפטים וניתוח LLM ממוקד, עם כללים כתובים למה שנחשב ממצא.",
         },
         {
           title: "מערכות שלמות בעזרת סוכני קוד",
@@ -540,27 +597,6 @@ export const resumes: Record<Locale, ResumeData> = {
       ownershipTitle: "איך אני עובד עם סוכני קוד",
       ownership:
         "Claude Code ו־Codex כותבים חלק גדול מהקוד שלי. אני אחראי על הדרישות וההתנהגות הרצויה, על תכנון האינטגרציות, על ההכרעה בין אפשרויות טכניות, ועל ההחלטה אילו כללים נאכפים בקוד ולא נשארים בידי המודל. גם הבדיקות, התחקור והאימות עליי. הרגלי עבודה שפיתחתי: מסמך לכל פרויקט שמגדיר מה המערכת אמורה לעשות, צ׳קליסט של בדיקות וסימולטור לפני כל עלייה לאוויר, ובדיקת שינויים במסד נתונים דמה לפני הטמעתם במסד האמיתי.",
-    },
-    capabilities: {
-      label: "03 / כלים",
-      title: "עבדתי עם.",
-      groups: [
-        {
-          title: "שפות, פריימוורקים ופלטפורמות",
-          items: [
-            "JavaScript / TypeScript",
-            "Python",
-            "SQL",
-            "Next.js",
-            "Supabase",
-            "Apps Script / Sheets",
-            "Webhooks",
-            "Git",
-            "Claude Code",
-            "Codex",
-          ],
-        },
-      ],
     },
     background: {
       label: "03 / הרקע שלי",
@@ -635,13 +671,95 @@ export const resumes: Record<Locale, ResumeData> = {
       download: "הורדת PDF",
       back: "חזרה לאתר",
       summary:
-        "AI Solutions Engineer עם ניסיון מעשי בפרודקשן בבניית סוכני AI, אינטגרציות ומערכות תפעוליות עבור לקוחות. עבודה לאורך כל הדרך: אפיון, תכנון הפתרון, בנייה, בדיקות ותחקור כשלים. בנייה בעזרת סוכני קוד, עם אחריות על ההחלטות הטכניות, על התנהגות המערכת ועל איכות מה שנמסר.",
-      available: "זמין לעבודה",
+        "AI Solutions Engineer עם ניסיון מעשי בפיתוח ובמסירה של סוכני AI, אינטגרציות ומערכות תפעוליות לעסקים בסביבת Production. עסקתי באפיון צרכים מול לקוחות, בתכנון פתרונות, בבנייה, בבדיקות ובאיתור תקלות — בין היתר בפרויקטים של סוכני קול בעברית ומערכת תפעול משלוחים ב־WhatsApp.",
+      available: "פתוח לעבודה",
+      location: "כרגע בבנגקוק · חוזר לישראל בינואר 2027",
+      personal: "עברית שפת־אם · אנגלית שוטפת",
+      caseLink: "לפרויקט המלא",
+      experience: {
+        intro:
+          "תוך שבועות ספורים מתחילת תפקידי הראשון בתחום, כבר עבדתי באופן עצמאי מול לקוחות על פרויקטים של סוכני AI. במקביל גיבשתי תהליך עבודה מסודר לאפיון, לבדיקות ולמסירה, עם מסמכים ותבניות ששימשו אותי גם בפרויקטים נוספים.",
+        items: [
+          {
+            title: "אפיון ותכנון פתרונות",
+            text: "תרגמתי את הצרכים שעלו בשיחות עם לקוחות למסמכי אפיון מפורטים, שבהם הגדרתי מדדי הצלחה, את התנהגות הסוכן, מתי נדרשת העברה לנציג ואילו אינטגרציות נדרשות.",
+          },
+          {
+            title: "פיתוח ובדיקות של סוכני AI",
+            text: "בניתי ושיפרתי סוכני קול בעברית לשירות שיחות נכנסות ולקמפיינים של שיחות יוצאות. בדקתי אותם מול תרחישי שיחה אמיתיים, תחקרתי תקלות בפרומפטים, בהפעלת כלים, באחזור מידע ובהתנהגות הפלטפורמה, והעברתי לצוות הפלטפורמה דיווחי תקלה עם שלבים לשחזורן.",
+          },
+          {
+            title: "APIs ואינטגרציות",
+            text: "פיתחתי כלים ב־JavaScript לחיבור סוכני AI למערכות CRM באמצעות APIs ו־Webhooks. עבור מספר לקוחות יצרתי אינטגרציות להעברת לידים ונתונים, ועבור לקוח אחד פיתחתי גם כלים לביצוע פעולות במערכת, כגון ניהול מתאמנים, שיעורים ומנויים.",
+          },
+          {
+            title: "ניהול ואבחון קמפיינים יוצאים",
+            text: "ניהלתי קמפיינים של סוכני קול לשיחות יוצאות, בדקתי רשימות חיוג ותוצאות, תחקרתי תקלות בסוכנים ובהפעלת כלים, ביצעתי תיקונים שבתחום אחריותי ודיווחתי ללקוחות על הממצאים.",
+          },
+        ],
+        methodTitle: "פיתוח בעזרת סוכני קוד",
+        method:
+          "חלק גדול מהקוד נכתב באמצעות Claude Code ו־Codex. אני אחראי להגדרת הדרישות, לתכנון התנהגות המערכת ולקבלת החלטות לגבי אינטגרציות, כולל קביעה אילו מנגנוני הגנה חייבים להיות מיושמים בקוד ולא להסתמך על המודל בלבד. אני בודק את התוצרים מול מסמכי האפיון ורשימות בדיקה המבוססות על תרחישים, מאתר ומתקן תקלות, ובודק שינויים במסד הנתונים בסביבה נפרדת לפני יישומם במערכת הפעילה.",
+      },
+      work: {
+        "hebrew-voice-agents": {
+          title: "סוכני קול בעברית ואינטגרציות API",
+          summary:
+            "בניתי אינטגרציות CRM לסוכן הקולי של מכון כושר. אחרי שבבדיקות המודל המציא מזהה שיעור, הוספתי מנגנוני הגנה בקוד שמגבילים פעולות למזהים שהכלים החזירו באותה שיחה.",
+        },
+        "delivery-operations": {
+          title: "מערכת תפעול משלוחים ב־WhatsApp",
+          summary:
+            "תכננתי והעליתי לאוויר מערכת תפעול מבוססת WhatsApp עבור חברת משלוחים הפועלת בפריסה ארצית. המערכת משלבת קליטת לקוחות, קבלת הזמנות ותיאום שליחים, ונבנתה באמצעות Python, TypeScript ו־Supabase. בניתי סימולטור לבדיקת המערכת, שאפשרה לבעל העסק לעבור מניהול כל הזמנה בטלפון לפיקוח על הפעילות דרך דשבורד.",
+        },
+        "campaign-review": {
+          title: "ניתוח קמפיינים יוצאים ואבחון תקלות",
+          summary:
+            "פיתחתי תהליך לניתוח תוצאות של קמפיינים יוצאים, המשלב שני שלבי סינון תמלילים בקוד לפי אורך ושלב השיחה, ניתוח באמצעות LLM וסקירה של הממצאים. בנוסף, אבחנתי תקלה ברישום תוצאות קמפיין באמצעות השוואה לקמפיין ביקורת מאותו יום.",
+        },
+        "voice-agent-playbook": {
+          title: "Playbook להערכת סוכני קול",
+          summary:
+            "בניתי ואני מתחזק Playbook פרטי עם יותר מ־200 תובנות מתועדות על סוכני קול, שכל אחת מהן מסווגת כממצא שנמדד או כהשערה. המאגר כולל גם 18 תיקונים למסקנות קודמות, ומשמש את סוכני הקוד לפני ביצוע שינויים בפרומפטים.",
+        },
+      },
+      skills: [
+        "Prompt design",
+        "Knowledge retrieval",
+        "LLM tool calling",
+        "Agent evaluation",
+        "JavaScript / TypeScript",
+        "Python",
+        "SQL",
+        "REST APIs",
+        "Webhooks",
+        "Supabase",
+        "Claude Code",
+        "Git",
+      ],
+      // מהחדש לישן.
+      education: [
+        {
+          title: "AI Game Changer — AI Solutions Developer",
+          detail: "Brain AI School‏ · 2026 · 12 שבועות",
+          text: "הכשרה מעשית בתרגום צרכים עסקיים לפתרונות AI, בעזרת Claude Code, Make ו־Supabase.",
+        },
+        {
+          title: "תואר ראשון בקולנוע וטלוויזיה — צילום",
+          detail: "אוניברסיטת תל אביב · ⁦2022–2025⁩",
+          text: "צלם ראשי כפרילנסר בסרטים קצרים, צילום ועריכה של וידאו לרשתות החברתיות עבור מוסדות ציבור ותרבות. עבודה על סט היא תכנון סביב אילוצים, בתוך צוות, כשאין עודף זמן ואין תקציב לטעויות.",
+        },
+        {
+          title: "הכשרה במערכות, רשתות וסייבר",
+          detail: "See Security International College\n⁦2021–2022⁩",
+          text: "שני קורסים: System and Network Practitioner & Cyber Security Preparation ו־Cyber SOC Analyst. רשתות, Linux, Python, יסודות אבטחת מידע ותגובה לאירועים.",
+        },
+      ],
       labels: {
         experience: "ניסיון",
         work: "עבודות נבחרות",
-        background: "הרקע שלי",
-        tools: "עבדתי עם",
+        background: "השכלה ורקע",
+        tools: "כישורים טכניים",
         contact: "יצירת קשר",
         site: "האתר",
       },
@@ -804,21 +922,21 @@ export const resumes: Record<Locale, ResumeData> = {
         category: "קמפיינים יוצאים",
         title: "בקרת קמפיינים בעזרת קוד ו־AI.",
         summary:
-          "ניהול קמפיינים יוצאים וניתוח התוצאות: תהליך סקירה שבו ההכרעה נשארת אצל אדם, אבחון של כשל ברישום תוצאות, ושחזור נתוני קמפיין ב־SQL.",
+          "ניהול קמפיינים יוצאים וניתוח התוצאות: תהליך מדורג של סקריפטים וניתוח LLM, כללים כתובים למה שנחשב ממצא, ואבחון של כשל ברישום תוצאות.",
         status: "שימש בקמפיינים היוצאים",
-        technologies: ["סקריפטים", "SQL", "LLM", "בדיקה אנושית"],
+        technologies: ["סקריפטים", "LLM", "סקירת ממצאים"],
         diagram: {
           label: "מהנתונים להחלטה",
-          steps: ["חילוץ", "מבנה", "סקירה", "אימות"],
+          steps: ["חילוץ", "סינון", "ניתוח", "ממצאים"],
           caption: "איך קוראים קמפיין בלי לקרוא כל תמליל",
         },
-        role: "במשך תקופה לקוחות הקמפיינים היוצאים היו היום־יום שלי: לקרוא את התוצאות של כל קמפיין, לתחקר כשלים בסוכנים ובכלים שחזרו על עצמם, לתקן את מה שהיה בצד שלי, ולדווח ללקוח.",
+        role: "במשך תקופה לקוחות הקמפיינים היוצאים היו היום־יום שלי: לנתח את התוצאות של כל קמפיין, לתחקר כשלים בסוכנים ובכלים שחזרו על עצמם, לתקן את מה שהיה בצד שלי, ולדווח ללקוח.",
         sections: [
           {
             title: "הצורך",
             paragraphs: [
               "קמפיין יוצא מייצר הרבה תמלילים בכמה שעות, והלקוח מחכה להכרעה. לקרוא את הכול דרך LLM זה יקר, וגרוע מזה, זה מזמין מסקנות שהדאטה לא יכולה לתמוך בהן: דוח יכול להצביע על בעיה בסוכן או על בעיה בכלי, אבל דפוס שסקריפט סימן הוא עדיין לא ממצא.",
-              "ההכרעה הזאת קובעת דברים אמיתיים: האם הפתיח של הסוכן משתנה, האם כלי מתוקן, האם הקמפיין ממשיך לחייג. אז השאלה היא איך קוראים קמפיין בלי לקרוא כל תמליל, ובלי לתת לסקריפט או למודל להחליט מה קרה לבן אדם בשיחה.",
+              "ההכרעה הזאת קובעת דברים אמיתיים: האם הפתיח של הסוכן משתנה, האם כלי מתוקן, האם הקמפיין ממשיך לחייג. אז השאלה היא איך מנתחים קמפיין בלי להעביר הכול דרך מודל, ובלי לתת לסקריפט להחליט מה קרה לבן אדם בשיחה.",
             ],
           },
           {
@@ -832,39 +950,35 @@ export const resumes: Record<Locale, ResumeData> = {
           {
             title: "מה סופרים בקוד, ומה לא",
             paragraphs: [
-              "השאלה היא לא מה בודקים בקוד ומה בודקים בעיניים, אלא על מה מותר לקוד לרוץ בכלל. מה שהסוכן אומר חוזר על עצמו כמעט תמיד: אותן שורות תסריט, שיחה אחרי שיחה, ולכן ספירה על דיבור הסוכן ועל מטא־דאטה היא לגיטימית. דיבור הלקוח פתוח ומשובש בשגיאות זיהוי, ולכן הוא אף פעם לא נמדד מכנית. מבחן מעשי: אם סקריפט מוציא רשימת ממצאים במקום ספירות, הוא עבר את הקו.",
+              "השאלה האמיתית הייתה אילו נתונים אפשר לתת לקוד לספור. מה שהסוכן אומר חוזר על עצמו כמעט תמיד: אותן שורות תסריט, שיחה אחרי שיחה, ולכן אפשר לספור בקוד את דיבור הסוכן ואת נתוני השיחה. דיבור הלקוח פתוח ומלא בשגיאות זיהוי: קוד יכול לארגן אמירות ולספור כמה פעמים כל אחת נאמרה, אבל התאמת מילות מפתח לבדה לא יכולה לקבוע מה הן אומרות. מבחן מעשי: אם סקריפט מוציא רשימת ממצאים במקום ספירות, הוא עבר את הקו.",
               "המגבלות מוצהרות מראש. בדאטה השמורה אין תזמון תורים, אין רישום קטיעות ואין סיבת ניתוק, ולכן מסקנה יכולה לומר שהפתיח חלש, ולעולם לא למה. ומונה ה״לא נענו״ של הפלטפורמה מציג אפס בכוונה, כי ליד שלא נענה חוזר לתור, אז אי־מענה נמדד ממקור אחר.",
             ],
           },
           {
-            title: "חילוץ, מבנה, סקירה, אימות",
+            title: "מהתמלילים לממצאים",
             paragraphs: [
-              "הקוד עושה את החילוץ. שורה שהסוכן אומר בכל שיחה מקבלת מזהה ומופיעה פעם אחת, עם ספירה של כמה פעמים נאמרה; אמירות של לקוחות וחריגות של הסוכן נשמרות מילה במילה. ואז הקריאה הולכת בשכבות. מעבר מבני על כל שיחה, בסקריפט, סופר עד לאן כל שיחה הגיעה: פתיח, פיץ׳, שאלת הסגירה, איזה כלי נורה ובאיזה תור. אחר כך אני קורא כל שיחה שנגמרה בתוצאה, וכל שיחה שבה שאלת הסגירה נשאלה ובכל זאת השיחה נגמרה בלי תוצאה, כי אלה הרגעים שבהם שיפוט שגוי עולה בליד. ורשימה של כל אמירה ייחודית של לקוחות, עם כמה פעמים נאמרה, מראה מה שהספירות לא יכולות: מה אנשים באמת שאלו, ומה הסוכן אף פעם לא טיפל בו.",
-              "רק אז רץ ניתוח LLM ממוקד, על המקרים שמצדיקים אותו, ואני מאמת מה שהוא אומר. המדדים מקובצים לפי מי שצריך לתקן אותם, וממצא חייב לעבור שלושה שערים לפני שהוא נספר: ציטוט מילה במילה, הצלבה מול התוצאה שנרשמה לשיחה, וסימון אם הוא נמדד או הונח, כי היעדר אירוע של כלי הוא לא הוכחה שהכלי לא נורה.",
+              "הסינון היה נחוץ משתי סיבות. הרבה חיוגים לא הפכו לשיחה של ממש, ורוב הטקסט בקמפיין היה הסוכן שחוזר על התסריט שלו, כך ששליחה של הכול למודל הייתה בעיקר תשלום על אותן שורות. גם קיצורי דרך לא עבדו: התאמת דיבור הלקוח לרשימת מילים פספסה את רוב בקשות ההסרה.",
+              "לכן סקריפטים סיננו את התמלילים בשתי שכבות, עוד לפני שהגיעו למודל. השכבה הראשונה בדקה את אורך התמליל, והשנייה עד לאן השיחה הגיעה: פתיח, פיץ׳, שאלת הסגירה. הסינון השתפר תוך כדי העבודה: בהתחלה הוא נשען רק על מספר התורים, וויתרתי על זה כשהתברר ששיחות שהסוכן סיים בעצמו נשארו בחוץ. משם המשכתי לחדד את הקריטריונים.",
+              "התמלילים שעברו את שני הסינונים הועברו ל־LLM, שניתח אותם והציג את הממצאים. קראתי את הממצאים לפני הדיווח ללקוח.",
+              "השיטה הכתובה לא עצרה בסינון. היא כיוונה את הניתוח לשיחות שנרשמה בהן תוצאה, לשיחות שבהן הלקוח ענה לשאלת הסגירה ובכל זאת לא נרשמה תוצאה, ולאמירות הייחודיות של הלקוחות. היא דרשה לוודא שהנתונים מלאים ולכתוב הגדרות לפני הניתוח, וקבעה מה ממצא חייב לכלול: ציטוט מילה במילה, הצלבה מול התוצאה שנרשמה, וסימון אם הוא נמדד או הונח, כי זה שלא נרשם אירוע של כלי לא מוכיח שהכלי לא נורה. אני מתאר את אלה ככללים כתובים, לא כבדיקות אוטומטיות. המדדים מקובצים לפי מי שצריך לתקן אותם.",
             ],
           },
           {
             title: "בוקר עם אפס תוצאות",
             paragraphs: [
               "בוקר אחד קמפיין גדול רץ במשך שעות, והפלטפורמה רשמה אפס תוצאות בזמן שהגיליון של הלקוח המשיך להתמלא. הכול נראה שבור בבת אחת: הסוכן, הכלים, המנוע. צמצמתי את זה עם קבוצת ביקורת: קמפיין אחר מאותו יום, על אותו מנוע, שהסוכן שלו השתמש בכלים המובנים של המנוע. התוצאות שלו נרשמו. אז התקלה גרה במסלול של הכלים המותאמים. על הכלי הזה היה אחראי מישהו אחר, אז עד סוף היום העברתי לו רשימה קצרה של באגים לפי חומרה, כל אחד עם מזהי השיחה כדי לשחזר אותו.",
-              "אותו יום הראה גם למה דגל הוא לא ממצא. הרבה שורות סומנו כבקשות לחזור; כשקראתי אותן מול המילים של הלקוח עצמו, רוב הבקשות לא היו כאלה. וכל בקשות ההסרה סומנו נכון, וזה הדבר הראשון שבדקתי, כי הסרה שפוספסה היא הטעות האחת שקמפיין לא יכול להרשות לעצמו. מהיום הזה יצאה הגרסה של סקירת הקמפיין שמתוארת כאן.",
-            ],
-          },
-          {
-            title: "בנייה מחדש של רשומות קמפיין",
-            paragraphs: [
-              "את הרשומות של קמפיין אחד היה צריך לבנות מחדש מהמקורות ששרדו. הכנתי את השחזור ב־SQL כך שירוץ פעם אחת, כולו או כלום: אזור staging, טרנזקציה אחת, תנאי קדם, בדיקות לפני commit, הגנה שמונעת חיוג לכל רשומה משוחזרת, וקובץ rollback נפרד. מה שלא ניתן היה לשחזר תועד ככזה, ולא הושלם בניחוש.",
+              "אותו יום הראה גם למה סימון הוא עדיין לא ממצא. הניתוח תיעד שרוב השורות שסומנו כבקשות לחזור לא תאמו את מה שהלקוח אמר בפועל. בנתונים שנבדקו, בקשות ההסרה סומנו נכון, וזה החלק החשוב ביותר, כי הסרה שפוספסה היא הטעות האחת שקמפיין לא יכול להרשות לעצמו. מהיום הזה יצאה הגרסה של סקירת הקמפיין שמתוארת כאן.",
             ],
           },
           {
             title: "התוצאה",
             paragraphs: [
-              "התהליך רץ כל עוד לקוחות הקמפיינים היוצאים היו היום־יום שלי: קודם חילוץ קל, ניתוח מעמיק רק איפה שהיה מוצדק, ואני על כל ממצא לפני שהגיע ללקוח. כשהתקופה נגמרה, כל לקוח עבר למי שבא אחריי עם מסמך מסירה: איפה הדברים עומדים, מה חוסם, ומה הצעד הבא.",
+              "התהליך רץ כל עוד לקוחות הקמפיינים היוצאים היו היום־יום שלי: קודם סינון, אחר כך ניתוח LLM של מה שנשאר, וקריאת הממצאים לפני הדיווח ללקוח. כשהתקופה נגמרה, כל לקוח עבר למי שבא אחריי עם מסמך מסירה: איפה הדברים עומדים, מה חוסם, ומה הצעד הבא.",
             ],
           },
         ],
         takeaway:
-          "מתחילים בבדיקה הפשוטה ביותר שמצמצמת את השאלה, מודדים רק מה שהדאטה באמת יכולה לענות עליו, ומשאירים אדם על ההכרעה.",
+          "מתחילים בבדיקה הפשוטה ביותר שמצמצמת את השאלה, מודדים רק מה שהדאטה באמת יכולה לענות עליו, ומחליטים מראש מה ממצא חייב לכלול.",
       },
       {
         slug: "voice-agent-playbook",
