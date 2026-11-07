@@ -1,5 +1,5 @@
-import { resumes, casePath } from "@/data/resume";
-import type { Locale, ResumeData } from "@/lib/types";
+import { resume, casePath } from "@/data/resume";
+import type { ResumeData } from "@/lib/types";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -33,11 +33,11 @@ function HeroFacts({ data }: { data: ResumeData }) {
   );
 }
 
-export function Portfolio({ locale }: { locale: Locale }) {
-  const data = resumes[locale];
+export function Portfolio() {
+  const data = resume;
   return (
     <>
-      <Nav locale={locale} data={data} />
+      <Nav data={data} />
       <main id="main" tabIndex={-1}>
         <section id="top" className="hero container">
           <div className="hero-grid">
@@ -115,7 +115,7 @@ export function Portfolio({ locale }: { locale: Locale }) {
                   <h3>
                     <a
                       className="project-link"
-                      href={casePath(locale, project.slug)}
+                      href={casePath(project.slug)}
                     >
                       {project.title}
                       <span className="card-arrow">
@@ -133,7 +133,7 @@ export function Portfolio({ locale }: { locale: Locale }) {
                   </ul>
                   <a
                     className="read-case"
-                    href={casePath(locale, project.slug)}
+                    href={casePath(project.slug)}
                   >
                     {data.work.read}
                     <Arrow />
@@ -220,7 +220,7 @@ export function Portfolio({ locale }: { locale: Locale }) {
             </div>
           </div>
         </section>
-        <Contact locale={locale} data={data} />
+        <Contact data={data} />
       </main>
       <Footer data={data} />
     </>

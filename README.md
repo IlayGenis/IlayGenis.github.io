@@ -1,10 +1,10 @@
 # Ilay Genis — portfolio
 
-The source of my portfolio site: **[ilaygenis.github.io](https://ilaygenis.github.io)** · [עברית](https://ilaygenis.github.io/he/)
+The source of my portfolio site: **[ilaygenis.github.io](https://ilaygenis.github.io)**
 
 I'm an AI Solutions Engineer. I start from the business need, design the solution, and build AI agents, integrations and operational systems that actually work.
 
-- **CV (PDF):** [English](https://ilaygenis.github.io/cv/ilay-genis-cv-en.pdf) · [עברית](https://ilaygenis.github.io/cv/ilay-genis-cv-he.pdf)
+- **CV (PDF):** [ilay-genis-cv-en.pdf](https://ilaygenis.github.io/cv/ilay-genis-cv-en.pdf)
 - **LinkedIn:** [linkedin.com/in/ilaygenis](https://www.linkedin.com/in/ilaygenis/)
 
 ## What's on the site
@@ -21,9 +21,10 @@ The descriptions are public and anonymized. No client names, client data or inte
 ## How the site is built
 
 - A static export of Next.js, deployed to GitHub Pages on every push to `main`.
-- English and Hebrew from the same content file (`data/resume.ts`), with right-to-left layout in Hebrew.
-- The CV is a page on the site, printed to PDF at build time in both languages. The build fails if either PDF runs past one page.
-- Every page has its own share image in each language, written by Chrome at build time from the same content file. The build fails if the text doesn't fit.
+- All content comes from one file (`data/resume.ts`).
+- The CV is a page on the site, printed to PDF at build time. The build fails if the PDF runs past one page.
+- Every page has its own share image, written by Chrome at build time from the same content file. The build fails if the text doesn't fit.
+- The site used to have a Hebrew version; its old addresses under `/he/` forward to the English pages.
 - Pages render at build time and work without JavaScript.
 
 Coding agents wrote most of the code. I set the requirements and the behavior, and checked the result.
@@ -35,4 +36,4 @@ npm ci
 npm run dev
 ```
 
-`npm run build` writes the site to `out/` and prints the CV PDFs; that step needs Chrome installed.
+`npm run build` writes the site to `out/` and prints the CV PDF; that step needs Chrome installed.

@@ -1,16 +1,14 @@
-import type { Locale, ResumeData } from "@/lib/types";
+import type { ResumeData } from "@/lib/types";
 import { cvFile } from "@/data/resume";
 import { Arrow } from "@/components/ui/Arrow";
 import { CopyEmail } from "@/components/ui/CopyEmail";
 
 export function Contact({
-  locale,
   data,
   label,
   title,
   intro,
 }: {
-  locale: Locale;
   data: ResumeData;
   label?: string;
   title?: string;
@@ -53,7 +51,7 @@ export function Contact({
                 <Arrow diagonal />
               </a>
             ))}
-            <a href={cvFile(locale)} target="_blank" rel="noopener noreferrer">
+            <a href={cvFile} target="_blank" rel="noopener noreferrer">
               <bdi>{data.contact.cv}</bdi>
               <Arrow diagonal />
             </a>

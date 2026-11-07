@@ -6,7 +6,7 @@
   --color-fg-muted: #5c645b;
   --color-accent: #d5ee9a;
   --color-border: #daddd4;
-  --font-sans: var(--font-inter), var(--font-heebo), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
   --font-mono: var(--font-jetbrains-mono), monospace;
 }
 
@@ -30,13 +30,10 @@ body {
   margin: 0;
   background: var(--page);
   color: var(--ink);
-  font-family: var(--font-inter), var(--font-heebo), sans-serif;
+  font-family: var(--font-inter), sans-serif;
   font-size: 16px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
-}
-html[lang="he"] body {
-  font-family: var(--font-heebo), var(--font-inter), sans-serif;
 }
 a {
   color: inherit;
@@ -86,14 +83,11 @@ svg {
   margin-inline: auto;
 }
 .eyebrow {
-  font-family: var(--font-jetbrains-mono), var(--font-heebo), monospace;
+  font-family: var(--font-jetbrains-mono), monospace;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.07em;
   line-height: 1.7;
-}
-[dir="rtl"] .eyebrow {
-  letter-spacing: 0.02em;
 }
 .site-header {
   position: sticky;
@@ -131,19 +125,6 @@ svg {
 .text-link:hover {
   text-decoration: underline;
   text-underline-offset: 5px;
-}
-.language-switch {
-  border-inline-start: 1px solid var(--line);
-  padding-inline-start: 25px;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-}
-.language-switch svg {
-  width: 18px;
-  height: 18px;
 }
 .skip-link {
   position: fixed;
@@ -187,9 +168,8 @@ svg {
   gap: 65px;
   margin-block: 0 22px;
 }
-/* Both languages get the same hero height on desktop: the shorter Hebrew
-   intro would otherwise end the first screen early. .hero-side-top pushes
-   the paragraph and buttons to the bottom, level with the headline. */
+/* A fixed minimum hero height on desktop. .hero-side-top pushes the
+   paragraph and buttons to the bottom, level with the headline. */
 @media (min-width: 1101px) {
   .hero-grid {
     min-height: 536px;
@@ -223,19 +203,6 @@ svg {
   font-weight: 400;
   letter-spacing: -0.065em;
 }
-/* Hebrew runs ~10% wider than the English headline, so it is scaled down at
-   every breakpoint to keep each line on one line. */
-[dir="rtl"] .hero h1 {
-  font-size: clamp(54px, 6.2vw, 89px);
-  letter-spacing: -0.045em;
-  line-height: 1.16;
-}
-[dir="rtl"] .hero-accent {
-  font-family: inherit;
-  font-style: normal;
-  font-weight: 300;
-  letter-spacing: -0.035em;
-}
 .hero-intro {
   display: flex;
   flex-direction: column;
@@ -260,8 +227,8 @@ svg {
   align-items: center;
   flex-wrap: wrap;
   gap: 25px;
-  /* auto: any spare column height (the shorter Hebrew intro on desktop)
-     opens between the paragraph and the buttons, not under the portrait. */
+  /* auto: any spare column height opens between the paragraph and the
+     buttons, not under the portrait. */
   margin-top: auto;
   padding-top: 28px;
 }
@@ -283,9 +250,6 @@ svg {
 .arrow {
   width: 22px;
   height: 22px;
-}
-[dir="rtl"] .arrow {
-  transform: scaleX(-1);
 }
 .text-link {
   display: inline-block;
@@ -396,7 +360,7 @@ svg {
   align-items: center;
   gap: 20px;
   font-size: 11px;
-  font-family: var(--font-jetbrains-mono), var(--font-heebo), monospace;
+  font-family: var(--font-jetbrains-mono), monospace;
   letter-spacing: 0.03em;
   color: var(--muted);
 }
@@ -519,7 +483,7 @@ svg {
 }
 .diagram-label {
   font-size: 11px;
-  font-family: var(--font-jetbrains-mono), var(--font-heebo), monospace;
+  font-family: var(--font-jetbrains-mono), monospace;
   letter-spacing: 0.04em;
 }
 /* Mono labels: a monospace space is a full cell, so word gaps read as
@@ -527,21 +491,6 @@ svg {
 .eyebrow,
 .work-meta,
 .diagram-label {
-  word-spacing: -0.25em;
-}
-/* Hebrew labels: the mono face has no Hebrew glyphs, and its wide space
-   plus letter-spacing reads as double spaces. Use Heebo for RTL labels. */
-[dir="rtl"] .eyebrow,
-[dir="rtl"] .work-meta,
-[dir="rtl"] .diagram-label {
-  font-family: var(--font-heebo), sans-serif;
-  letter-spacing: 0.01em;
-  word-spacing: normal;
-}
-[dir="rtl"] .eyebrow[dir="ltr"],
-[dir="rtl"] .work-number {
-  font-family: var(--font-jetbrains-mono), monospace;
-  letter-spacing: 0.03em;
   word-spacing: -0.25em;
 }
 
@@ -699,9 +648,6 @@ svg {
   font-size: 38px;
   line-height: 1.1;
   width: fit-content;
-}
-[dir="rtl"] .ownership-symbol {
-  transform: scaleX(-1);
 }
 .ownership h3 {
   font-size: 18px;
@@ -1059,9 +1005,6 @@ svg {
     margin: 65px 24px 28px 0;
     padding: 24px 14px;
   }
-  [dir="rtl"] .featured .process-diagram.compact {
-    margin: 65px 0 28px 24px;
-  }
   .work-card:not(.featured) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1074,18 +1017,12 @@ svg {
     justify-content: center;
     padding: 24px 14px;
   }
-  [dir="rtl"] .work-card:not(.featured) .process-diagram.compact {
-    margin: 65px 0 28px 24px;
-  }
   .hero-grid {
     grid-template-columns: 1.4fr 1fr;
     gap: 32px;
   }
   .hero h1 {
     font-size: 72px;
-  }
-  [dir="rtl"] .hero h1 {
-    font-size: 65px;
   }
   .hero-intro > p {
     font-size: 16px;
@@ -1139,9 +1076,6 @@ svg {
   .nav-links {
     gap: 18px;
   }
-  .language-switch {
-    padding-inline-start: 18px;
-  }
   .wordmark {
     gap: 10px;
   }
@@ -1155,9 +1089,6 @@ svg {
   }
   .hero h1 {
     font-size: clamp(58px, 10vw, 83px);
-  }
-  [dir="rtl"] .hero h1 {
-    font-size: clamp(50px, 9vw, 75px);
   }
   .hero-intro {
     max-width: 590px;
@@ -1252,10 +1183,6 @@ svg {
   .wordmark {
     font-size: 17px;
   }
-  .language-switch {
-    border: 0;
-    padding: 0;
-  }
   .nav-links {
     width: 100%;
     order: 3;
@@ -1290,9 +1217,6 @@ svg {
   .hero h1 {
     font-size: clamp(48px, 12.4vw, 72px);
     letter-spacing: -0.065em;
-  }
-  [dir="rtl"] .hero h1 {
-    font-size: clamp(41px, 11.2vw, 65px);
   }
   .hero-intro > p {
     font-size: 16px;
@@ -1367,9 +1291,7 @@ svg {
   }
   .work-card .process-diagram.compact,
   .featured .process-diagram.compact,
-  .work-card:not(.featured) .process-diagram.compact,
-  [dir="rtl"] .featured .process-diagram.compact,
-  [dir="rtl"] .work-card:not(.featured) .process-diagram.compact {
+  .work-card:not(.featured) .process-diagram.compact {
     margin: 0 18px 18px;
     padding: 22px 18px;
   }
@@ -1708,10 +1630,6 @@ svg {
 .cv-toolbar .button {
   margin-inline-start: auto;
 }
-.cv-toolbar .language-switch {
-  min-height: 0;
-  padding-inline-start: 20px;
-}
 .cv-sheet {
   --cv-line: #d3d7cd;
   --cv-muted: #5c645b;
@@ -1759,13 +1677,9 @@ svg {
 .cv-links {
   flex-shrink: 0;
   text-align: end;
-  font-family: var(--font-jetbrains-mono), var(--font-heebo), monospace;
+  font-family: var(--font-jetbrains-mono), monospace;
   font-size: 8pt;
   line-height: 1.65;
-}
-[dir="rtl"] .cv-links {
-  font-family: var(--font-heebo), sans-serif;
-  font-size: 8.3pt;
 }
 .cv-columns {
   display: grid;
@@ -1786,7 +1700,7 @@ svg {
   margin-block-start: 7pt;
 }
 .cv-section h2 {
-  font-family: var(--font-jetbrains-mono), var(--font-heebo), monospace;
+  font-family: var(--font-jetbrains-mono), monospace;
   font-size: 7.4pt;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -1795,11 +1709,6 @@ svg {
   border-bottom: 1px solid var(--cv-line);
   padding-block-end: 3pt;
   margin-block-end: 6pt;
-}
-[dir="rtl"] .cv-section h2 {
-  font-family: var(--font-heebo), sans-serif;
-  font-size: 8.2pt;
-  letter-spacing: normal;
 }
 .cv-section h3 {
   font-size: inherit;
@@ -1903,22 +1812,6 @@ svg {
   inline-size: 12pt;
   text-align: center;
   color: var(--cv-muted);
-}
-/* Heebo reads smaller than Inter at the same size, and the Hebrew text runs
-   shorter, so the Hebrew sheet sets a slightly larger type scale. */
-@media print, screen and (min-width: 861px) {
-  [dir="rtl"] .cv-sheet {
-    font-size: 9.4pt;
-  }
-  [dir="rtl"] .cv-summary {
-    font-size: 10.15pt;
-  }
-  [dir="rtl"] .cv-job h3 {
-    font-size: 10.5pt;
-  }
-  [dir="rtl"] .cv-detail {
-    font-size: 9pt;
-  }
 }
 @media screen and (max-width: 860px) {
   .cv-screen {

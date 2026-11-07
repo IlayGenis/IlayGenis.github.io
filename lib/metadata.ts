@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { resumes, homePath, casePath, cvPath, ogFile } from "@/data/resume";
-import type { Locale, CaseStudy } from "@/lib/types";
+import { resume, homePath, casePath, cvPath, ogFile } from "@/data/resume";
+import type { CaseStudy } from "@/lib/types";
 
 export const siteOrigin = "https://ilaygenis.github.io";
 
-function shareImage(locale: Locale, page: string, alt: string) {
+function shareImage(page: string, alt: string) {
   return {
-    url: ogFile(locale, page),
+    url: ogFile(page),
     width: 1200,
     height: 630,
     type: "image/png",
@@ -14,17 +14,14 @@ function shareImage(locale: Locale, page: string, alt: string) {
   };
 }
 
-export function portfolioMetadata(
-  locale: Locale,
-  project?: CaseStudy,
-): Metadata {
-  const data = resumes[locale];
+export function portfolioMetadata(project?: CaseStudy): Metadata {
+  const data = resume;
   const title = project
     ? `${project.title} | ${data.name}`
     : `${data.name} — ${data.title}`;
   const description = project?.summary ?? data.summary;
-  const path = project ? casePath(locale, project.slug) : homePath(locale);
-  const image = shareImage(locale, project?.slug ?? "home", title);
+  const path = project ? casePath(project.slug) : homePath;
+  const image = shareImage(project?.slug ?? "home", title);
   return {
     metadataBase: new URL(siteOrigin),
     title,
@@ -32,19 +29,13 @@ export function portfolioMetadata(
     icons: { icon: "/icon.png" },
     alternates: {
       canonical: path,
-      languages: {
-        en: project ? casePath("en", project.slug) : homePath("en"),
-        he: project ? casePath("he", project.slug) : homePath("he"),
-        "x-default": project ? casePath("en", project.slug) : homePath("en"),
-      },
     },
     openGraph: {
       title,
       description,
       url: path,
       siteName: data.name,
-      locale: locale === "he" ? "he_IL" : "en_US",
-      alternateLocale: locale === "he" ? "en_US" : "he_IL",
+      locale: "en_US",
       type: "website",
       images: [image],
     },
@@ -57,30 +48,24 @@ export function portfolioMetadata(
   };
 }
 
-export function cvMetadata(locale: Locale): Metadata {
-  const data = resumes[locale];
+export function cvMetadata(): Metadata {
+  const data = resume;
   const title = `${data.name} — ${data.cv.title}`;
-  const image = shareImage(locale, "cv", title);
+  const image = shareImage("cv", title);
   return {
     metadataBase: new URL(siteOrigin),
     title,
     description: data.summary,
     icons: { icon: "/icon.png" },
     alternates: {
-      canonical: cvPath(locale),
-      languages: {
-        en: cvPath("en"),
-        he: cvPath("he"),
-        "x-default": cvPath("en"),
-      },
+      canonical: cvPath,
     },
     openGraph: {
       title,
       description: data.summary,
-      url: cvPath(locale),
+      url: cvPath,
       siteName: data.name,
-      locale: locale === "he" ? "he_IL" : "en_US",
-      alternateLocale: locale === "he" ? "en_US" : "he_IL",
+      locale: "en_US",
       type: "profile",
       images: [image],
     },

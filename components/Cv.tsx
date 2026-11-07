@@ -1,13 +1,11 @@
-import { resumes, homePath, casePath, cvPath, cvFile } from "@/data/resume";
+import { resume, homePath, casePath, cvFile } from "@/data/resume";
 import { siteOrigin } from "@/lib/metadata";
-import type { Locale } from "@/lib/types";
 
 // The printable CV. Every string comes from data/resume.ts: shared facts from
 // the same fields as the site, CV-specific wording from `cv`.
 // scripts/build-cv.mjs prints this route to a one-page PDF.
-export function Cv({ locale }: { locale: Locale }) {
-  const data = resumes[locale];
-  const other: Locale = locale === "en" ? "he" : "en";
+export function Cv() {
+  const data = resume;
   const site = siteOrigin.replace(/^https?:\/\//, "");
   const shown = (href: string, label: string) =>
     href.startsWith("https://wa.me")
@@ -16,22 +14,11 @@ export function Cv({ locale }: { locale: Locale }) {
   return (
     <div className="cv-screen">
       <nav className="cv-toolbar" aria-label={data.nav.label}>
-        <a className="text-link" href={homePath(locale)}>
+        <a className="text-link" href={homePath}>
           {data.cv.back}
         </a>
-        <a className="button" href={cvFile(locale)} download>
+        <a className="button" href={cvFile} download>
           {data.cv.download}
-        </a>
-        <a
-          className="language-switch"
-          href={cvPath(other)}
-          hrefLang={other}
-          lang={other}
-          aria-label={data.nav.language}
-        >
-          <span dir={other === "he" ? "rtl" : "ltr"}>
-            {locale === "en" ? "עברית" : "English"}
-          </span>
         </a>
       </nav>
       <main id="main" className="cv-sheet" tabIndex={-1}>
@@ -58,7 +45,7 @@ export function Cv({ locale }: { locale: Locale }) {
               </li>
             ))}
             <li>
-              <a href={`${siteOrigin}${homePath(locale)}`}>
+              <a href={`${siteOrigin}${homePath}`}>
                 <bdi>{site}</bdi>
               </a>
             </li>
@@ -129,7 +116,7 @@ export function Cv({ locale }: { locale: Locale }) {
           <ul className="cv-work">
             {data.projects.map((project) => {
               const { title, summary } = data.cv.work[project.slug];
-              const href = `${siteOrigin}${casePath(locale, project.slug)}`;
+              const href = `${siteOrigin}${casePath(project.slug)}`;
               return (
                 <li key={project.slug}>
                   <h3>

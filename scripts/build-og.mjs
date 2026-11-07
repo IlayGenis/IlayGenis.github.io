@@ -1,15 +1,13 @@
-// build-og.mjs — render the share image of every page and language.
+// build-og.mjs — render the share image of every page.
 //
 // Runs as `postbuild` after build-cv: reads the cards from out/og/cards.json
 // (app/og/cards.json/route.ts), screenshots each one in headless Chrome into
-// out/og/, and fails loudly when text doesn't fit. Chrome rather than next/og,
-// because next/og lays Hebrew out in reverse. To change the wording, edit
+// out/og/, and fails loudly when text doesn't fit. To change the wording, edit
 // lib/og.ts or data/resume.ts; the design is the template below.
 import {
   copyFileSync,
   existsSync,
   mkdirSync,
-  readdirSync,
   readFileSync,
   rmSync,
   writeFileSync,
@@ -36,28 +34,8 @@ if (!existsSync(geistFile)) fail(`${geistFile} not found; did a Next.js upgrade 
 // ---------- Fonts ----------
 const dataUrl = (file, type) => `data:${type};base64,${readFileSync(file).toString("base64")}`;
 
-// The Hebrew subset of Heebo, as next/font already downloaded it for the site.
-function heeboHebrewFile() {
-  const staticDir = path.join(outDir, "_next/static");
-  for (const entry of readdirSync(staticDir, { recursive: true })) {
-    if (!entry.endsWith(".css")) continue;
-    const css = readFileSync(path.join(staticDir, entry), "utf8");
-    for (const [face] of css.matchAll(/@font-face\{font-family:Heebo;[^}]*\}/g)) {
-      const url = face.match(/url\(\.\.\/media\/([^)]+)\)/);
-      if (url && face.includes("U+590-5FF")) return path.join(staticDir, "media", url[1]);
-    }
-  }
-  fail("the Hebrew Heebo face was not found in the exported CSS");
-}
-
 const fontCss = `
-  @font-face { font-family: Geist; src: url(${dataUrl(geistFile, "font/ttf")}); }
-  @font-face {
-    font-family: Heebo;
-    font-weight: 100 900;
-    src: url(${dataUrl(heeboHebrewFile(), "font/woff2")});
-    unicode-range: U+307-308, U+590-5FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
-  }`;
+  @font-face { font-family: Geist; src: url(${dataUrl(geistFile, "font/ttf")}); }`;
 
 // ---------- Template ----------
 const escapeHtml = (text) =>
@@ -65,7 +43,7 @@ const escapeHtml = (text) =>
 
 function cardHtml(card) {
   return `<!doctype html>
-<html lang="${card.locale}" dir="${card.locale === "he" ? "rtl" : "ltr"}">
+<html lang="en" dir="ltr">
 <meta charset="utf-8">
 <style>
   ${fontCss}
@@ -76,7 +54,7 @@ function cardHtml(card) {
     display: flex;
     flex-direction: column;
     padding: ${padding.top}px ${padding.side}px ${padding.bottom}px;
-    font-family: Heebo, Geist, sans-serif;
+    font-family: Geist, sans-serif;
     font-weight: 400;
     text-align: start;
     overflow: hidden;
@@ -166,11 +144,8 @@ try {
       html: cardHtml(card),
     });
     // A missing font would silently fall back to a system face.
-    const fonts = await evaluate(`Promise.all([
-      document.fonts.load("28px Geist", "a"),
-      document.fonts.load("28px Heebo", "א"),
-    ]).then((faces) => faces.flat().length)`);
-    if (fonts !== 2) throw new Error(`${card.file}: expected 2 fonts, loaded ${fonts}`);
+    const fonts = await evaluate(`document.fonts.load("28px Geist", "a").then((faces) => faces.length)`);
+    if (fonts !== 1) throw new Error(`${card.file}: expected the Geist font, loaded ${fonts}`);
 
     const { problems, px } = await evaluate(`(${fitCard})()`);
     if (problems.length) {

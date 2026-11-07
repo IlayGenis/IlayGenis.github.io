@@ -1,5 +1,5 @@
-import { resumes, homePath, casePath } from "@/data/resume";
-import type { CaseStudy as CaseData, Locale } from "@/lib/types";
+import { resume, homePath, casePath } from "@/data/resume";
+import type { CaseStudy as CaseData } from "@/lib/types";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { Arrow } from "@/components/ui/Arrow";
@@ -7,14 +7,8 @@ import { ProcessDiagram } from "@/components/ui/ProcessDiagram";
 import { CaseToc } from "@/components/ui/CaseToc";
 import { Contact } from "@/components/sections/Contact";
 
-export function CaseStudy({
-  locale,
-  project,
-}: {
-  locale: Locale;
-  project: CaseData;
-}) {
-  const data = resumes[locale];
+export function CaseStudy({ project }: { project: CaseData }) {
+  const data = resume;
   const nextProject =
     data.projects[
       (data.projects.findIndex((item) => item.slug === project.slug) + 1) %
@@ -22,10 +16,10 @@ export function CaseStudy({
     ];
   return (
     <>
-      <Nav locale={locale} data={data} slug={project.slug} />
+      <Nav data={data} slug={project.slug} />
       <main id="main" className="case-main" tabIndex={-1}>
         <div className="container">
-          <a className="back-link" href={`${homePath(locale)}#work`}>
+          <a className="back-link" href={`${homePath}#work`}>
             <span className="back-arrow">
               <Arrow />
             </span>
@@ -99,18 +93,17 @@ export function CaseStudy({
           </div>
           <div className="case-next">
             <p className="eyebrow">{data.case.next}</p>
-            <a href={casePath(locale, nextProject.slug)}>
+            <a href={casePath(nextProject.slug)}>
               <span>{nextProject.title}</span>
               <Arrow />
             </a>
-            <a className="text-link" href={`${homePath(locale)}#work`}>
+            <a className="text-link" href={`${homePath}#work`}>
               {data.case.all}
             </a>
           </div>
         </div>
       </main>
       <Contact
-        locale={locale}
         data={data}
         label={data.case.contactLabel}
         title={data.case.contactTitle}

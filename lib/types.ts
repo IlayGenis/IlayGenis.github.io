@@ -1,5 +1,3 @@
-export type Locale = "en" | "he";
-
 export interface CaseStudy {
   slug: string;
   number: string;
@@ -24,7 +22,6 @@ export interface ResumeData {
     contact: string;
     cv: string;
     label: string;
-    language: string;
     skip: string;
   };
   hero: {
