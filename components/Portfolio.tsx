@@ -73,11 +73,9 @@ export function Portfolio() {
                   {data.hero.availability}
                 </span>
               </div>
-              <p>{data.hero.intro}</p>
-              {/* Mobile only: the same facts, before the buttons, so nothing is skipped. */}
-              <div className="hero-facts-inline">
-                <HeroFacts data={data} />
-              </div>
+              {data.hero.intro.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
               {/* One action. The work section starts right below the hero, so a
                   "see my work" button only scrolled to what was already visible. */}
               <div className="hero-actions">
@@ -85,6 +83,11 @@ export function Portfolio() {
                   {data.hero.contact}
                   <Arrow />
                 </a>
+              </div>
+              {/* Mobile only: the same facts as the strip below the hero, after
+                  the button so the action comes right after the introduction. */}
+              <div className="hero-facts-inline">
+                <HeroFacts data={data} />
               </div>
             </div>
           </div>
@@ -123,7 +126,7 @@ export function Portfolio() {
                       </span>
                     </a>
                   </h3>
-                  <p>{project.summary}</p>
+                  <p>{project.cardSummary ?? project.summary}</p>
                   <ul className="tags">
                     {project.technologies.map((tech) => (
                       <li key={tech}>
@@ -213,10 +216,6 @@ export function Portfolio() {
                   <p>{item.text}</p>
                 </article>
               ))}
-            </div>
-            <div className="next-step">
-              <h3>{data.background.nextTitle}</h3>
-              <p>{data.background.next}</p>
             </div>
           </div>
         </section>

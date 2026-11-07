@@ -3,7 +3,10 @@ export interface CaseStudy {
   number: string;
   category: string;
   title: string;
+  // Case page intro and meta description.
   summary: string;
+  // Homepage card text when it differs from `summary`.
+  cardSummary?: string;
   status: string;
   technologies: string[];
   diagram: { label: string; steps: string[]; caption: string };
@@ -27,15 +30,16 @@ export interface ResumeData {
   hero: {
     eyebrow: string;
     lines: string[];
-    intro: string;
+    // The hero introduction, one entry per paragraph.
+    intro: string[];
     availability: string;
     contact: string;
     // Personal facts strip: three labelled blocks under the hero on desktop,
     // repeated between the intro and the buttons on mobile.
-    // Where I am now and when I'm in Israel, then age and languages. The CV
-    // prints both after its own availability note (cv.available).
+    // Where I am now and when I'm in Israel, then languages. The CV has its
+    // own wording (cv.location, cv.personal).
     about: { label: string; location: string; personal: string };
-    // How I work: one sentence that shows the traits instead of listing them.
+    // How I work: a concrete working method, not a list of traits.
     traits: { label: string; text: string };
     focusLabel: string;
     focus: string[];
@@ -64,8 +68,6 @@ export interface ResumeData {
     title: string;
     intro: string;
     items: { title: string; detail: string; text: string }[];
-    nextTitle: string;
-    next: string;
   };
   contact: {
     label: string;

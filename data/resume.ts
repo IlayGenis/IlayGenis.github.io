@@ -18,18 +18,20 @@ export const resume: ResumeData = {
   hero: {
     eyebrow: "AI SOLUTIONS / FORWARD DEPLOYED ENGINEER",
     lines: ["Real problems.", "Practical AI."],
-    intro:
-      "I’m Ilay, an AI Solutions Engineer. I start from the business need, design the solution, and build AI agents, integrations and operational systems that actually work. A few weeks into my first production role, I was already working with clients on my own, from requirements to delivery.",
+    intro: [
+      "I’m Ilay, an AI Solutions Engineer. I work from the business problem to a system people can actually use: understanding requirements, designing how it should behave, building agents and integrations, and testing the results against real workflows.",
+      "My production work includes Hebrew voice agents, CRM-connected tools, and a WhatsApp operations system for a delivery company. Across these projects, I focus on what happens beyond the demo: how the system behaves, where it fails, and what it takes to make it reliable.",
+    ],
     availability: "Open to AI solutions & FDE roles",
     contact: "Get in touch",
     about: {
       label: "ABOUT ME",
-      location: "Based in Bangkok, back in Israel from January 2027.",
-      personal: "Age 27. Native Hebrew, fluent English.",
+      location: "Currently based in Bangkok, returning to Israel in January 2027.",
+      personal: "Native Hebrew, fluent English.",
     },
     traits: {
       label: "HOW I WORK",
-      text: "When something new comes in, I go deep fast and stay on it until it works, and my team gets what it needs from me, on time.",
+      text: "I work from observable behavior, not just convincing AI responses: what the agent said, which tools ran, and what the connected system actually recorded. When something fails, I trace it to the prompt, tool, integration, or platform before deciding what to change.",
     },
     focusLabel: "WHAT I WORK ON",
     focus: ["AI agents & systems", "Integrations", "Testing & reliability"],
@@ -50,7 +52,7 @@ export const resume: ResumeData = {
     tagline: "a voice-AI startup",
     period: "2026 – present",
     intro:
-      "A new company and a small team, building the processes and methods alongside the work.",
+      "At Callex, I worked in a small team delivering production AI solutions for clients, while developing reusable briefs, testing practices, and handoff documentation across projects.",
     items: [
       {
         title: "Business needs → technical requirements",
@@ -70,12 +72,12 @@ export const resume: ResumeData = {
       },
       {
         title: "Complete systems with coding agents",
-        text: "A WhatsApp agent for a delivery company, delivered to production. The company’s website in Next.js, and the design and build of a bilingual client dashboard for the voice-agent platform.",
+        text: "A WhatsApp agent for a delivery company, delivered to production. Callex’s website in Next.js, and the design and build of a bilingual client dashboard for the voice-agent platform.",
       },
     ],
     ownershipTitle: "How I work with coding agents",
     ownership:
-      "Claude Code and Codex write much of the code I ship. My part is the requirements and expected behavior, the integration plan, the trade-offs between technical options, and deciding which rules are enforced in code rather than left to the model. Testing, debugging and validation are on me too. Working habits I built: a brief per project that says what the system should do, a checklist and a simulator before anything goes live, and database changes tested in a separate schema before they reach the real database.",
+      "Claude Code and Codex write much of the code I ship. My part is the requirements and expected behavior, the integration plan, the trade-offs between technical options, and deciding which rules are enforced in code rather than left to the model. Testing, debugging and validation are on me too. Working practices I developed include project briefs, scenario-based testing checklists, a simulator built for the WhatsApp operations system, and database changes tested in a separate schema before production.",
   },
   background: {
     label: "03 / BACKGROUND",
@@ -86,18 +88,18 @@ export const resume: ResumeData = {
     items: [
       {
         title: "AI implementation training",
-        detail: "AI Game Changer program at Brain · 2026",
-        text: "A three-month hands-on program: automation in Make, building with Claude Code and Supabase, and reading business problems. Completed while working at Callex; the foundation for my voice-agent work and client discovery.",
+        detail: "AI Game Changer — AI Solutions Developer · Brain AI School · 2026",
+        text: "A 12-week practical program focused on translating business needs into AI solutions using Claude Code, Make, and Supabase. Completed alongside my work at Callex.",
       },
       {
         title: "Film, cinematography & video",
         detail: "2022–2025",
-        text: "BA in Film and Television at Tel Aviv University, with a focus on cinematography, alongside freelance work: director of photography on short films, shooting and editing social video for public and cultural institutions. Set work is planning around constraints, in a crew, with no spare time and no budget for mistakes.",
+        text: "BA in Film and Television at Tel Aviv University, focused on cinematography. Alongside my studies, I worked as a freelance director of photography on short films and shot and edited social video for public and cultural institutions. Set work involved turning creative requirements into practical plans, coordinating with a crew, and adapting to production constraints.",
       },
       {
         title: "Cyber, systems & networks training",
         detail: "See Security International College · 2021–2022",
-        text: "A ten-month cyber-security preparation program: systems, networks and information-security fundamentals, covering MCSA, CCNA, CCSA, Linux and Python, plus a Cyber SOC Analyst course in incident response and SOC operations.",
+        text: "Completed training in system administration, networking, Linux, Python, and information-security fundamentals, as well as a Cyber SOC Analyst course covering incident response and SOC operations.",
       },
       {
         title: "Technical support",
@@ -105,8 +107,6 @@ export const resume: ResumeData = {
         text: "Customer-facing technical service at an internet provider. Early practice in diagnosing a problem from a description and explaining the fix clearly.",
       },
     ],
-    nextTitle: "What I bring to the team",
-    next: "AI solutions that work for the client, not just in a demo: a brief the team can build from, testing before anything goes live, and documentation others can pick up.",
   },
   contact: {
     label: "04 / CONTACT",
@@ -403,6 +403,8 @@ export const resume: ResumeData = {
       title: "Campaign oversight with code and AI.",
       summary:
         "Running outbound campaigns and analyzing their results: a layered workflow of scripts and LLM analysis, written rules for what counts as a finding, and the diagnosis of a failure in recording results.",
+      cardSummary:
+        "Developed a two-stage filtering workflow for outbound campaign transcripts, followed by LLM analysis. I personally reviewed the model’s findings before reporting to clients, and investigated failures in campaign result recording.",
       status: "Used across outbound campaigns",
       technologies: ["Scripts", "LLM", "Findings review"],
       diagram: {
@@ -526,9 +528,10 @@ export const resume: ResumeData = {
 export const homePath = "/";
 export const casePath = (slug: string) => `/work/${slug}/`;
 export const cvPath = "/cv/";
-// The PDF is written by scripts/build-cv.mjs after `next build`. The file name
-// keeps its "-en" suffix so links already shared to it still work.
-export const cvFile = "/cv/ilay-genis-cv-en.pdf";
+// The PDF is written by scripts/build-cv.mjs after `next build`, which also
+// copies it to the old address, /cv/ilay-genis-cv-en.pdf, so links already
+// shared there still work.
+export const cvFile = "/cv/ilay-genis-cv.pdf";
 // Share images are written by scripts/build-og.mjs after `next build`, one per
 // page: `page` is "home", "cv" or a project slug. They stay under /og/en/ so
 // previews already shared keep their image.

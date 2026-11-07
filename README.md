@@ -4,7 +4,7 @@ The source of my portfolio site: **[ilaygenis.github.io](https://ilaygenis.githu
 
 I'm an AI Solutions Engineer. I start from the business need, design the solution, and build AI agents, integrations and operational systems that actually work.
 
-- **CV (PDF):** [ilay-genis-cv-en.pdf](https://ilaygenis.github.io/cv/ilay-genis-cv-en.pdf)
+- **CV (PDF):** [ilay-genis-cv.pdf](https://ilaygenis.github.io/cv/ilay-genis-cv.pdf)
 - **LinkedIn:** [linkedin.com/in/ilaygenis](https://www.linkedin.com/in/ilaygenis/)
 
 ## What's on the site

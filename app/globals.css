@@ -168,8 +168,9 @@ svg {
   gap: 65px;
   margin-block: 0 22px;
 }
-/* A fixed minimum hero height on desktop. .hero-side-top pushes the
-   paragraph and buttons to the bottom, level with the headline. */
+/* A minimum hero height on desktop. The eyebrow and headline sit together,
+   centered against the portrait and introduction, so the headline stays in
+   the first screen however long the introduction runs. */
 @media (min-width: 1101px) {
   .hero-grid {
     min-height: 536px;
@@ -178,7 +179,7 @@ svg {
 .hero-main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   gap: 32px;
 }
 .hero-side-top {
@@ -221,6 +222,9 @@ svg {
   font-size: 18px;
   line-height: 1.65;
   color: var(--muted);
+}
+.hero-intro > p + p {
+  margin-top: 16px;
 }
 .hero-actions {
   display: flex;
@@ -712,8 +716,27 @@ svg {
 }
 .background-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 85px;
+}
+@media (min-width: 801px) {
+  .background-section .section-heading,
+  .background-grid article {
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(45px, 6vw, 85px);
+  }
+  .background-grid {
+    gap: 0;
+  }
+  .background-grid article {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding-bottom: 34px;
+  }
+  .background-grid article > p:last-child {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
 }
 .background-grid article {
   padding-top: 27px;
@@ -730,19 +753,6 @@ svg {
 .background-grid article > p:last-child {
   color: var(--muted);
   font-size: 16px;
-}
-.next-step {
-  border-inline-start: 3px solid #8caf59;
-  padding-inline-start: 27px;
-  margin-top: 50px;
-  max-width: 860px;
-}
-.next-step h3 {
-  font-size: 18px;
-  margin-bottom: 12px;
-}
-.next-step p {
-  color: var(--muted);
 }
 .contact-section {
   background: var(--lime);
@@ -1085,7 +1095,11 @@ svg {
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 28px;
-    margin-block: 36px;
+    margin-block: 36px 0;
+  }
+  .hero-side-top {
+    flex-direction: row;
+    align-items: flex-end;
   }
   .hero h1 {
     font-size: clamp(58px, 10vw, 83px);
@@ -1099,7 +1113,7 @@ svg {
   .hero-facts-inline {
     display: grid;
     gap: 16px;
-    margin-block: 24px 4px;
+    margin-block: 28px 0;
     padding-block: 20px 22px;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
@@ -1211,7 +1225,7 @@ svg {
     font-size: 11px;
   }
   .hero-grid {
-    margin-block: 28px 34px;
+    margin-block: 28px 0;
     gap: 25px;
   }
   .hero h1 {
@@ -1222,7 +1236,7 @@ svg {
     font-size: 16px;
   }
   .hero-actions {
-    margin-top: 22px;
+    margin-top: 0;
     gap: 23px;
   }
   .button {
@@ -1231,7 +1245,7 @@ svg {
   }
   .hero-facts-inline {
     gap: 14px;
-    margin-block: 20px 2px;
+    margin-block: 24px 0;
   }
   .fact p,
   .fact ul {
@@ -1390,10 +1404,6 @@ svg {
   .background-grid {
     grid-template-columns: 1fr;
     gap: 32px;
-  }
-  .next-step {
-    padding-inline-start: 20px;
-    margin-top: 38px;
   }
   .contact-section {
     padding-block: 55px;

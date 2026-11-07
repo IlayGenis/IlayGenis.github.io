@@ -19,7 +19,8 @@ import { launchChrome, sleep } from "./chrome.mjs";
 
 const outDir = path.resolve("out");
 const targets = [
-  { locale: "en", route: "/cv/", file: "cv/ilay-genis-cv-en.pdf" },
+  // `aliases`: older addresses that keep serving the same document.
+  { locale: "en", route: "/cv/", file: "cv/ilay-genis-cv.pdf", aliases: ["cv/ilay-genis-cv-en.pdf"] },
 ];
 const A4 = { widthIn: 8.27, heightIn: 11.69, widthPx: 794, heightPx: 1123 };
 
@@ -158,6 +159,7 @@ try {
     const target = path.join(outDir, t.file);
     mkdirSync(path.dirname(target), { recursive: true });
     writeFileSync(target, pdf);
+    for (const alias of t.aliases ?? []) writeFileSync(path.join(outDir, alias), pdf);
     console.log(
       `build-cv: ${t.route} → out/${t.file} (${Math.round(pdf.length / 1024)} KB, ${pages} page${pages === 1 ? "" : "s"}, sheet ${Math.round(height)}px = ${fill}% of A4)`,
     );
