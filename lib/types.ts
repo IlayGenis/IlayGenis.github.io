@@ -1,11 +1,12 @@
-export type Locale = "en" | "he";
-
 export interface CaseStudy {
   slug: string;
   number: string;
   category: string;
   title: string;
+  // Case page intro and meta description.
   summary: string;
+  // Homepage card text when it differs from `summary`.
+  cardSummary?: string;
   status: string;
   technologies: string[];
   diagram: { label: string; steps: string[]; caption: string };
@@ -24,21 +25,20 @@ export interface ResumeData {
     contact: string;
     cv: string;
     label: string;
-    language: string;
     skip: string;
   };
   hero: {
     eyebrow: string;
     lines: string[];
-    intro: string;
-    availability: string;
+    // The hero introduction, one entry per paragraph.
+    intro: string[];
     contact: string;
     // Personal facts strip: three labelled blocks under the hero on desktop,
     // repeated between the intro and the buttons on mobile.
-    // Where I am now and when I'm in Israel, then age and languages. The CV
-    // prints both after its own availability note (cv.available).
+    // Where I am now and when I'm in Israel, then languages. The CV has its
+    // own wording (cv.location, cv.personal).
     about: { label: string; location: string; personal: string };
-    // How I work: one sentence that shows the traits instead of listing them.
+    // How I work: a concrete working method, not a list of traits.
     traits: { label: string; text: string };
     focusLabel: string;
     focus: string[];
@@ -62,20 +62,11 @@ export interface ResumeData {
     ownershipTitle: string;
     ownership: string;
   };
-  capabilities: {
-    label: string;
-    title: string;
-    groups: { title: string; text?: string; items: string[] }[];
-    learningTitle?: string;
-    learning?: string;
-  };
   background: {
     label: string;
     title: string;
     intro: string;
     items: { title: string; detail: string; text: string }[];
-    nextTitle: string;
-    next: string;
   };
   contact: {
     label: string;
@@ -101,17 +92,34 @@ export interface ResumeData {
     contactTitle: string;
     contactIntro: string;
   };
-  // One-page printable CV at /cv/, built from the same strings as the site.
+  // One-page printable CV at /cv/. Identity and employment facts come from the
+  // shared fields above; wording that differs from the site lives here.
   cv: {
     title: string;
     download: string;
     back: string;
-    // The CV's own professional summary; the site keeps the personal hero intro.
-    // Its first sentence is also the top-level `summary` (meta description).
+    // The CV's own professional summary; the site keeps the personal hero intro
+    // and the top-level `summary` (meta description).
     summary: string;
-    // Leads the CV header line before hero.about.location; on the site the
-    // availability badge says it.
+    // First header line: availability, then location. On the site
+    // hero.about.location says where; the CV adds availability.
     available: string;
+    location: string;
+    // Second header line.
+    personal: string;
+    // Link text after each project's description.
+    caseLink: string;
+    experience: {
+      intro: string;
+      items: { title: string; text: string }[];
+      methodTitle: string;
+      method: string;
+    };
+    // Title and one-line description per project, keyed by slug. Number, order
+    // and link come from `projects`.
+    work: Record<string, { title: string; summary: string }>;
+    skills: string[];
+    education: { title: string; detail: string; text: string }[];
     labels: {
       experience: string;
       work: string;

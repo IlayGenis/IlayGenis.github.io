@@ -1,5 +1,5 @@
-import { resumes, casePath } from "@/data/resume";
-import type { Locale, ResumeData } from "@/lib/types";
+import { resume, casePath } from "@/data/resume";
+import type { ResumeData } from "@/lib/types";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -33,11 +33,11 @@ function HeroFacts({ data }: { data: ResumeData }) {
   );
 }
 
-export function Portfolio({ locale }: { locale: Locale }) {
-  const data = resumes[locale];
+export function Portfolio() {
+  const data = resume;
   return (
     <>
-      <Nav locale={locale} data={data} />
+      <Nav data={data} />
       <main id="main" tabIndex={-1}>
         <section id="top" className="hero container">
           <div className="hero-grid">
@@ -68,16 +68,10 @@ export function Portfolio({ locale }: { locale: Locale }) {
                     height="734"
                   />
                 </figure>
-                <span className="availability">
-                  <span aria-hidden="true" />
-                  {data.hero.availability}
-                </span>
               </div>
-              <p>{data.hero.intro}</p>
-              {/* Mobile only: the same facts, before the buttons, so nothing is skipped. */}
-              <div className="hero-facts-inline">
-                <HeroFacts data={data} />
-              </div>
+              {data.hero.intro.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
               {/* One action. The work section starts right below the hero, so a
                   "see my work" button only scrolled to what was already visible. */}
               <div className="hero-actions">
@@ -85,6 +79,11 @@ export function Portfolio({ locale }: { locale: Locale }) {
                   {data.hero.contact}
                   <Arrow />
                 </a>
+              </div>
+              {/* Mobile only: the same facts as the strip below the hero, after
+                  the button so the action comes right after the introduction. */}
+              <div className="hero-facts-inline">
+                <HeroFacts data={data} />
               </div>
             </div>
           </div>
@@ -115,7 +114,7 @@ export function Portfolio({ locale }: { locale: Locale }) {
                   <h3>
                     <a
                       className="project-link"
-                      href={casePath(locale, project.slug)}
+                      href={casePath(project.slug)}
                     >
                       {project.title}
                       <span className="card-arrow">
@@ -123,7 +122,7 @@ export function Portfolio({ locale }: { locale: Locale }) {
                       </span>
                     </a>
                   </h3>
-                  <p>{project.summary}</p>
+                  <p>{project.cardSummary ?? project.summary}</p>
                   <ul className="tags">
                     {project.technologies.map((tech) => (
                       <li key={tech}>
@@ -133,7 +132,7 @@ export function Portfolio({ locale }: { locale: Locale }) {
                   </ul>
                   <a
                     className="read-case"
-                    href={casePath(locale, project.slug)}
+                    href={casePath(project.slug)}
                   >
                     {data.work.read}
                     <Arrow />
@@ -169,15 +168,6 @@ export function Portfolio({ locale }: { locale: Locale }) {
                   </div>
                 </div>
                 <p>{data.experience.intro}</p>
-                <aside className="ownership">
-                  <div className="ownership-symbol" aria-hidden="true">
-                    ↳
-                  </div>
-                  <div>
-                    <h3>{data.experience.ownershipTitle}</h3>
-                    <p>{data.experience.ownership}</p>
-                  </div>
-                </aside>
               </div>
               <div className="responsibilities">
                 {data.experience.items.map((item, i) => (
@@ -192,6 +182,17 @@ export function Portfolio({ locale }: { locale: Locale }) {
                   </article>
                 ))}
               </div>
+              {/* After the responsibilities in the DOM, so a single column reads
+                  them first; two columns place it back under the intro. */}
+              <aside className="ownership">
+                <div className="ownership-symbol" aria-hidden="true">
+                  ↳
+                </div>
+                <div>
+                  <h3>{data.experience.ownershipTitle}</h3>
+                  <p>{data.experience.ownership}</p>
+                </div>
+              </aside>
             </div>
           </div>
         </section>
@@ -214,13 +215,9 @@ export function Portfolio({ locale }: { locale: Locale }) {
                 </article>
               ))}
             </div>
-            <div className="next-step">
-              <h3>{data.background.nextTitle}</h3>
-              <p>{data.background.next}</p>
-            </div>
           </div>
         </section>
-        <Contact locale={locale} data={data} />
+        <Contact data={data} />
       </main>
       <Footer data={data} />
     </>

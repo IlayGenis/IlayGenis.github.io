@@ -1,8 +1,8 @@
 import { Cv } from "@/components/Cv";
 import { cvMetadata } from "@/lib/metadata";
 
-export const metadata = cvMetadata("en");
+export const metadata = cvMetadata();
 
 export default function CvPage() {
-  return <Cv locale="en" />;
+  return <Cv />;
 }
