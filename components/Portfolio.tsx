@@ -68,10 +68,6 @@ export function Portfolio() {
                     height="734"
                   />
                 </figure>
-                <span className="availability">
-                  <span aria-hidden="true" />
-                  {data.hero.availability}
-                </span>
               </div>
               {data.hero.intro.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -172,15 +168,6 @@ export function Portfolio() {
                   </div>
                 </div>
                 <p>{data.experience.intro}</p>
-                <aside className="ownership">
-                  <div className="ownership-symbol" aria-hidden="true">
-                    ↳
-                  </div>
-                  <div>
-                    <h3>{data.experience.ownershipTitle}</h3>
-                    <p>{data.experience.ownership}</p>
-                  </div>
-                </aside>
               </div>
               <div className="responsibilities">
                 {data.experience.items.map((item, i) => (
@@ -195,6 +182,17 @@ export function Portfolio() {
                   </article>
                 ))}
               </div>
+              {/* After the responsibilities in the DOM, so a single column reads
+                  them first; two columns place it back under the intro. */}
+              <aside className="ownership">
+                <div className="ownership-symbol" aria-hidden="true">
+                  ↳
+                </div>
+                <div>
+                  <h3>{data.experience.ownershipTitle}</h3>
+                  <p>{data.experience.ownership}</p>
+                </div>
+              </aside>
             </div>
           </div>
         </section>

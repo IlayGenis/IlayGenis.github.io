@@ -32,7 +32,6 @@ export interface ResumeData {
     lines: string[];
     // The hero introduction, one entry per paragraph.
     intro: string[];
-    availability: string;
     contact: string;
     // Personal facts strip: three labelled blocks under the hero on desktop,
     // repeated between the intro and the buttons on mobile.
@@ -102,8 +101,8 @@ export interface ResumeData {
     // The CV's own professional summary; the site keeps the personal hero intro
     // and the top-level `summary` (meta description).
     summary: string;
-    // First header line: availability, then location. On the site the
-    // availability badge and hero.about.location say these.
+    // First header line: availability, then location. On the site
+    // hero.about.location says where; the CV adds availability.
     available: string;
     location: string;
     // Second header line.

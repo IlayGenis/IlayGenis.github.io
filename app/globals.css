@@ -149,18 +149,6 @@ svg {
   flex-wrap: wrap;
   gap: 12px 32px;
 }
-.availability {
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-}
-.availability > span {
-  width: 7px;
-  height: 7px;
-  background: #507433;
-  border-radius: 50%;
-}
 .hero-grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
@@ -168,9 +156,9 @@ svg {
   gap: 65px;
   margin-block: 0 22px;
 }
-/* A minimum hero height on desktop. The eyebrow and headline sit together,
-   centered against the portrait and introduction, so the headline stays in
-   the first screen however long the introduction runs. */
+/* A minimum hero height on desktop. The eyebrow and headline start at the
+   top, level with the portrait, and any spare height stays below the
+   headline, so it is always in the first screen. */
 @media (min-width: 1101px) {
   .hero-grid {
     min-height: 536px;
@@ -179,8 +167,13 @@ svg {
 .hero-main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 32px;
+}
+@media (min-width: 801px) {
+  .hero-main {
+    gap: 56px;
+  }
 }
 .hero-side-top {
   display: flex;
@@ -583,6 +576,27 @@ svg {
   display: grid;
   grid-template-columns: 1fr 1.55fr;
   gap: 110px;
+}
+/* Two columns: the coding-agents box sits under the intro in the left
+   column, the responsibilities span the right one. */
+@media (min-width: 601px) {
+  .experience-grid {
+    grid-template-rows: auto 1fr;
+    row-gap: 0;
+  }
+  .role-summary {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .responsibilities {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+  .ownership {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+  }
 }
 .role-company {
   display: flex;
@@ -1068,7 +1082,7 @@ svg {
     padding-inline-end: 25px;
   }
   .experience-grid {
-    gap: 60px;
+    column-gap: 60px;
   }
   .contact-grid,
   .case-body {
@@ -1148,7 +1162,7 @@ svg {
     width: calc(100% - 20px);
   }
   .experience-grid {
-    gap: 40px;
+    column-gap: 40px;
     grid-template-columns: 1fr 1.4fr;
   }
   .ownership {
@@ -1220,9 +1234,6 @@ svg {
   }
   .hero-side-top {
     padding-bottom: 22px;
-  }
-  .availability {
-    font-size: 11px;
   }
   .hero-grid {
     margin-block: 28px 0;
@@ -1364,7 +1375,8 @@ svg {
   .ownership {
     gap: 16px;
     padding: 25px 22px;
-    margin-top: 25px;
+    margin-top: 0;
+    max-width: 460px;
   }
   .ownership-symbol {
     font-size: 28px;

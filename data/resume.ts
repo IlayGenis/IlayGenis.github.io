@@ -22,7 +22,6 @@ export const resume: ResumeData = {
       "I’m Ilay, an AI Solutions Engineer. I work from the business problem to a system people can actually use: understanding requirements, designing how it should behave, building agents and integrations, and testing the results against real workflows.",
       "My production work includes Hebrew voice agents, CRM-connected tools, and a WhatsApp operations system for a delivery company. Across these projects, I focus on what happens beyond the demo: how the system behaves, where it fails, and what it takes to make it reliable.",
     ],
-    availability: "Open to AI solutions & FDE roles",
     contact: "Get in touch",
     about: {
       label: "ABOUT ME",
@@ -52,7 +51,7 @@ export const resume: ResumeData = {
     tagline: "a voice-AI startup",
     period: "2026 – present",
     intro:
-      "At Callex, I worked in a small team delivering production AI solutions for clients, while developing reusable briefs, testing practices, and handoff documentation across projects.",
+      "At Callex, I work in a small team delivering production AI solutions for clients, while developing reusable briefs, testing practices, and handoff documentation across projects.",
     items: [
       {
         title: "Business needs → technical requirements",
