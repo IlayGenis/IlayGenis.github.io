@@ -25,7 +25,7 @@ export const resume: ResumeData = {
     contact: "Get in touch",
     about: {
       label: "ABOUT ME",
-      location: "Currently based in Bangkok, returning to Israel in January 2027.",
+      location: "Tel Aviv, Israel. Temporarily abroad; returning in early January 2027.",
       personal: "Native Hebrew, fluent English.",
     },
     traits: {
@@ -151,7 +151,7 @@ export const resume: ResumeData = {
     summary:
       "AI Solutions Engineer with hands-on production experience delivering AI agents, integrations, and operational systems for businesses. Worked across client discovery, solution design, implementation, testing, and debugging on Hebrew voice agents and a WhatsApp delivery operations system.",
     available: "Open to work",
-    location: "Based in Bangkok · Returning to Israel in January 2027",
+    location: "Tel Aviv, Israel · Temporarily abroad; returning in early January 2027",
     personal: "Native Hebrew · Fluent English.",
     caseLink: "View case study",
     experience: {
